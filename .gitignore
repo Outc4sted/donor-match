@@ -1,0 +1,30 @@
+# build output
+dist
+
+# generated types
+.astro
+
+# dependencies
+node_modules
+
+# environment variables
+.env
+
+# test artifacts
+test-results
+playwright-report
+blob-report
+playwright/.cache
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# mac-specific files
+.DS_Store
+
+# nektos/act
+.secrets
+.vars

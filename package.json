@@ -1,0 +1,44 @@
+{
+  "name": "@donor-match/root",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare": "husky",
+    "lint": "bunx eslint",
+    "prettier": "bunx prettier --write",
+    "dev": "bun run dev --cwd app",
+    "test": "bun run test --cwd app",
+    "build": "bun run build --cwd app",
+    "typecheck": "bun run typecheck --cwd app"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,astro}": [
+      "bunx prettier --write",
+      "bunx eslint --fix"
+    ]
+  },
+  "devDependencies": {
+    "@eslint/js": "*",
+    "@flydotio/dockerfile": "*",
+    "@types/bun": "*",
+    "@typescript-eslint/parser": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-config-xo": "*",
+    "eslint-config-xo-react": "*",
+    "eslint-plugin-astro": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-tailwindcss": "*",
+    "globals": "*",
+    "husky": "*",
+    "lint-staged": "*",
+    "prettier": "*",
+    "prettier-plugin-astro": "*",
+    "prettier-plugin-tailwindcss": "*",
+    "typescript-eslint": "*",
+    "typescript": "*"
+  }
+}

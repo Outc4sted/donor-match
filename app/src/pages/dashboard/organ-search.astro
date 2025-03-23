@@ -1,0 +1,12 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import callApi from '@/lib/api'
+
+const token = await Astro.locals.auth().getToken()
+const response = await callApi({ path: '/organs', token })
+console.log('🚀 ~ response:', response)
+---
+
+<Layout title="Donor Match - Organ Search">
+  <h1>Organ search</h1>
+</Layout>
