@@ -5,14 +5,13 @@ import {
 } from 'fastify'
 import { PrismaClient } from '@prisma/client'
 import { enhance } from '@zenstackhq/runtime'
-import { requestContext } from '@fastify/request-context'
 
 export default (fastify: FastifyInstance) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const prisma = new PrismaClient()
 
-      const user = requestContext.get('user')
+      const user = request.requestContext.get('user')
       const memberships =
         await fastify.clerk.users.getOrganizationMembershipList({
           userId: user.id,
