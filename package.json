@@ -6,11 +6,7 @@
   "scripts": {
     "prepare": "husky",
     "lint": "bunx eslint",
-    "prettier": "bunx prettier --write",
-    "dev": "bun run dev --cwd app",
-    "test": "bun run test --cwd app",
-    "build": "bun run build --cwd app",
-    "typecheck": "bun run typecheck --cwd app"
+    "prettier": "bunx prettier --write"
   },
   "lint-staged": {
     "**/*.{ts,tsx,astro}": [

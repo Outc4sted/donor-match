@@ -30,10 +30,8 @@ export default (fastify: FastifyInstance) =>
         throw new Error("Invalid 'azp' claim")
       }
 
-      request.requestContext.set(
-        'user',
-        await fastify.clerk.users.getUser(decoded.sub),
-      )
+      const user = await fastify.clerk.users.getUser(decoded.sub)
+      request.requestContext.set('user', user)
     } catch (error) {
       reply.code(401).send({
         error: (error as Error).message,

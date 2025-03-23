@@ -1,0 +1,27 @@
+enum OrganType {
+  KIDNEY
+  LIVER
+  LUNG
+  HEART
+  PANCREAS
+  INTESTINES
+}
+
+enum BloodType {
+  A_POS @map("A+")
+  A_NEG @map("A-")
+  B_POS @map("B+")
+  B_NEG @map("B-")
+  O_POS @map("O+")
+  O_NEG @map("O-")
+  AB_POS @map("AB+")
+  AB_NEG @map("AB-")
+}
+
+abstract model Base {
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deactivatedAt DateTime?
+
+  @@allow('all', auth().role == 'org:admin' || auth().role == 'admin')
+}

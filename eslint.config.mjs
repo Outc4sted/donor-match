@@ -90,4 +90,10 @@ export default eslintTS.config(
       'react/boolean-prop-naming': 'off',
     },
   },
+  {
+    files: ['api/src/prisma/seeds/*.ts'],
+    rules: {
+      'camelcase': 'off',
+    },
+  },
 )

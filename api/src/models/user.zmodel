@@ -1,0 +1,7 @@
+type user {
+  id String @id
+  role String?
+  permissions String[]?
+
+  @@auth
+}

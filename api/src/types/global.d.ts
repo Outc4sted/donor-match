@@ -17,5 +17,6 @@ declare module '@fastify/jwt' {
 declare module '@fastify/request-context' {
   interface RequestContextData {
     user: import('@clerk/backend').User
+    db: import('@prisma/client').PrismaClient
   }
 }

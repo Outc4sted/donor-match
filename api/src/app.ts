@@ -7,6 +7,7 @@ import routes from '@/routes'
 import SwaggerPlugin from '@/plugins/swagger'
 import ClerkPlugin from '@/plugins/clerk'
 import authHook from '@/hooks/authenticate'
+import zenstackHook from '@/hooks/zenstack'
 
 export default async (appName: string) => {
   const app = fastify({
@@ -20,9 +21,9 @@ export default async (appName: string) => {
 
   await app.register(requestContext)
 
-  app.register(cookie)
+  await app.register(cookie)
 
-  app.register(jwt, {
+  await app.register(jwt, {
     secret: {
       public: config.Clerk.jwtKey,
     },
@@ -36,12 +37,13 @@ export default async (appName: string) => {
   })
 
   await app.register(ClerkPlugin)
-
   await app.register(SwaggerPlugin)
-
   await app.register(routes)
 
-  app.addHook('onRequest', authHook(app))
+  app.addHook('onRequest', async (request, reply) => {
+    await authHook(app)(request, reply)
+    await zenstackHook(app)(request, reply)
+  })
 
   await app.ready()
 

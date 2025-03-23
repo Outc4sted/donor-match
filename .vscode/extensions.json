@@ -9,6 +9,7 @@
     "william-voyek.vscode-nginx",
     "github.vscode-github-actions",
     "mikestead.dotenv",
-    "ms-playwright.playwright"
+    "ms-playwright.playwright",
+    "zenstack.zenstack"
   ]
 }

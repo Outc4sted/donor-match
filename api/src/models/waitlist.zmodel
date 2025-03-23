@@ -1,0 +1,13 @@
+import "./base"
+import './organs'
+import './patients'
+
+model waitlist extends Base {
+  waitlist_id String @id @default(cuid())
+  patient_id String
+  organ_type OrganType
+  organ_size Int?
+  organ_size_threshold Int?
+
+  patient patients @relation("WaitListRelation", fields: [patient_id], references: [patient_id])
+}
