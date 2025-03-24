@@ -1,0 +1,13 @@
+import './models/patients'
+import './models/organs'
+import './models/waitlist'
+import './models/user'
+
+datasource db {
+    provider = 'sqlite'
+    url = env('SQLITE_FILE')
+}
+
+generator client {
+    provider = 'prisma-client-js'
+}

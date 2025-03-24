@@ -1,0 +1,16 @@
+import "./base"
+import './patients'
+
+model organs extends Base {
+  organId String @id @default(cuid())
+  donorId String
+  recipientId String?
+  latitude Float
+  longitude Float
+  organType OrganType
+  bloodType BloodType
+  organSize Int
+
+  donor patients @relation("DonorRelation", fields: [donorId], references: [patientId])
+  recipient patients? @relation("RecipientRelation", fields: [recipientId], references: [patientId])
+}

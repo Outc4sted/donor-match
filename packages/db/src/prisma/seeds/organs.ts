@@ -11,13 +11,13 @@ export const generateOrgan = ({
   donorId: string
   recipientId?: string
 }) => ({
-  donor_id: donorId,
-  recipient_id: recipientId ?? null,
+  donorId: donorId,
+  recipientId: recipientId ?? null,
   latitude: faker.location.latitude(),
   longitude: faker.location.longitude(),
-  organ_type: faker.helpers.arrayElement(OrganTypeKeys),
-  blood_type: faker.helpers.arrayElement(BloodTypeKeys),
-  organ_size: faker.number.int({ min: 50, max: 5000 }),
+  organType: faker.helpers.arrayElement(OrganTypeKeys),
+  bloodType: faker.helpers.arrayElement(BloodTypeKeys),
+  organSize: faker.number.int({ min: 50, max: 5000 }),
 })
 
 export default async (prisma: PrismaClient, patients: patients[]) => {
@@ -30,8 +30,8 @@ export default async (prisma: PrismaClient, patients: patients[]) => {
       Math.random() < 0.7 ? recipients[i % recipients.length] : undefined // ~30% of organs unclaimed
 
     return generateOrgan({
-      donorId: donor.patient_id,
-      recipientId: recipient?.patient_id,
+      donorId: donor.patientId,
+      recipientId: recipient?.patientId,
     })
   })
 

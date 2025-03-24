@@ -66,6 +66,8 @@ export default eslintTS.config(
   // Custom rules
   {
     rules: {
+      'object-shorthand': ['error', 'always'],
+      'no-useless-rename': 'error',
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/triple-slash-reference': 'off',
       '@typescript-eslint/naming-convention': [
@@ -78,22 +80,22 @@ export default eslintTS.config(
         },
       ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      'unicorn/expiring-todo-comments': 'off',
+      'unicorn/expiring-todo-comments': 'off'
     },
   },
 
   // Rule overrides
+  // {
+  //   files: ['packages/app/src/components/ui/**/*.tsx'],
+  //   rules: {
+  //     'tailwindcss/no-custom-classname': 'off',
+  //     'react/boolean-prop-naming': 'off',
+  //   },
+  // },
   {
-    files: ['app/src/components/ui/**/*.tsx'],
+    files: ['packages/api/src/prisma/seeds/*.ts'],
     rules: {
-      'tailwindcss/no-custom-classname': 'off',
-      'react/boolean-prop-naming': 'off',
-    },
-  },
-  {
-    files: ['api/src/prisma/seeds/*.ts'],
-    rules: {
-      'camelcase': 'off',
+      camelcase: 'off',
     },
   },
 )

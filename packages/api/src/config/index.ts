@@ -8,14 +8,6 @@ const FrontendConfig = {
   host: 'http://localhost:3000',
 }
 
-const DatabaseConfig = {
-  user: process.env.POSTGRES_USER || 'postgres',
-  password: process.env.POSTGRES_PASSWORD || 'password',
-  name: process.env.POSTGRES_DB || 'donor-match',
-  port: process.env.POSTGRES_PORT || '5432',
-  host: process.env.POSTGRES_HOST || '127.0.0.1',
-}
-
 const ClerkConfig = {
   publishableKey: process.env.CLERK_PUBLISHABLE_KEY || 'publishable key',
   secretKey: process.env.CLERK_SECRET_KEY || 'secret key',
@@ -55,7 +47,6 @@ const LoggerConfig = {
 export default {
   Node: NodeConfig,
   Frontend: FrontendConfig,
-  Database: DatabaseConfig,
   Clerk: ClerkConfig,
   Logger: LoggerConfig,
 }

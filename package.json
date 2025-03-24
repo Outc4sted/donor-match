@@ -11,12 +11,11 @@
   "lint-staged": {
     "**/*.{ts,tsx,astro}": [
       "bunx prettier --write",
-      "bunx eslint --fix"
+      "bunx eslint --fix --cache"
     ]
   },
   "devDependencies": {
     "@eslint/js": "*",
-    "@flydotio/dockerfile": "*",
     "@types/bun": "*",
     "@typescript-eslint/parser": "*",
     "eslint": "*",
@@ -27,14 +26,18 @@
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-prettier": "*",
     "eslint-plugin-react": "*",
-    "eslint-plugin-tailwindcss": "*",
+    "eslint-plugin-tailwindcss": "^3.18.0",
     "globals": "*",
     "husky": "*",
     "lint-staged": "*",
     "prettier": "*",
     "prettier-plugin-astro": "*",
     "prettier-plugin-tailwindcss": "*",
-    "typescript-eslint": "*",
-    "typescript": "*"
-  }
+    "tailwindcss": "*",
+    "typescript": "*",
+    "typescript-eslint": "*"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

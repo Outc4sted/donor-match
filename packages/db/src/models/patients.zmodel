@@ -1,0 +1,18 @@
+import "./base"
+import "./organs"
+import "./waitlist"
+
+model patients extends Base {
+  patientId String @id @default(cuid())
+  latitude Float
+  longitude Float
+  firstName String
+  lastName String
+  age Int
+  ssn String? @unique @omit
+  bloodType BloodType
+
+  organsDonated organs[] @relation("DonorRelation")
+  organsReceived organs[] @relation("RecipientRelation")
+  transplantNeeds waitlist[] @relation("WaitListRelation")
+}

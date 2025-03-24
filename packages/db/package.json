@@ -1,0 +1,27 @@
+{
+  "name": "@donor-match/db",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit",
+    "schema:gen": "zenstack generate --schema ./src/schema.zmodel",
+    "schema:push": "prisma db push --schema=./src/prisma/schema.prisma",
+    "seed": "prisma db seed"
+  },
+  "prisma": {
+    "seed": "bun src/prisma/seeds/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.5.x",
+    "@zenstackhq/runtime": "2.12.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
+    "prisma": "6.5.x",
+    "zenstack": "2.12.3"
+  }
+}
