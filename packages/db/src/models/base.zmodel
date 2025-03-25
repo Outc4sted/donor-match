@@ -24,4 +24,5 @@ abstract model Base {
   deactivatedAt DateTime?
 
   @@allow('all', auth().role == 'org:admin' || auth().role == 'admin')
+  @@allow('read', auth() != null)
 }

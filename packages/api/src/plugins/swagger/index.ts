@@ -1,23 +1,18 @@
 import { type FastifyInstance } from 'fastify'
 import fp from 'fastify-plugin'
-import FastifySwagger, {
-  type FastifyDynamicSwaggerOptions,
-} from '@fastify/swagger'
-import FastifySwaggerUi, {
-  type FastifySwaggerUiOptions,
-} from '@fastify/swagger-ui'
+import { contract } from '@donor-match/ts-rest'
+import { generateOpenApi } from '@ts-rest/open-api'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUI from '@fastify/swagger-ui'
 
-const swaggerConfig: FastifyDynamicSwaggerOptions = {
-  openapi: {
+const openApiDocument = generateOpenApi(
+  contract,
+  {
     info: {
       title: 'Donor Match',
       description: 'Donor Match API Documentation',
       version: '1.0.0',
     },
-    tags: [
-      { name: 'Organs', description: 'Organ endpoints' },
-      { name: 'Patients', description: 'Patient endpoints' },
-    ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -33,18 +28,19 @@ const swaggerConfig: FastifyDynamicSwaggerOptions = {
       },
     ],
   },
-  refResolver: {
-    buildLocalReference(json, _baseUri, _fragment, i) {
-      return typeof json.$id === 'string' ? `${json.$id}Schema` : `def-${i}`
-    },
+  {
+    setOperationId: true,
   },
-}
+)
 
-const swaggerUiConfig: FastifySwaggerUiOptions = {
-  routePrefix: '/docs',
-}
+export const swaggerPath = '/api-docs'
 
 export default fp(async function (fastify: FastifyInstance) {
-  await fastify.register(FastifySwagger, swaggerConfig)
-  await fastify.register(FastifySwaggerUi, swaggerUiConfig)
+  await fastify
+    .register(fastifySwagger, {
+      transformObject: () => openApiDocument,
+    })
+    .register(fastifySwaggerUI, {
+      routePrefix: swaggerPath,
+    })
 })

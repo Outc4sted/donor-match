@@ -11,7 +11,7 @@ export const generateWaitlistEntry = (patientId: string) => {
     Math.random() < 0.8 ? faker.number.int({ min: 200, max: 4000 }) : undefined
 
   return {
-    patientId: patientId,
+    patientId,
     organType,
     organSize: size,
     organSizeThreshold: size ? Math.floor(size * 0.8) : undefined,

@@ -13,13 +13,14 @@
     "test:snapshots": "playwright test --update-snapshots"
   },
   "dependencies": {
-    "@donor-match/ts-rest": "workspace:*",
     "@astrojs/node": "*",
     "@astrojs/react": "*",
     "@clerk/astro": "*",
+    "@donor-match/ts-rest": "workspace:*",
     "@radix-ui/react-avatar": "*",
     "@radix-ui/react-slot": "*",
     "@tailwindcss/vite": "*",
+    "@ts-rest/core": "*",
     "astro": "*",
     "class-variance-authority": "*",
     "clsx": "*",
@@ -27,7 +28,7 @@
     "react": "*",
     "react-dom": "*",
     "tailwind-merge": "*",
-    "tailwindcss": "*",
+    "tailwindcss": "^4.0.15",
     "tw-animate-css": "*"
   },
   "devDependencies": {

@@ -1,9 +1,13 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import callApi from '@/lib/api'
+import { client } from '@/lib/client'
 
 const token = await Astro.locals.auth().getToken()
-const response = await callApi({ path: '/organs', token })
+const response = await client.organs.getOrgans({
+  headers: { authorization: `Bearer ${token}` },
+})
+//
+// const response = await callApi({ path: '/organs', token })
 console.log('🚀 ~ response:', response)
 ---
 

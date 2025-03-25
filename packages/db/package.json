@@ -10,18 +10,19 @@
     "typecheck": "tsc --noEmit",
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel",
     "schema:push": "prisma db push --schema=./src/prisma/schema.prisma",
-    "seed": "prisma db seed"
+    "seed": "prisma db seed",
+    "build": "bun build ./src/index.ts --outdir ./dist && tsc"
   },
   "prisma": {
     "seed": "bun src/prisma/seeds/index.ts"
   },
   "dependencies": {
     "@prisma/client": "6.5.x",
-    "@zenstackhq/runtime": "2.12.3"
+    "@zenstackhq/runtime": "*"
   },
   "devDependencies": {
-    "@faker-js/faker": "^9.6.0",
+    "@faker-js/faker": "*",
     "prisma": "6.5.x",
-    "zenstack": "2.12.3"
+    "zenstack": "*"
   }
 }

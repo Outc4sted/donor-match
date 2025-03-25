@@ -1,8 +1,16 @@
-import { type FastifyInstance } from 'fastify'
+import { contract } from '@donor-match/ts-rest'
+import { RouterImplementation } from '@ts-rest/fastify'
 
-export default async (fastify: FastifyInstance) => {
-  fastify.get('/', async function (request, reply) {
-    fastify.log.info(JSON.stringify(request.body))
-    return reply.send({ message: 'get patients' })
-  })
+const controller: RouterImplementation<typeof contract.patients> = {
+  getPatients: async ({ request }) => {
+    const db = request.requestContext.get('db')
+    const patients = await db.patients.findMany()
+
+    return {
+      status: 200,
+      body: { patients },
+    }
+  },
 }
+
+export default controller

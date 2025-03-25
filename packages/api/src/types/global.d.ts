@@ -14,9 +14,15 @@ declare module '@fastify/jwt' {
   }
 }
 
+declare global {
+  interface UserPublicMetadata {
+    role?: string
+  }
+}
+
 declare module '@fastify/request-context' {
   interface RequestContextData {
     user: import('@clerk/backend').User
-    db: import('@prisma/client').PrismaClient
+    db: import('@donor-match/db').PrismaClient
   }
 }

@@ -11,7 +11,7 @@ export const generateOrgan = ({
   donorId: string
   recipientId?: string
 }) => ({
-  donorId: donorId,
+  donorId,
   recipientId: recipientId ?? null,
   latitude: faker.location.latitude(),
   longitude: faker.location.longitude(),

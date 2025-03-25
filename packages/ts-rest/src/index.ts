@@ -1,3 +1,10 @@
-import * as contracts from '@/contracts'
+import { initContract } from '@ts-rest/core'
+import organsContract from '@/contracts/organs'
+import patientsContract from '@/contracts/patients'
 
-export default contracts
+const c = initContract()
+
+export const contract = c.router({
+  organs: organsContract,
+  patients: patientsContract,
+})

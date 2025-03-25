@@ -3,7 +3,8 @@ import {
   type FastifyReply,
   FastifyInstance,
 } from 'fastify'
-import { PrismaClient } from '@prisma/client'
+
+import PrismaClient from '@donor-match/db'
 import { enhance } from '@zenstackhq/runtime'
 
 export default (fastify: FastifyInstance) =>
