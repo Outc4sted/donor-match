@@ -80,7 +80,11 @@ export default eslintTS.config(
         },
       ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
-      'unicorn/expiring-todo-comments': 'off'
+      'unicorn/expiring-todo-comments': 'off',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports' },
+      ],
     },
   },
 

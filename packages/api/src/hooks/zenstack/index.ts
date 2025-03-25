@@ -1,22 +1,17 @@
-import {
-  type FastifyRequest,
-  type FastifyReply,
-  FastifyInstance,
-} from 'fastify'
-
-import PrismaClient from '@donor-match/db'
+import { type FastifyRequest, type FastifyReply } from 'fastify'
+import { PrismaClient } from '@prisma/client'
+import type { ClerkClient } from '@clerk/backend'
 import { enhance } from '@zenstackhq/runtime'
 
-export default (fastify: FastifyInstance) =>
+export default (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const prisma = new PrismaClient()
 
       const user = request.requestContext.get('user')
-      const memberships =
-        await fastify.clerk.users.getOrganizationMembershipList({
-          userId: user.id,
-        })
+      const memberships = await clerk.users.getOrganizationMembershipList({
+        userId: user.id,
+      })
       const membership = memberships?.data?.[0] ?? null
 
       const db = enhance(prisma, {

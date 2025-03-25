@@ -1,5 +1,5 @@
-import { contract } from '@donor-match/ts-rest'
-import { RouterImplementation } from '@ts-rest/fastify'
+import type { contract } from '@donor-match/ts-rest'
+import type { RouterImplementation } from '@ts-rest/fastify'
 
 const controller: RouterImplementation<typeof contract.organs> = {
   getOrgans: async ({ request }) => {

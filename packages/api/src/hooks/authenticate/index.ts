@@ -1,12 +1,9 @@
-import {
-  type FastifyRequest,
-  type FastifyReply,
-  FastifyInstance,
-} from 'fastify'
+import { type FastifyRequest, type FastifyReply } from 'fastify'
+import type { ClerkClient } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
 import config from '@/config'
 
-export default (fastify: FastifyInstance) =>
+export default (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     const tokenSameOrigin = request.cookies.__session
     const tokenCrossOrigin = request.headers.authorization
@@ -30,7 +27,7 @@ export default (fastify: FastifyInstance) =>
         throw new Error("Invalid 'azp' claim")
       }
 
-      const user = await fastify.clerk.users.getUser(decoded.sub)
+      const user = await clerk.users.getUser(decoded.sub)
       request.requestContext.set('user', user)
     } catch (error) {
       reply.code(401).send({

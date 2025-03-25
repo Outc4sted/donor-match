@@ -17,12 +17,12 @@
     "seed": "bun src/prisma/seeds/index.ts"
   },
   "dependencies": {
-    "@prisma/client": "6.5.x",
+    "@prisma/client": "*",
     "@zenstackhq/runtime": "*"
   },
   "devDependencies": {
     "@faker-js/faker": "*",
-    "prisma": "6.5.x",
+    "prisma": "*",
     "zenstack": "*"
   }
 }

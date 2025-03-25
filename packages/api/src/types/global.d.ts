@@ -1,16 +1,17 @@
-import '@fastify/jwt'
-import 'fastify'
+import type { ClerkClient, User } from '@clerk/backend'
+import type { JwtPayload } from '@clerk/types'
+import type { PrismaClient } from '@zenstack/runtime'
 
 declare module 'fastify' {
   interface FastifyInstance {
-    clerk: import('@clerk/backend').ClerkClient
+    clerk: ClerkClient
   }
 }
 
 declare module '@fastify/jwt' {
   interface FastifyJWT {
-    payload: import('@clerk/types').JwtPayload
-    user: import('@clerk/types').JwtPayload
+    payload: JwtPayload
+    user: JwtPayload
   }
 }
 
@@ -22,7 +23,7 @@ declare global {
 
 declare module '@fastify/request-context' {
   interface RequestContextData {
-    user: import('@clerk/backend').User
-    db: import('@donor-match/db').PrismaClient
+    user: User
+    db: PrismaClient
   }
 }

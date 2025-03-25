@@ -33,14 +33,12 @@ const openApiDocument = generateOpenApi(
   },
 )
 
-export const swaggerPath = '/api-docs'
-
 export default fp(async function (fastify: FastifyInstance) {
   await fastify
     .register(fastifySwagger, {
       transformObject: () => openApiDocument,
     })
     .register(fastifySwaggerUI, {
-      routePrefix: swaggerPath,
+      routePrefix: '/api-docs',
     })
 })

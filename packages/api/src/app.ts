@@ -3,11 +3,9 @@ import cookie from '@fastify/cookie'
 import requestContext from '@fastify/request-context'
 import jwt from '@fastify/jwt'
 import config from '@/config'
-import swaggerPlugin, { swaggerPath } from '@/plugins/swagger'
+import swaggerPlugin from '@/plugins/swagger'
 import clerkPlugin from '@/plugins/clerk'
 import tsRestPlugin from '@/plugins/ts-rest'
-import authHook from '@/hooks/authenticate'
-import zenstackHook from '@/hooks/zenstack'
 
 export default async (appName: string) => {
   const app = fastify({
@@ -39,13 +37,6 @@ export default async (appName: string) => {
   await app.register(clerkPlugin)
   await app.register(swaggerPlugin)
   await app.register(tsRestPlugin)
-
-  app.addHook('onRequest', async (request, reply) => {
-    if (!request.raw.url.includes(swaggerPath)) {
-      await authHook(app)(request, reply)
-      await zenstackHook(app)(request, reply)
-    }
-  })
 
   await app.ready()
 
