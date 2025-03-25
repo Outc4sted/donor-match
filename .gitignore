@@ -10,6 +10,9 @@ node_modules
 # environment variables
 .env
 
+# eslint
+.eslintcache
+
 # test artifacts
 test-results
 playwright-report
