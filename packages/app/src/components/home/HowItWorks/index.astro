@@ -1,0 +1,47 @@
+---
+export interface Props {
+  siteName: string
+}
+
+const { siteName } = Astro.props
+---
+
+<section
+  id="how-it-works"
+  class="bg-gray-50 py-20"
+>
+  <div class="container mx-auto px-4">
+    <h2 class="mb-12 text-center text-3xl font-bold text-gray-900">
+      How {siteName} Works
+    </h2>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="text-center">
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <i class="fa-solid fa-clipboard-list mb-4 text-3xl text-red-600"></i>
+          <h3 class="mb-3 text-xl font-semibold">Register</h3>
+          <p class="text-gray-600">
+            Complete your donor registration with valid ID and medical history
+          </p>
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <i class="fa-solid fa-stethoscope mb-4 text-3xl text-red-600"></i>
+          <h3 class="mb-3 text-xl font-semibold">Medical Review</h3>
+          <p class="text-gray-600">
+            Our medical team reviews your information and eligibility
+          </p>
+        </div>
+      </div>
+      <div class="text-center">
+        <div class="rounded-xl bg-white p-6 shadow-sm">
+          <i class="fa-solid fa-check-circle mb-4 text-3xl text-red-600"></i>
+          <h3 class="mb-3 text-xl font-semibold">Match Found</h3>
+          <p class="text-gray-600">
+            Get notified when a compatible match is found
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

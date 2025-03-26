@@ -1,0 +1,92 @@
+---
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  SignInButton,
+} from '@clerk/astro/components'
+import { Button } from '@/components/ui/button'
+
+import clsx from 'clsx'
+import { HeartPulse } from 'lucide-react'
+
+const navLinkClasses = clsx(
+  'font-medium',
+  'text-gray-700',
+  'hover:text-red-600',
+  'focus-visible:underline',
+  'focus-visible:text-red-600',
+  'focus-visible:outline-hidden',
+)
+
+export interface Props {
+  siteName: string
+}
+
+const { siteName } = Astro.props
+---
+
+<header
+  id="header"
+  class="fixed z-50 w-full bg-white shadow-sm"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex h-20 items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <HeartPulse className="text-2xl text-red-600" />
+        <span class="text-2xl font-semibold text-gray-800">{siteName}</span>
+      </div>
+
+      <nav class="hidden space-x-8 md:flex">
+        <a
+          href="/"
+          class={navLinkClasses}
+          >Home</a
+        >
+
+        <SignedIn>
+          <a
+            href="/dashboard"
+            class={navLinkClasses}
+            >Dashboard</a
+          >
+          <a
+            href="/dashboard/available-organs"
+            class={navLinkClasses}
+            >Organ Search</a
+          >
+        </SignedIn>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <Button
+          className="hidden rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 md:block"
+        >
+          Become a Donor
+        </Button>
+
+        <div class="flex items-center space-x-3">
+          <SignedOut>
+            <SignInButton
+              asChild
+              mode="modal"
+            >
+              <Button>Sign in</Button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <UserButton
+              showName
+              appearance={{
+                elements: {
+                  userButtonOuterIdentifier: 'text-gray-700',
+                },
+              }}
+            />
+          </SignedIn>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

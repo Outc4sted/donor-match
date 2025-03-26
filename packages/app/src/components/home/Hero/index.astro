@@ -1,0 +1,44 @@
+---
+import { Button } from '@/components/ui/button'
+---
+
+<section
+  id="hero"
+  class="bg-gradient-to-br from-red-50 to-white pb-20 pt-32"
+>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col items-center justify-between md:flex-row">
+      <div class="mb-10 md:mb-0 md:w-1/2">
+        <h1 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
+          Save Lives Through Organ Donation
+        </h1>
+
+        <p class="mb-8 text-lg text-gray-600">
+          Join our mission to help save lives by becoming an organ donor. Your
+          decision today could give someone a second chance at life.
+        </p>
+
+        <div class="flex space-x-4">
+          <Button
+            className="rounded-lg bg-red-600 px-8 py-3 text-white hover:bg-red-700"
+          >
+            Register as Donor
+          </Button>
+          <Button
+            className="rounded-lg border border-red-600 bg-white px-8 py-3 text-red-600 hover:bg-red-50"
+          >
+            Learn More
+          </Button>
+        </div>
+      </div>
+
+      <div class="md:w-1/2">
+        <img
+          class="h-auto w-full rounded-xl shadow-lg"
+          src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2f3a77ac83-dd5924c976459ba65481.png"
+          alt="medical professional team in hospital setting, caring atmosphere, modern medical facility, soft lighting"
+        />
+      </div>
+    </div>
+  </div>
+</section>

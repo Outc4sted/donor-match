@@ -1,11 +1,14 @@
 ---
+import Hero from '@/components/home/Hero/index.astro'
+import Stats from '@/components/home/Stats/index.astro'
+import HowItWorks from '@/components/home/HowItWorks/index.astro'
 import Layout from '@/layouts/Layout.astro'
+
+const siteName = 'Donor Match'
 ---
 
-<Layout title="Donor Match">
-  <div
-    class="mx-auto my-20 max-w-3xl rounded-xl border border-gray-200 bg-white p-6 shadow-lg"
-  >
-    <h2 class="mb-4 text-2xl font-semibold text-gray-900">Donor Match</h2>
-  </div>
+<Layout title={siteName}>
+  <Hero />
+  <Stats />
+  <HowItWorks siteName={siteName} />
 </Layout>

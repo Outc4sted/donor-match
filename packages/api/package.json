@@ -21,10 +21,12 @@
     "@prisma/client": "*",
     "@ts-rest/fastify": "*",
     "@ts-rest/open-api": "*",
+    "@zenstackhq/runtime": "*",
     "fastify": "*",
     "fastify-plugin": "*"
   },
   "devDependencies": {
-    "pino-pretty": "*"
+    "pino-pretty": "*",
+    "zenstack": "*"
   }
 }

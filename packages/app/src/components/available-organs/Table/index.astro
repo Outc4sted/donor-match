@@ -1,14 +1,15 @@
 ---
-import Layout from '@/layouts/Layout.astro'
+import { DataTable } from '@/components/shared/DataTable'
 import { client } from '@/lib/client'
+import { columns } from './columns'
 
 const token = await Astro.locals.auth().getToken()
 const response = await client.organs.getOrgans({
   headers: { authorization: `Bearer ${token}` },
 })
-console.log('🚀 ~ response:', response)
 ---
 
-<Layout title="Donor Match - Organ Search">
-  <h1>Organ search</h1>
-</Layout>
+<DataTable
+  columns={columns}
+  data={response.status === 200 ? response.body.organs : []}
+/>

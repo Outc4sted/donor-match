@@ -1,0 +1,102 @@
+---
+import { HeartPulse, Phone, Mail } from 'lucide-react'
+
+export interface Props {
+  siteName: string
+}
+
+const { siteName } = Astro.props
+---
+
+<footer
+  id="footer"
+  class="bg-gray-900 py-12 text-white"
+>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div>
+        <div class="mb-6 flex items-center space-x-2">
+          <HeartPulse className="text-2xl text-red-500" />
+          <span class="text-xl font-semibold">{siteName}</span>
+        </div>
+
+        <p class="text-gray-400">
+          Connecting donors with those in need since 2025
+        </p>
+      </div>
+
+      <div>
+        <h4 class="mb-4 text-lg font-semibold">Quick Links</h4>
+
+        <ul class="space-y-2">
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >About Us</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Organ List</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Patients</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Contact</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="mb-4 text-lg font-semibold">Resources</h4>
+
+        <ul class="space-y-2">
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >FAQs</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Guidelines</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Privacy Policy</span
+            >
+          </li>
+          <li>
+            <span class="cursor-pointer text-gray-400 hover:text-white"
+              >Terms of Service</span
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="mb-4 text-lg font-semibold">Contact</h4>
+
+        <ul class="space-y-2">
+          <li class="flex items-center space-x-2">
+            <Phone className="text-red-500" />
+
+            <span class="text-gray-400">1-800-ORGAN-MATCH</span>
+          </li>
+          <li class="flex items-center space-x-2">
+            <Mail className="text-red-500" />
+            <span class="text-gray-400">info@organmatch.gov</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-800 pt-8 text-center text-gray-400">
+      <p>&copy; 2025 {siteName}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

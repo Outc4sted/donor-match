@@ -1,4 +1,4 @@
-import { patients } from '@donor-match/db'
+import type { patients } from '@donor-match/db'
 import { initContract } from '@ts-rest/core'
 import { z } from 'zod'
 
