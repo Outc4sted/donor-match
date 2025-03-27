@@ -11,8 +11,8 @@ export default c.router({
     responses: {
       200: c.type<{
         organs: (organs & {
-          donor: Pick<patients, 'firstName' | 'lastName'>
-          recipient: Pick<patients, 'firstName' | 'lastName'>
+          donor: Pick<patients, 'patientId' | 'firstName' | 'lastName'>
+          recipient: Pick<patients, 'patientId' | 'firstName' | 'lastName'>
         })[]
       }>(),
     },

@@ -1,15 +1,15 @@
 ---
 import { client } from '@/lib/client'
-import { OrganTable } from './table'
+import { PatientsTable } from './table'
 
 const token = await Astro.locals.auth().getToken()
-const response = await client.organs.getOrgans({
+const response = await client.patients.getPatients({
   headers: { authorization: `Bearer ${token}` },
 })
-const data = response.status === 200 ? response.body.organs : []
+const data = response.status === 200 ? response.body.patients : []
 ---
 
-<OrganTable
+<PatientsTable
   client:only="react"
   data={data}
 />

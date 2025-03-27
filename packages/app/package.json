@@ -18,6 +18,7 @@
     "@clerk/astro": "*",
     "@donor-match/ts-rest": "workspace:*",
     "@radix-ui/react-avatar": "*",
+    "@radix-ui/react-select": "*",
     "@radix-ui/react-slot": "*",
     "@tailwindcss/vite": "*",
     "@tanstack/react-table": "*",

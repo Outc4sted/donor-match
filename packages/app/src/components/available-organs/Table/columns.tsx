@@ -3,12 +3,12 @@ import type { ClientInferResponseBody } from '@ts-rest/core'
 import type { contract } from '@donor-match/ts-rest'
 import { format } from 'date-fns'
 
-type OrganColumns = ClientInferResponseBody<
+export type GetOrgansResponse = ClientInferResponseBody<
   typeof contract.organs.getOrgans,
   200
->['organs'][0]
+>['organs']
 
-export const columns: ColumnDef<OrganColumns>[] = [
+export const columns: ColumnDef<GetOrgansResponse[0]>[] = [
   {
     accessorKey: 'createdAt',
     header: 'Created',
@@ -21,7 +21,8 @@ export const columns: ColumnDef<OrganColumns>[] = [
   },
   {
     accessorKey: 'organSize',
-    header: 'Organ Size (g)',
+    header: 'Organ Size',
+    accessorFn: ({ organSize }) => `${organSize} g`,
   },
   {
     accessorKey: 'organType',
@@ -32,23 +33,36 @@ export const columns: ColumnDef<OrganColumns>[] = [
     header: 'Blood Type',
   },
   {
-    accessorKey: 'latitude',
-    header: 'Latitude',
+    id: 'location',
+    header: 'Location',
+    accessorFn: ({ latitude, longitude }) => `${latitude}°, ${longitude}°`,
   },
   {
-    accessorKey: 'longitude',
-    header: 'Longitude',
-  },
-  {
-    accessorKey: 'donor',
+    id: 'donor',
     header: 'Donor',
-    accessorFn: ({ donor }) => donor && `${donor.firstName} ${donor.lastName}`,
+    accessorFn: ({ donor }) => `${donor.lastName}, ${donor.firstName}`,
+    cell: (info) => {
+      const patientName = info.getValue<string | null>()
+      const { donor } = info.row.original
+
+      return <a href={`/user/${donor.patientId}`}>{patientName}</a>
+    },
   },
   {
-    accessorKey: 'recipient',
+    id: 'recipient',
     header: 'Recipient',
     accessorFn: ({ recipient }) =>
-      recipient && `${recipient.firstName} ${recipient.lastName}`,
+      recipient && `${recipient.lastName}, ${recipient.firstName}`,
+    cell: (info) => {
+      const patientName = info.getValue<string | null>()
+      const { recipient } = info.row.original
+
+      return (
+        recipient?.patientId && (
+          <a href={`/user/${recipient.patientId}`}>{patientName}</a>
+        )
+      )
+    },
   },
   {
     accessorKey: 'deactivatedAt',

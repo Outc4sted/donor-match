@@ -8,12 +8,14 @@ const controller: RouterImplementation<typeof contract.organs> = {
       include: {
         donor: {
           select: {
+            patientId: true,
             firstName: true,
             lastName: true,
           },
         },
         recipient: {
           select: {
+            patientId: true,
             firstName: true,
             lastName: true,
           },

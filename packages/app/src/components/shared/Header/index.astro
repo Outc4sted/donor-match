@@ -40,21 +40,30 @@ const { siteName } = Astro.props
       <nav class="hidden space-x-8 md:flex">
         <a
           href="/"
-          class={navLinkClasses}
-          >Home</a
+          class={`${navLinkClasses} ${Astro.url.pathname === '/' ? 'text-red-700' : ''}`}
         >
+          Home
+        </a>
 
         <SignedIn>
           <a
             href="/dashboard"
-            class={navLinkClasses}
-            >Dashboard</a
+            class={`${navLinkClasses} ${Astro.url.pathname === '/dashboard' ? 'text-red-700' : ''}`}
           >
+            Dashboard
+          </a>
           <a
             href="/dashboard/available-organs"
-            class={navLinkClasses}
-            >Organ Search</a
+            class={`${navLinkClasses} ${Astro.url.pathname === '/dashboard/available-organs' ? 'text-red-700' : ''}`}
           >
+            Organ Search
+          </a>
+          <a
+            href="/dashboard/patients"
+            class={`${navLinkClasses} ${Astro.url.pathname === '/dashboard/patients' ? 'text-red-700' : ''}`}
+          >
+            Patients
+          </a>
         </SignedIn>
       </nav>
 
