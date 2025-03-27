@@ -26,7 +26,7 @@
     "astro": "*",
     "class-variance-authority": "*",
     "clsx": "*",
-    "date-fns": "^4.1.0",
+    "date-fns": "*",
     "lucide-react": "*",
     "react": "*",
     "react-dom": "*",
