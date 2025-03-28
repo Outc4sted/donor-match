@@ -19,12 +19,20 @@ import { useState } from 'react'
 interface DataTableProps<TData, TValue> {
   readonly columns: ColumnDef<TData, TValue>[]
   readonly data: TData[]
+  readonly isError?: boolean
+  readonly error?: Error | null
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  isError,
+  error,
 }: DataTableProps<TData, TValue>) {
+  if (isError && error instanceof Error) {
+    throw error
+  }
+
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,
@@ -61,6 +69,7 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
+
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (

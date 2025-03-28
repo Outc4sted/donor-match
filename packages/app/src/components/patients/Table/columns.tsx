@@ -3,10 +3,12 @@ import type { ClientInferResponseBody } from '@ts-rest/core'
 import type { contract } from '@donor-match/ts-rest'
 import { format } from 'date-fns'
 
-export type GetPatientsResponse = ClientInferResponseBody<
+export type GetPatientsQuery = ClientInferResponseBody<
   typeof contract.patients.getPatients,
   200
->['patients']
+>
+
+export type GetPatientsResponse = GetPatientsQuery['patients']
 
 export const columns: ColumnDef<GetPatientsResponse[0]>[] = [
   {

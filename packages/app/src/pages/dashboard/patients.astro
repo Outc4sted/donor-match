@@ -1,10 +1,10 @@
 ---
 import Header from '@/components/patients/Header/index.astro'
-import Table from '@/components/patients/Table/index.astro'
+import PatientsTable from '@/components/patients/Table'
 import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout title="Donor Match - Patients">
   <Header />
-  <Table />
+  <PatientsTable client:only="react" />
 </Layout>
