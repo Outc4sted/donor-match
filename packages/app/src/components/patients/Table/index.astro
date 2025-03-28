@@ -4,7 +4,9 @@ import { PatientsTable } from './table'
 
 const token = await Astro.locals.auth().getToken()
 const response = await client.patients.getPatients({
-  headers: { authorization: `Bearer ${token}` },
+  headers: {
+    authorization: `Bearer ${token}`,
+  },
 })
 const data = response.status === 200 ? response.body.patients : []
 ---
