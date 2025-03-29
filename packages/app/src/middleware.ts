@@ -25,8 +25,9 @@ export const onRequest = clerkMiddleware(
     if (requestUrl.pathname.startsWith('/api')) {
       request.headers.set('authorization', `Bearer ${token?.value}`)
 
+      console.log('🚀 ~ requestUrl.search:', requestUrl.search)
       return fetch(
-        `${import.meta.env.DONOR_MATCH_API}${requestUrl.pathname}`,
+        `${import.meta.env.DONOR_MATCH_API}${requestUrl.pathname}${requestUrl.search}`,
         request,
       )
     }

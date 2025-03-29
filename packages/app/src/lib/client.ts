@@ -1,6 +1,6 @@
 import { contract } from '@donor-match/ts-rest'
 import { atom } from 'nanostores'
-import { QueryClient } from '@tanstack/react-query'
+import { keepPreviousData, QueryClient } from '@tanstack/react-query'
 import { initTsrReactQuery } from '@ts-rest/react-query/v5'
 
 export const queryClient = atom(
@@ -11,6 +11,7 @@ export const queryClient = atom(
           (response as { body: unknown }).body,
         retry: 0,
         throwOnError: true,
+        placeholderData: keepPreviousData,
       },
     },
   }),

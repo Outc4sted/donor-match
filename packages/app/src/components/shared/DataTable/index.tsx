@@ -13,35 +13,42 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { useState } from 'react'
 import DataTablePagination from './pagination'
+import type { PaginationInfo } from '@/lib/hooks/usePaginationInfo'
+import type { PaginationState } from '@/lib/hooks/useInitialTableState'
 
 export interface Props<TData, TValue> {
   readonly columns: ColumnDef<TData, TValue>[]
   readonly data: TData[]
+  readonly paginationState: PaginationState
+  readonly paginationInfo: PaginationInfo
 }
 
 export default function DataTable<TData, TValue>({
   columns,
   data,
+  paginationState,
+  paginationInfo,
 }: Props<TData, TValue>) {
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 10,
-  })
-
   const table = useReactTable({
     data,
     columns,
-    state: { pagination },
-    onPaginationChange: setPagination,
+    state: { pagination: paginationState.pagination },
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onPaginationChange: paginationState.setPagination,
+    manualPagination: true,
+    rowCount: paginationInfo.total,
+    pageCount: paginationInfo.pages,
   })
 
   return (
     <div>
       <div className="rounded-md border">
+        {paginationInfo.total > 0 && (
+          <p className="mb-1 font-bold">{paginationInfo.summary}</p>
+        )}
+
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -92,6 +99,7 @@ export default function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+
       <DataTablePagination table={table} />
     </div>
   )
