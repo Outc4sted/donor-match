@@ -6,6 +6,7 @@ import eslintTailwind from "eslint-plugin-tailwindcss";
 import eslintPrettier from 'eslint-plugin-prettier/recommended'
 import eslintXO from 'eslint-config-xo/space'
 import eslintXOReact from "eslint-config-xo-react/space";
+import eslintQuery from '@tanstack/eslint-plugin-query'
 
 /** @type {import('eslint').Linter.Config[]} */
 export default eslintTS.config(
@@ -53,6 +54,9 @@ export default eslintTS.config(
     extends: [eslintXOReact],
   },
 
+  // TanStack Query
+  eslintQuery.configs['flat/recommended'],
+
   // Astro
   eslintAstro.configs['flat/recommended'],
   eslintAstro.configs['flat/jsx-a11y-recommended'],
@@ -89,17 +93,26 @@ export default eslintTS.config(
   },
 
   // Rule overrides
-  // {
-  //   files: ['packages/app/src/components/ui/**/*.tsx'],
-  //   rules: {
-  //     'tailwindcss/no-custom-classname': 'off',
-  //     'react/boolean-prop-naming': 'off',
-  //   },
-  // },
+  {
+    files: ['packages/app/src/components/ui/**/*.tsx'],
+    rules: {
+      'tailwindcss/no-custom-classname': 'off',
+      'react/boolean-prop-naming': 'off',
+    },
+  },
   {
     files: ['packages/api/src/prisma/seeds/*.ts'],
     rules: {
       camelcase: 'off',
+    },
+  },
+  {
+    files: ['**/*.d.ts'],
+    rules: {
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { disallowTypeAnnotations: false },
+      ],
     },
   },
 )

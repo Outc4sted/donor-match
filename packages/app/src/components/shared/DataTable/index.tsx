@@ -1,9 +1,9 @@
-import type { ColumnDef } from '@tanstack/react-table'
 import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
+  type ColumnDef,
 } from '@tanstack/react-table'
 import {
   Table,
@@ -13,26 +13,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { DataTablePagination } from './pagination'
 import { useState } from 'react'
+import DataTablePagination from './pagination'
 
-interface DataTableProps<TData, TValue> {
+export interface Props<TData, TValue> {
   readonly columns: ColumnDef<TData, TValue>[]
   readonly data: TData[]
-  readonly isError?: boolean
-  readonly error?: Error | null
 }
 
-export function DataTable<TData, TValue>({
+export default function DataTable<TData, TValue>({
   columns,
   data,
-  isError,
-  error,
-}: DataTableProps<TData, TValue>) {
-  if (isError && error instanceof Error) {
-    throw error
-  }
-
+}: Props<TData, TValue>) {
   const [pagination, setPagination] = useState({
     pageIndex: 0,
     pageSize: 10,

@@ -8,9 +8,7 @@ export type GetPatientsQuery = ClientInferResponseBody<
   200
 >
 
-export type GetPatientsResponse = GetPatientsQuery['patients']
-
-export const columns: ColumnDef<GetPatientsResponse[0]>[] = [
+export const columns: ColumnDef<GetPatientsQuery['patients'][0]>[] = [
   {
     accessorKey: 'createdAt',
     header: 'Created',

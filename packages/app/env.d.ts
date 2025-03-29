@@ -8,3 +8,15 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+declare namespace App {
+  interface Locals {
+    siteName: string
+    apiClient: import('@ts-rest/core').InitClientReturn<
+      typeof import('@donor-match/ts-rest').contract,
+      {
+        baseUrl: string
+      }
+    >
+  }
+}

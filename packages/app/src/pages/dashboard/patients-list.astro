@@ -1,0 +1,10 @@
+---
+import Header from '@/components/patients-list/Header/index.astro'
+import PatientsTable from '@/components/patients-list/Table'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="Patients List">
+  <Header />
+  <PatientsTable client:only="react" />
+</Layout>

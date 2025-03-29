@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@eslint/js": "*",
+    "@tanstack/eslint-plugin-query": "*",
     "@types/bun": "*",
     "@typescript-eslint/parser": "*",
     "eslint": "*",

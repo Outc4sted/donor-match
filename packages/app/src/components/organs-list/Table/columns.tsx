@@ -8,9 +8,7 @@ export type GetOrgansQuery = ClientInferResponseBody<
   200
 >
 
-export type GetOrgansResponse = GetOrgansQuery['organs']
-
-export const columns: ColumnDef<GetOrgansResponse[0]>[] = [
+export const columns: ColumnDef<GetOrgansQuery['organs'][0]>[] = [
   {
     accessorKey: 'createdAt',
     header: 'Created',

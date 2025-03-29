@@ -19,11 +19,7 @@ const navLinkClasses = clsx(
   'focus-visible:outline-hidden',
 )
 
-export interface Props {
-  siteName: string
-}
-
-const { siteName } = Astro.props
+const { siteName } = Astro.locals
 ---
 
 <header
@@ -53,13 +49,13 @@ const { siteName } = Astro.props
             Dashboard
           </a>
           <a
-            href="/dashboard/available-organs"
+            href="/dashboard/organs-list"
             class={`${navLinkClasses} ${Astro.url.pathname === '/dashboard/available-organs' ? 'text-red-700' : ''}`}
           >
             Organ Search
           </a>
           <a
-            href="/dashboard/patients"
+            href="/dashboard/patients-list"
             class={`${navLinkClasses} ${Astro.url.pathname === '/dashboard/patients' ? 'text-red-700' : ''}`}
           >
             Patients

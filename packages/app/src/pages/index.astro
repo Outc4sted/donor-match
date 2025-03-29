@@ -4,11 +4,11 @@ import Stats from '@/components/home/Stats/index.astro'
 import HowItWorks from '@/components/home/HowItWorks/index.astro'
 import Layout from '@/layouts/Layout.astro'
 
-const siteName = 'Donor Match'
+const { siteName } = Astro.locals
 ---
 
 <Layout title={siteName}>
   <Hero />
   <Stats />
-  <HowItWorks siteName={siteName} />
+  <HowItWorks />
 </Layout>

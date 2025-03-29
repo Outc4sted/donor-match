@@ -25,6 +25,7 @@
     "@tanstack/react-query": "*",
     "@tanstack/react-table": "*",
     "@ts-rest/core": "*",
+    "@ts-rest/react-query": "*",
     "astro": "*",
     "class-variance-authority": "*",
     "clsx": "*",

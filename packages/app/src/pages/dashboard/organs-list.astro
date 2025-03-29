@@ -1,0 +1,10 @@
+---
+import Header from '@/components/organs-list/Header/index.astro'
+import OrgansTable from '@/components/organs-list/Table'
+import Layout from '@/layouts/Layout.astro'
+---
+
+<Layout title="Organs List">
+  <Header />
+  <OrgansTable client:only="react" />
+</Layout>

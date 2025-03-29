@@ -1,9 +1,7 @@
 ---
-export interface Props {
-  siteName: string
-}
+import { CircleCheck, ClipboardList, Stethoscope } from 'lucide-react'
 
-const { siteName } = Astro.props
+const { siteName } = Astro.locals
 ---
 
 <section
@@ -14,28 +12,31 @@ const { siteName } = Astro.props
     <h2 class="mb-12 text-center text-3xl font-bold text-gray-900">
       How {siteName} Works
     </h2>
+
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
       <div class="text-center">
         <div class="rounded-xl bg-white p-6 shadow-sm">
-          <i class="fa-solid fa-clipboard-list mb-4 text-3xl text-red-600"></i>
+          <ClipboardList className="mb-4 text-3xl text-red-600" />
           <h3 class="mb-3 text-xl font-semibold">Register</h3>
           <p class="text-gray-600">
             Complete your donor registration with valid ID and medical history
           </p>
         </div>
       </div>
+
       <div class="text-center">
         <div class="rounded-xl bg-white p-6 shadow-sm">
-          <i class="fa-solid fa-stethoscope mb-4 text-3xl text-red-600"></i>
+          <Stethoscope className="mb-4 text-3xl text-red-600" />
           <h3 class="mb-3 text-xl font-semibold">Medical Review</h3>
           <p class="text-gray-600">
             Our medical team reviews your information and eligibility
           </p>
         </div>
       </div>
+
       <div class="text-center">
         <div class="rounded-xl bg-white p-6 shadow-sm">
-          <i class="fa-solid fa-check-circle mb-4 text-3xl text-red-600"></i>
+          <CircleCheck className="mb-4 text-3xl text-red-600" />
           <h3 class="mb-3 text-xl font-semibold">Match Found</h3>
           <p class="text-gray-600">
             Get notified when a compatible match is found

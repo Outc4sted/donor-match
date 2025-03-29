@@ -3,7 +3,15 @@ import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout title="Page not found">
-  <h1>404</h1>
-
-  <div>This page does not exist!</div>
+  <section
+    id="dashboard-header"
+    class="bg-gradient-to-br from-red-50 to-white pb-10 pt-32"
+  >
+    <div class="container mx-auto px-4">
+      <div class="mb-8 flex items-center justify-between">
+        <h1 class="text-3xl font-bold text-gray-900">404</h1>
+        <div class="flex space-x-4">This page does not exist!</div>
+      </div>
+    </div>
+  </section>
 </Layout>
