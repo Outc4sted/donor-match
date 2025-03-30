@@ -35,6 +35,4 @@ dev-tmux.log
 .vars
 
 # SQLite
-packages/db/src/prisma/
-!packages/db/src/prisma/seeds
-!packages/db/src/prisma/schema.prisma
+packages/db/src/prisma/*.db
