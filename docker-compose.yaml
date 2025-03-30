@@ -1,25 +1,37 @@
 services:
   astro:
-    build: ./app
+    build:
+      context: ./
+      dockerfile: ./packages/app/Dockerfile
     ports:
       - 3000:80
+    env_file:
+      - path: ./packages/app/.env
+        required: false
+      - path: ./packages/app/.env.docker
     depends_on:
       - fastify
 
   fastify:
-    build: ./api
+    build:
+      context: ./
+      dockerfile: ./packages/api/Dockerfile
     ports:
       - 3001:3001
+    env_file:
+      - path: ./packages/api/.env
+        required: false
+      - path: ./packages/api/.env.docker
     depends_on:
-      - db
+      - postgres
 
-  db:
-    image: postgres:bullseye
+  postgres:
+    image: postgres:alpine
     restart: always
     ports:
       - 5432:5432
     env_file:
-      - ./config/.env.global
+      - ./packages/db/.env.docker
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:

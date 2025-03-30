@@ -1,12 +1,14 @@
 import { type FastifyRequest, type FastifyReply } from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import PrismaClient from '@donor-match/db'
 import type { ClerkClient } from '@clerk/backend'
 import { enhance } from '@zenstackhq/runtime'
 
 export default (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     try {
-      const prisma = new PrismaClient()
+      const prisma = new PrismaClient({
+        datasourceUrl: process.env.DATABASE_URL,
+      })
 
       const user = request.requestContext.get('user')
       const memberships = await clerk.users.getOrganizationMembershipList({
