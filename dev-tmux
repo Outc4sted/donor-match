@@ -13,10 +13,6 @@ kill-session
 
 echo "Building packages..."
 
-echo "Building ts-rest..."
-(cd "$(pwd)/packages/ts-rest" && bun run build)
-if [ $? -ne 0 ]; then echo "ts-rest build failed"; exit 1; fi
-
 echo "Building db..."
 (cd "$(pwd)/packages/db" && bun run schema:gen && bun run schema:push && bun run seed && bun run build)
 if [ $? -ne 0 ]; then echo "DB build failed"; exit 1; fi
@@ -27,7 +23,7 @@ echo "All builds completed successfully."
 tmux new-session -d -s "$SNAME" -n "app"     -c "$(pwd)/packages/app"     "bun run dev"
 tmux new-window     -t "$SNAME" -n "api"     -c "$(pwd)/packages/api"     "bun run dev"
 tmux new-window     -t "$SNAME" -n "db"      -c "$(pwd)/packages/db"      "exec zsh -c 'cd \"$(pwd)/packages/db\" && exec zsh -l'"
-tmux new-window     -t "$SNAME" -n "ts-rest" -c "$(pwd)/packages/ts-rest" "exec zsh -c 'cd \"$(pwd)/packages/ts-rest\" && exec zsh -l'"
+tmux new-window     -t "$SNAME" -n "ts-rest" -c "$(pwd)/packages/ts-rest" "bun run dev"
 
 
 tmux select-window -t "$SNAME:0"

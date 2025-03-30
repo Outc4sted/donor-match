@@ -1,0 +1,31 @@
+# build output
+**/dist
+
+# generated types
+**/.astro
+
+# dependencies
+**/node_modules
+
+# environment variables
+**/.env*
+
+# test artifacts
+**/tests
+**/test-results
+**/playwright-report
+**/blob-report
+**/playwright/.cache
+
+# logs
+**/npm-debug.log*
+
+# macOS-specific files
+**/.DS_Store
+
+# docker
+**/Dockerfile
+**/.dockerignore
+
+**/sqlite.db
+**/schema.prisma
