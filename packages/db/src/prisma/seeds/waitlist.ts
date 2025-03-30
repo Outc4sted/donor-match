@@ -1,4 +1,4 @@
-import { PrismaClient, patients, organs } from '@prisma/client'
+import type { PrismaClient, patients, organs } from '@prisma/client'
 import { faker } from '@faker-js/faker'
 import { OrganTypeKeys } from '@/constants'
 

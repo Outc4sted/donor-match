@@ -1,5 +1,5 @@
 import { type FastifyRequest, type FastifyReply } from 'fastify'
-import PrismaClient from '@donor-match/db'
+import { PrismaClient } from '@prisma/client'
 import type { ClerkClient } from '@clerk/backend'
 import { enhance } from '@zenstackhq/runtime'
 
