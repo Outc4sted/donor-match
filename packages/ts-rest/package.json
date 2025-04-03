@@ -1,17 +1,26 @@
 {
-  "name": "@donor-match/ts-rest",
+  "name": "@repo/ts-rest",
   "version": "0.0.1",
+  "type": "module",
   "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": {
+    "types": "./src/index.ts",
+    "default": "./dist/index.js"
+  },
   "scripts": {
-    "dev": "bun run build --watch",
-    "typecheck": "tsc --noEmit",
-    "build": "bun build ./src/index.ts --outdir ./dist && tsc"
+    "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --fix --cache --max-warnings 0",
+    "build": "tsc"
   },
   "dependencies": {
-    "@donor-match/db": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/db": "workspace:*",
+    "eslint": "*",
     "@ts-rest/core": "*",
-    "zod": "*"
+    "zod": "*",
+    "nodemon": "*",
+    "typescript": "latest"
   }
 }

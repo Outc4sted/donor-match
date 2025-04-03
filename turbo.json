@@ -1,0 +1,44 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "globalPassThroughEnv": ["DMNO_PARENT_SERVER"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$"],
+      "outputs": ["dist/**"]
+    },
+    "api#build": {
+      "dependsOn": ["^@repo/ts-rest#build"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
+    "@repo/ts-rest#build": {
+      "dependsOn": ["^@repo/db#build"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
+    "@repo/db#build": {
+      "dependsOn": ["@repo/db#schema:gen"],
+      "inputs": ["$TURBO_DEFAULT$"]
+    },
+    "@repo/db#schema:gen": {
+      "inputs": ["$TURBO_DEFAULT$"],
+      "outputs": ["schema.prisma"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "env:docker": {
+      "dependsOn": ["^env:docker"],
+      "inputs": ["$TURBO_DEFAULT$"],
+      "passThroughEnv": ["APP_ENV"]
+    },
+    "dev": {
+      "inputs": ["$TURBO_DEFAULT$"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

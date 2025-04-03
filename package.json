@@ -1,43 +1,32 @@
 {
-  "name": "@donor-match/root",
-  "version": "0.0.1",
+  "name": "donor-match",
   "private": true,
   "scripts": {
-    "prepare": "husky",
-    "lint": "bunx eslint",
-    "prettier": "bunx prettier --write"
-  },
-  "lint-staged": {
-    "**/*.{ts,tsx,astro}": [
-      "bunx prettier --write",
-      "bunx eslint --fix --cache"
-    ]
+    "preinstall": "npx only-allow pnpm",
+    "build": "turbo run build",
+    "dev": "dmno run -- turbo run dev",
+    "lint": "dmno run -- turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "dmno": "dmno dev",
+    "check-types": "dmno run -- turbo run check-types",
+    "env:docker": "APP_ENV=docker turbo run env:docker"
   },
   "devDependencies": {
-    "@eslint/js": "*",
-    "@tanstack/eslint-plugin-query": "*",
-    "@types/bun": "*",
-    "@typescript-eslint/parser": "*",
-    "eslint": "*",
-    "eslint-config-prettier": "*",
-    "eslint-config-xo": "*",
-    "eslint-config-xo-react": "*",
-    "eslint-plugin-astro": "*",
-    "eslint-plugin-jsx-a11y": "*",
-    "eslint-plugin-prettier": "*",
-    "eslint-plugin-react": "*",
-    "eslint-plugin-tailwindcss": "*",
-    "globals": "*",
-    "husky": "*",
-    "lint-staged": "*",
-    "prettier": "*",
+    "prettier": "^3.5.3",
     "prettier-plugin-astro": "*",
     "prettier-plugin-tailwindcss": "*",
-    "tailwindcss": "^3.4.17",
-    "typescript": "*",
-    "typescript-eslint": "*"
+    "turbo": "*",
+    "typescript": "latest"
+  },
+  "packageManager": "pnpm@10.7.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dmno": "*"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "apps/*"
   ]
 }

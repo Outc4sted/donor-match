@@ -1,7 +1,8 @@
-import { authorizationSchema } from '@/schemas/authorizationSchema'
-import { paginationSchema } from '@/schemas/paginationSchema'
-import type { patients } from '@donor-match/db'
 import { initContract } from '@ts-rest/core'
+import type { patients } from '@repo/db'
+import { authorizationHeader } from '../schemas/authorizationHeader.ts'
+import { paginationQuery } from '../schemas/paginationQuery.ts'
+import type { PaginationSummary } from '../types/index.ts'
 
 const c = initContract()
 
@@ -10,10 +11,10 @@ export default c.router({
     summary: 'Get all patients',
     method: 'GET',
     path: '/api/patients',
-    query: paginationSchema,
+    headers: authorizationHeader,
+    query: paginationQuery,
     responses: {
-      200: c.type<{ patients: patients[]; total: number }>(),
+      200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },
-    headers: authorizationSchema,
   },
 })

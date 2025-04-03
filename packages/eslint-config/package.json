@@ -1,0 +1,31 @@
+{
+  "name": "@repo/eslint-config",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./base": "./eslint.config.mjs",
+    "./main": "./main.config.mjs",
+    "./astro": "./astro.config.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "*",
+    "@tanstack/eslint-plugin-query": "*",
+    "@typescript-eslint/parser": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-config-xo": "*",
+    "eslint-config-xo-react": "*",
+    "eslint-plugin-astro": "*",
+    "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-prettier": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-tailwindcss": "*",
+    "globals": "*",
+    "jiti": "*",
+    "prettier": "*",
+    "tailwindcss": "^3.4.17",
+    "typescript": "latest",
+    "typescript-eslint": "*"
+  }
+}

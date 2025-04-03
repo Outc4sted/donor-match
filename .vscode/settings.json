@@ -4,6 +4,7 @@
   "editor.formatOnType": false,
   "editor.formatOnSaveMode": "file",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "[typescript]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -16,12 +17,16 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[github-actions-workflow]": {
     "editor.formatOnSave": true
   },
+  "eslint.useFlatConfig": true,
   "files.associations": {
     "*.css": "tailwindcss",
+    ".env*": "dotenv",
     ".vars*": "dotenv",
     ".secrets*": "dotenv",
     ".github/*.yaml": "github-actions-workflow"
@@ -32,10 +37,19 @@
   },
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
-  "files.exclude": { "**/node_modules": true, "**/bun.lock": true },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/pnpm-lock.yaml": true,
+    "**/dist": true,
+    "**/.turbo": true,
+    "**/.dmno/typegen": true
+  },
   "turboConsoleLog.quote": "'",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[zmodel]": {
+    "editor.defaultFormatter": "zenstack.zenstack"
   }
 }

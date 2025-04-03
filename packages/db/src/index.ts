@@ -1,5 +1,11 @@
-import { PrismaClient, patients, organs, waitlist } from '@prisma/client'
-import { BloodTypeKeys, OrganTypeKeys } from './constants'
+import {
+  PrismaClient,
+  type patients,
+  type organs,
+  type waitlist,
+} from '@prisma/client'
+import { BloodTypeKeys, OrganTypeKeys } from './constants/index.ts'
 
-export { patients, organs, waitlist, BloodTypeKeys, OrganTypeKeys }
+export type { patients, organs, waitlist }
+export { BloodTypeKeys, OrganTypeKeys }
 export default PrismaClient

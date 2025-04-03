@@ -1,0 +1,42 @@
+{
+  "name": "api",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "dmno run -- tsx --watch src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-types": "tsc --noEmit",
+    "build": "tsc",
+    "env:docker": "dmno resolve --service api --format env > .dmno/.env.docker",
+    "lint": "eslint . --fix --cache --max-warnings 0"
+  },
+  "dependencies": {
+    "@clerk/backend": "*",
+    "@dmno/fastify-integration": "*",
+    "@fastify/cookie": "*",
+    "@fastify/jwt": "*",
+    "@fastify/request-context": "*",
+    "@fastify/swagger": "*",
+    "@fastify/swagger-ui": "*",
+    "@prisma/client": "*",
+    "@repo/db": "workspace:*",
+    "@repo/ts-rest": "workspace:*",
+    "@ts-rest/fastify": "*",
+    "@ts-rest/open-api": "*",
+    "@zenstackhq/runtime": "*",
+    "dmno": "*",
+    "fastify": "*",
+    "fastify-plugin": "*"
+  },
+  "devDependencies": {
+    "@clerk/types": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "*",
+    "pino-pretty": "*",
+    "tsx": "*",
+    "typescript": "latest",
+    "zenstack": "*"
+  }
+}

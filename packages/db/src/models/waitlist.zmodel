@@ -3,11 +3,11 @@ import './organs'
 import './patients'
 
 model waitlist extends Base {
-  waitlistId String @id @default(cuid())
-  patientId String
-  organType OrganType
-  organSize Int?
+  waitlistId         String    @id @default(cuid())
+  patientId          String
+  organType          OrganType
+  organSize          Int?
   organSizeThreshold Int?
 
-  patient patients @relation("WaitListRelation", fields: [patientId], references: [patientId])
+  patient            patients  @relation("WaitListRelation", fields: [patientId], references: [patientId])
 }

@@ -1,6 +1,6 @@
 import type { PrismaClient, patients } from '@prisma/client'
 import { faker } from '@faker-js/faker'
-import { OrganTypeKeys, BloodTypeKeys } from '@/constants'
+import { OrganTypeKeys, BloodTypeKeys } from '../../constants/index.ts'
 
 const MAX_ORGANS = 200
 
@@ -24,16 +24,20 @@ export default async (prisma: PrismaClient, patients: patients[]) => {
   const donors = faker.helpers.shuffle(patients)
   const recipients = faker.helpers.shuffle(patients)
 
-  const generatedOrgans = Array.from({ length: MAX_ORGANS }).map((_, i) => {
-    const donor = donors[i % donors.length]
-    const recipient =
-      Math.random() < 0.7 ? recipients[i % recipients.length] : undefined // ~30% of organs unclaimed
+  const generatedOrgans = Array.from({ length: MAX_ORGANS })
+    .map((_, i) => {
+      const donor = donors[i % donors.length]
+      const recipient =
+        Math.random() < 0.7 ? recipients[i % recipients.length] : undefined // ~30% of organs unclaimed
 
-    return generateOrgan({
-      donorId: donor.patientId,
-      recipientId: recipient?.patientId,
+      return donor
+        ? generateOrgan({
+            donorId: donor.patientId,
+            recipientId: recipient?.patientId,
+          })
+        : undefined
     })
-  })
+    .filter((organ) => organ !== undefined)
 
   const seededOrgans = await prisma.organs.createManyAndReturn({
     data: generatedOrgans,

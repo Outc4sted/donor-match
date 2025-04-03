@@ -1,6 +1,6 @@
 import type { PrismaClient } from '@prisma/client'
 import { faker } from '@faker-js/faker'
-import { BloodTypeKeys } from '@/constants'
+import { BloodTypeKeys } from '../../constants/index.ts'
 
 const MAX_PATIENTS = 300
 

@@ -3,6 +3,7 @@
 
 # generated types
 **/.astro
+**/schema.prisma
 
 # dependencies
 **/node_modules
@@ -24,8 +25,32 @@
 **/.DS_Store
 
 # docker
+**/docker-compose.yaml
 **/Dockerfile
 **/.dockerignore
 
-**/sqlite.db
-**/schema.prisma
+# vscode
+.vscode
+
+# eslint
+**/.eslintcache
+
+# readme
+**/*.md
+
+# tmux
+dev-tmux
+
+# git
+.git
+.gitignore
+
+# turbo
+**/.turbo
+
+# eslint
+**/eslint-config
+**/eslint.config.mjs
+
+# prettier
+prettier.config.mjs

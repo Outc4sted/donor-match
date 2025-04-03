@@ -1,28 +1,44 @@
 {
-  "name": "@donor-match/db",
+  "name": "@repo/db",
   "version": "0.0.1",
-  "private": true,
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "private": true,
+  "exports": {
+    "types": "./src/index.ts",
+    "default": "./dist/index.js"
+  },
   "scripts": {
+    "dev": "concurrently -n constants,models -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
+    "watch:ts": "nodemon --watch src/constants --watch src/index.ts --ext ts,json --exec \"pnpm run build\"",
+    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "typecheck": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel",
-    "schema:push": "prisma db push --schema=./src/prisma/schema.prisma",
+    "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
+    "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",
+    "lint": "eslint . --fix --cache --max-warnings 0",
     "seed": "prisma db seed",
-    "build": "bun build ./src/index.ts --outdir ./dist && tsc"
+    "build": "tsc"
   },
   "prisma": {
-    "seed": "bun src/prisma/seeds/index.ts"
+    "seed": "tsx src/prisma/seeds/index.ts"
   },
   "dependencies": {
     "@prisma/client": "*",
-    "@zenstackhq/runtime": "*"
+    "@zenstackhq/runtime": "*",
+    "dmno": "*"
   },
   "devDependencies": {
     "@faker-js/faker": "*",
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@types/node": "*",
+    "eslint": "*",
+    "concurrently": "*",
+    "nodemon": "*",
     "prisma": "*",
+    "tsx": "*",
+    "typescript": "latest",
     "zenstack": "*"
   }
 }

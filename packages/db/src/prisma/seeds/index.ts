@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
-import seedPatients from './patients'
-import seedOrgans from './organs'
-import seedWaitList from './waitlist'
+import seedPatients from './patients.ts'
+import seedOrgans from './organs.ts'
+import seedWaitList from './waitlist.ts'
 
 const prisma = new PrismaClient()
 

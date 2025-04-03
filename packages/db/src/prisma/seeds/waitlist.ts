@@ -1,6 +1,6 @@
 import type { PrismaClient, patients, organs } from '@prisma/client'
 import { faker } from '@faker-js/faker'
-import { OrganTypeKeys } from '@/constants'
+import { OrganTypeKeys } from '../../constants/index.ts'
 
 const MAX_WAITLIST = 70
 

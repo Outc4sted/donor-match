@@ -4,17 +4,20 @@ dist
 # generated types
 .astro
 
+# turbo
+.turbo
+
 # dependencies
 node_modules
 
 # environment variables
 .env*
-!.env.example
 
 # eslint
 .eslintcache
 
 # test artifacts
+coverage
 test-results
 playwright-report
 blob-report
@@ -27,12 +30,17 @@ yarn-error.log*
 pnpm-debug.log*
 dev-tmux.log
 
-# mac-specific files
+# misc
 .DS_Store
+*.pem
 
 # nektos/act
 .secrets
 .vars
 
-# SQLite
-packages/db/src/prisma/*.db
+# dmno files
+**/.dmno/cache.json
+**/.dmno/cache-key.json
+**/.dmno/.typegen
+**/.dmno/.icon-cache
+**/.dmno/certs

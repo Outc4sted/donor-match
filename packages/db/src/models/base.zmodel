@@ -19,8 +19,8 @@ enum BloodType {
 }
 
 abstract model Base {
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
   deactivatedAt DateTime?
 
   @@allow('all', auth().role == 'org:admin' || auth().role == 'admin')

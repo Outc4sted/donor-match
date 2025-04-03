@@ -4,7 +4,7 @@ import './models/waitlist'
 import './models/user'
 
 datasource db {
-    provider = 'sqlite'
+    provider = 'postgresql'
     url = env('DATABASE_URL')
 }
 
