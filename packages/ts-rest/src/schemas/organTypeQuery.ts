@@ -1,17 +1,11 @@
+import { OrganTypeKeys } from '@repo/db'
 import { z } from 'zod'
 
-const OrganTypeEnum = z.enum([
-  'KIDNEY',
-  'LIVER',
-  'LUNG',
-  'HEART',
-  'PANCREAS',
-  'INTESTINES',
-])
+const OrganTypeEnum = z.enum(OrganTypeKeys)
 
 export const organTypeQuery = z
   .object({
-    organTypes: z
+    organType: z
       .union([OrganTypeEnum, z.array(OrganTypeEnum)])
       .optional()
       .transform((val) =>

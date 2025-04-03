@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import type { organs, patients } from '@repo/db'
 import { initContract } from '@ts-rest/core'
 import { authorizationHeader } from '../schemas/authorizationHeader.ts'
@@ -15,7 +14,7 @@ export default c.router({
     method: 'GET',
     path: '/api/organs',
     headers: authorizationHeader,
-    query: z.intersection(paginationQuery, bloodTypeQuery, organTypeQuery),
+    query: paginationQuery.merge(bloodTypeQuery).merge(organTypeQuery),
     responses: {
       200: c.type<{
         organs: (organs & {

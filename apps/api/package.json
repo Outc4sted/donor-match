@@ -27,12 +27,14 @@
     "@zenstackhq/runtime": "*",
     "dmno": "*",
     "fastify": "*",
-    "fastify-plugin": "*"
+    "fastify-plugin": "*",
+    "qs": "*"
   },
   "devDependencies": {
     "@clerk/types": "*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
+    "@types/qs": "*",
     "eslint": "*",
     "pino-pretty": "*",
     "tsx": "*",

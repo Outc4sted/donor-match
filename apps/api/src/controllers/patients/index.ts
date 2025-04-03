@@ -5,17 +5,21 @@ import paginationSummary from '../../lib/paginationSummary.ts'
 const controller: RouterImplementation<typeof contract.patients> = {
   async getPatients({ request, query }) {
     const db = request.requestContext.get('db')
-    const { page, limit } = query
+    const { page = 1, limit, bloodType } = query
     const skip = (page - 1) * (limit ?? 0)
+
+    const where = {
+      ...(bloodType?.length ? { bloodType: { in: bloodType } } : {}),
+    }
 
     const [patients, total] = await Promise.all([
       db.patients.findMany({
+        where,
         ...(limit === undefined ? {} : { take: limit }),
         skip,
-        //
-        // orderBy: { createdAt: 'desc' },
+        orderBy: { patientId: 'desc' },
       }),
-      db.patients.count(),
+      db.patients.count({ where }),
     ])
 
     return {

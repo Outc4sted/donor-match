@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import DataTablePagination from './pagination'
+import Pagination from './Pagination'
 import type { PaginationState } from '@/lib/hooks/useInitialTableState'
 
 export interface Props<TData, TValue> {
@@ -103,7 +103,7 @@ export default function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      {paginationInfo?.pages ? <DataTablePagination table={table} /> : null}
+      {paginationInfo?.pages ? <Pagination table={table} /> : null}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import fastify from 'fastify'
 import cookie from '@fastify/cookie'
 import requestContext from '@fastify/request-context'
 import jwt from '@fastify/jwt'
+import qs from 'qs'
 import swaggerPlugin from './plugins/swagger/index.ts'
 import clerkPlugin from './plugins/clerk/index.ts'
 import tsRestPlugin from './plugins/ts-rest/index.ts'
@@ -11,6 +12,7 @@ import { LoggerConfig } from './config/logger.ts'
 export default async (appName: string) => {
   const app = fastify({
     logger: LoggerConfig[DMNO_CONFIG.NODE_ENVIRONMENT],
+    querystringParser: (str) => qs.parse(str),
   })
 
   app.setErrorHandler(async (error, _request, reply) => {

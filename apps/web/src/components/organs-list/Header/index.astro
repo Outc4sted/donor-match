@@ -1,7 +1,5 @@
 ---
-import SelectFilter from '@/components/shared/SelectFilter'
 import { Input } from '@/components/ui/input'
-import { bloodTypes } from '@/constants'
 import { Search } from 'lucide-react'
 ---
 
@@ -24,13 +22,6 @@ import { Search } from 'lucide-react'
             className="rounded-lg border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-red-600"
           />
         </div>
-
-        <SelectFilter
-          client:only="react"
-          placeholder="All Blood Types"
-          label="Blood types"
-          listItems={bloodTypes}
-        />
       </div>
     </div>
   </div>

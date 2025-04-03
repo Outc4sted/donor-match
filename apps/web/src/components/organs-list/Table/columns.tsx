@@ -2,6 +2,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { ClientInferResponseBody } from '@ts-rest/core'
 import type { contract } from '@repo/ts-rest'
 import { format } from 'date-fns'
+import { bloodTypes, organTypes } from '@/constants'
 
 export type GetOrgansQuery = ClientInferResponseBody<
   typeof contract.organs.getOrgans,
@@ -27,10 +28,12 @@ export const columns: ColumnDef<GetOrgansQuery['organs'][0]>[] = [
   {
     accessorKey: 'organType',
     header: 'Organ',
+    accessorFn: ({ organType }) => organTypes[organType],
   },
   {
     accessorKey: 'bloodType',
     header: 'Blood Type',
+    accessorFn: ({ bloodType }) => bloodTypes[bloodType],
   },
   {
     id: 'location',

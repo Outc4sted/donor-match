@@ -1,15 +1,7 @@
+import { BloodTypeKeys } from '@repo/db'
 import { z } from 'zod'
 
-const BloodTypeEnum = z.enum([
-  'A_POS',
-  'A_NEG',
-  'B_POS',
-  'B_NEG',
-  'O_POS',
-  'O_NEG',
-  'AB_POS',
-  'AB_NEG',
-])
+const BloodTypeEnum = z.enum(BloodTypeKeys)
 
 export const bloodTypeQuery = z
   .object({
