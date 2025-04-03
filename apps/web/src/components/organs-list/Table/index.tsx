@@ -12,6 +12,7 @@ import {
   type BloodType,
   type OrganType,
 } from '@/constants'
+import TableToolbar from '@/components/shared/DataTable/TableToolbar'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
@@ -39,24 +40,28 @@ function BaseOrgansTable() {
 
   return (
     <>
-      <TableFilter
-        filterName="Blood Type"
-        items={bloodTypes}
-        currentItems={filterState.bloodTypes}
-        onChange={(option) =>
-          filterState.setBloodTypes(
-            option.map(({ value }) => value as BloodType),
-          )
-        }
-      />
-      <TableFilter
-        filterName="Organ Type"
-        items={organTypes}
-        currentItems={filterState.organs}
-        onChange={(option) =>
-          filterState.setOrgans(option.map(({ value }) => value as OrganType))
-        }
-      />
+      <TableToolbar summary={data?.pagination.summary}>
+        <TableFilter
+          filterName="Blood Type"
+          items={bloodTypes}
+          currentItems={filterState.bloodTypes}
+          onChange={(option) =>
+            filterState.setBloodTypes(
+              option.map(({ value }) => value as BloodType),
+            )
+          }
+        />
+
+        <TableFilter
+          filterName="Organ Type"
+          items={organTypes}
+          currentItems={filterState.organs}
+          onChange={(option) =>
+            filterState.setOrgans(option.map(({ value }) => value as OrganType))
+          }
+        />
+      </TableToolbar>
+
       <DataTable
         data={data?.organs ?? []}
         columns={columns}

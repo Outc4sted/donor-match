@@ -5,6 +5,7 @@ import { columns, type GetPatientsQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import apiClient from '@/lib/apiClient'
 import clientStore from '@/lib/stores/clientStore'
+import TableToolbar from '@/components/shared/DataTable/TableToolbar'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)
@@ -24,12 +25,15 @@ function BasePatientsTable() {
   )
 
   return (
-    <DataTable
-      data={data?.patients ?? []}
-      columns={columns}
-      paginationState={paginationState}
-      paginationInfo={data?.pagination}
-    />
+    <>
+      <TableToolbar summary={data?.pagination.summary} />
+      <DataTable
+        data={data?.patients ?? []}
+        columns={columns}
+        paginationState={paginationState}
+        paginationInfo={data?.pagination}
+      />
+    </>
   )
 }
 

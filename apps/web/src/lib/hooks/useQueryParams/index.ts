@@ -2,16 +2,16 @@ import { useState, useEffect, useCallback } from 'react'
 
 type ParamValue = string | string[] | null | undefined
 
-export function useSearchParams() {
-  const getSearchParams = () => new URLSearchParams(window.location.search)
-  const [params, setParams] = useState(getSearchParams())
+export function useQueryParams() {
+  const getQueryParams = () => new URLSearchParams(window.location.search)
+  const [params, setParams] = useState(getQueryParams())
 
-  const updateSearchParams = useCallback(
+  const updateQueryParams = useCallback(
     (updates: Record<string, ParamValue>) => {
       const currentParams = new URLSearchParams()
 
       // Preserve existing keys not being updated
-      getSearchParams().forEach((value, key) => {
+      getQueryParams().forEach((value, key) => {
         if (!(key in updates)) {
           currentParams.append(key, value)
         }
@@ -40,10 +40,10 @@ export function useSearchParams() {
   )
 
   useEffect(() => {
-    const handlePopState = () => setParams(getSearchParams())
+    const handlePopState = () => setParams(getQueryParams())
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
 
-  return [params, updateSearchParams] as const
+  return [params, updateQueryParams] as const
 }

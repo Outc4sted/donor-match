@@ -48,10 +48,6 @@ export default function DataTable<TData, TValue>({
   return (
     <div>
       <div className="rounded-md border">
-        {paginationInfo && paginationInfo.total > 0 ? (
-          <p className="mb-1 font-bold">{paginationInfo.summary}</p>
-        ) : null}
-
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (

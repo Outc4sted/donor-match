@@ -1,3 +1,4 @@
+import type { ComponentProps } from 'react'
 import { Button } from '@/components/ui/button'
 import MultipleSelector from '@/components/ui/multiple-selector'
 import {
@@ -6,7 +7,6 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { multiSelectOptions } from '@/lib/utils'
-import type { ComponentProps } from 'react'
 
 export interface Props extends ComponentProps<typeof MultipleSelector> {
   readonly items: Record<string, string>
