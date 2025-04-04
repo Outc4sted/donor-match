@@ -1,11 +1,11 @@
 import { useStore } from '@nanostores/react'
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
-import { columns, type GetPatientsQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { PatientListTableToolbar } from './PatientListTableToolbar'
+import { columns, type GetPatientsQuery } from './columns'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)

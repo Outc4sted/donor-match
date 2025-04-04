@@ -1,16 +1,16 @@
 ---
-import { OrgansTable } from '@/components/organs-list/Table'
-import DashboardLayout from '@/layouts/containers/DashboardLayout.astro'
+import { OrgansTable } from '@/components/OrganList'
+import PageLayout from '@/layouts/containers/PageLayout.astro'
 import SiteLayout from '@/layouts/SiteLayout.astro'
 ---
 
 <SiteLayout title="Organs List">
-  <DashboardLayout
+  <PageLayout
     title="Available Organs for Transplant"
     subtitle="Search and filter for organs"
     imageSrc="/body-with-organs.png"
     imageAlt="Illustration of a person wearing a red shirt with heart and kidneys printed on it, symbolizing organ donation"
   >
     <OrgansTable client:only="react" />
-  </DashboardLayout>
+  </PageLayout>
 </SiteLayout>

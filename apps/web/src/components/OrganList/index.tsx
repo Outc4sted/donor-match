@@ -1,11 +1,11 @@
 import { useStore } from '@nanostores/react'
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
-import { columns, type GetOrgansQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { OrganListTableToolbar } from './OrganListTableToolbar'
+import { columns, type GetOrgansQuery } from './columns'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)

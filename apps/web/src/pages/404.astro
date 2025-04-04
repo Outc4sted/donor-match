@@ -1,11 +1,13 @@
 ---
-import DashboardLayout from '@/layouts/containers/DashboardLayout.astro'
+import PageLayout from '@/layouts/containers/PageLayout.astro'
 import SiteLayout from '@/layouts/SiteLayout.astro'
 ---
 
 <SiteLayout title="Page not found">
-  <DashboardLayout
+  <PageLayout
     title="404"
     subtitle="This page does not exist!"
+    imageSrc="/404.png"
+    imageAlt="Illustration of a 404 error page in a medical theme, showing a confused doctor surrounded by health-related icons like a heart monitor and pills."
   />
 </SiteLayout>
