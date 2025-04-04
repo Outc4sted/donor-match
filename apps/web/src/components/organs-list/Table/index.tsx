@@ -1,6 +1,5 @@
 import { useStore } from '@nanostores/react'
 import DataTable from '@/components/shared/DataTable'
-import TableFilter from '@/components/shared/DataTable/TableFilter'
 import QueryErrorBoundary from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { columns, type GetOrgansQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
@@ -12,7 +11,9 @@ import {
   type BloodType,
   type OrganType,
 } from '@/constants'
-import TableToolbar from '@/components/shared/DataTable/TableToolbar'
+import TableToolbar from '@/components/shared/DataTableToolbar'
+import TableFilterMultipleSelector from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
+import TableFilterRangeSlider from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
@@ -23,15 +24,20 @@ function BaseOrgansTable() {
       queryKey: [
         'organs',
         paginationState.pagination,
+        filterState.search,
         filterState.bloodTypes,
         filterState.organs,
+        filterState.organWeight,
       ],
       queryData: {
         query: {
           page: paginationState.pagination.pageIndex + 1,
           limit: paginationState.pagination.pageSize,
+          search: filterState.search,
           bloodType: filterState.bloodTypes,
           organType: filterState.organs,
+          organMinWeight: Number(filterState.organWeight[0]) || undefined,
+          organMaxWeight: Number(filterState.organWeight[1]) || undefined,
         },
       },
     },
@@ -40,8 +46,12 @@ function BaseOrgansTable() {
 
   return (
     <>
-      <TableToolbar summary={data?.pagination.summary}>
-        <TableFilter
+      <TableToolbar
+        summary={data?.pagination.summary}
+        search={filterState.search}
+        setSearch={filterState.setSearch}
+      >
+        <TableFilterMultipleSelector
           filterName="Blood Type"
           items={bloodTypes}
           currentItems={filterState.bloodTypes}
@@ -52,12 +62,22 @@ function BaseOrgansTable() {
           }
         />
 
-        <TableFilter
+        <TableFilterMultipleSelector
           filterName="Organ Type"
           items={organTypes}
           currentItems={filterState.organs}
           onChange={(option) =>
             filterState.setOrgans(option.map(({ value }) => value as OrganType))
+          }
+        />
+
+        <TableFilterRangeSlider
+          filterName="Organ Size"
+          currentValues={filterState.organWeight}
+          handleFilter={(values) =>
+            filterState.setOrganWeight(
+              values.map((value) => value?.toString() ?? undefined),
+            )
           }
         />
       </TableToolbar>

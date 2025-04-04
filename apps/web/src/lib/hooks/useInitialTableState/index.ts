@@ -2,13 +2,6 @@ import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
 import { useQueryParams } from '../useQueryParams'
 import type { BloodType, OrganType } from '@/constants'
 
-export interface SearchState {
-  queryParams: URLSearchParams
-  setQueryParams: (
-    _updates: Record<string, string | string[] | null | undefined>,
-  ) => void
-}
-
 export interface PaginationState {
   pagination: { pageIndex: number; pageSize: number }
   setPagination: Dispatch<
@@ -17,6 +10,11 @@ export interface PaginationState {
       pageSize: number
     }>
   >
+}
+
+export interface SearchState {
+  search: string
+  setSearch: Dispatch<SetStateAction<string>>
 }
 
 export interface FilterState {
@@ -38,25 +36,42 @@ export function useInitialTableState() {
   })
 
   // Filters
+  const [search, setSearch] = useState(queryParams.get('search') ?? undefined)
   const [bloodTypes, setBloodTypes] = useState<BloodType[]>(
     queryParams.getAll('bloodType') as BloodType[],
   )
   const [organs, setOrgans] = useState<OrganType[]>(
     queryParams.getAll('organ') as OrganType[],
   )
+  const [organWeight, setOrganWeight] = useState([
+    queryParams.get('organMinWeight') ?? undefined,
+    queryParams.get('organMaxWeight') ?? undefined,
+  ])
 
   useEffect(() => {
     setQueryParams({
       page: `${pagination.pageIndex + 1}`,
       limit: `${pagination.pageSize}`,
+      search: search ? search : undefined,
       bloodType: bloodTypes.length > 0 ? bloodTypes : undefined,
       organ: organs.length > 0 ? organs : undefined,
+      organMinWeight: organWeight[0],
+      organMaxWeight: organWeight[1],
     })
-  }, [pagination, bloodTypes, organs, setQueryParams])
+  }, [pagination, search, bloodTypes, organs, organWeight, setQueryParams])
 
   return {
     queryState: { queryParams, setQueryParams },
     paginationState: { pagination, setPagination },
-    filterState: { bloodTypes, organs, setBloodTypes, setOrgans },
+    filterState: {
+      search,
+      bloodTypes,
+      organs,
+      organWeight,
+      setSearch,
+      setBloodTypes,
+      setOrgans,
+      setOrganWeight,
+    },
   } as const
 }

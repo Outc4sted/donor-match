@@ -14,7 +14,7 @@ export interface Props extends ComponentProps<typeof MultipleSelector> {
   readonly filterName: string
 }
 
-export default function TableFilter({
+export default function TableFilterMultipleSelector({
   filterName,
   items,
   currentItems,

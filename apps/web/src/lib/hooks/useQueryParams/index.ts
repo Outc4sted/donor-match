@@ -2,6 +2,11 @@ import { useState, useEffect, useCallback } from 'react'
 
 type ParamValue = string | string[] | null | undefined
 
+export interface QueryState {
+  queryParams: URLSearchParams
+  setQueryParams: (_updates: Record<string, ParamValue>) => void
+}
+
 export function useQueryParams() {
   const getQueryParams = () => new URLSearchParams(window.location.search)
   const [params, setParams] = useState(getQueryParams())

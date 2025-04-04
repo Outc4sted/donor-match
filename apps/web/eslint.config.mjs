@@ -14,4 +14,14 @@ export default [
       },
     },
   },
+
+  {
+    'tailwindcss/no-custom-classname': [
+      'warn',
+      {
+        // Tailwind eslint only support v3 atm...
+        whitelist: ['min-w-sm'],
+      },
+    ],
+  },
 ]
