@@ -1,4 +1,10 @@
-import { useEffect, useState, type Dispatch, type SetStateAction } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useState,
+  type Dispatch,
+  type SetStateAction,
+} from 'react'
 import { useQueryParams } from '../useQueryParams'
 import type { BloodType, OrganType } from '@/constants'
 
@@ -52,6 +58,14 @@ export function useInitialTableState() {
     queryParams.get('maxAge') ?? undefined,
   ])
 
+  const resetAllFilters = useCallback(() => {
+    setSearch(undefined)
+    setBloodTypes([])
+    setOrgans([])
+    setOrganWeight([])
+    setPatientAge([])
+  }, [])
+
   useEffect(() => {
     setQueryParams({
       page: `${pagination.pageIndex + 1}`,
@@ -88,6 +102,7 @@ export function useInitialTableState() {
       setOrgans,
       setOrganWeight,
       setPatientAge,
+      resetAllFilters,
     },
   } as const
 }

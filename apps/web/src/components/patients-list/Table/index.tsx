@@ -43,6 +43,7 @@ function BasePatientsTable() {
         summary={data?.pagination.summary}
         search={filterState.search}
         setSearch={filterState.setSearch}
+        resetFilters={filterState.resetAllFilters}
       >
         <TableFilterMultipleSelector
           filterName="Blood Type"

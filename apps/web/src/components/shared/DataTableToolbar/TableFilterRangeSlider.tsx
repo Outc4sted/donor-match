@@ -1,4 +1,4 @@
-import { useState, type ComponentProps } from 'react'
+import { useEffect, useState, type ComponentProps } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   Popover,
@@ -27,6 +27,13 @@ export default function TableFilterRangeSlider({
     Number(currentValues[0]) || min,
     Number(currentValues[1]) || max,
   ])
+
+  useEffect(() => {
+    setValues([
+      Number(currentValues[0]) || min,
+      Number(currentValues[1]) || max,
+    ])
+  }, [currentValues, min, max])
 
   return (
     <Popover>
