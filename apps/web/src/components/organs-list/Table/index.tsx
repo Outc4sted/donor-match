@@ -73,6 +73,7 @@ function BaseOrgansTable() {
 
         <TableFilterRangeSlider
           filterName="Organ Size"
+          labelSuffix="g"
           currentValues={filterState.organWeight}
           handleFilter={(values) =>
             filterState.setOrganWeight(

@@ -47,6 +47,10 @@ export function useInitialTableState() {
     queryParams.get('organMinWeight') ?? undefined,
     queryParams.get('organMaxWeight') ?? undefined,
   ])
+  const [patientAge, setPatientAge] = useState([
+    queryParams.get('minAge') ?? undefined,
+    queryParams.get('maxAge') ?? undefined,
+  ])
 
   useEffect(() => {
     setQueryParams({
@@ -57,8 +61,18 @@ export function useInitialTableState() {
       organ: organs.length > 0 ? organs : undefined,
       organMinWeight: organWeight[0],
       organMaxWeight: organWeight[1],
+      minAge: patientAge[0],
+      maxAge: patientAge[1],
     })
-  }, [pagination, search, bloodTypes, organs, organWeight, setQueryParams])
+  }, [
+    pagination,
+    search,
+    bloodTypes,
+    organs,
+    organWeight,
+    patientAge,
+    setQueryParams,
+  ])
 
   return {
     queryState: { queryParams, setQueryParams },
@@ -68,10 +82,12 @@ export function useInitialTableState() {
       bloodTypes,
       organs,
       organWeight,
+      patientAge,
       setSearch,
       setBloodTypes,
       setOrgans,
       setOrganWeight,
+      setPatientAge,
     },
   } as const
 }

@@ -4,6 +4,8 @@ import { authorizationHeader } from '../schemas/authorizationHeader.ts'
 import { paginationQuery } from '../schemas/paginationQuery.ts'
 import type { PaginationSummary } from '../types/index.ts'
 import { bloodTypeQuery } from '../schemas/bloodTypeQuery.ts'
+import { searchQuery } from '../schemas/searchQuery.ts'
+import { patientAgeQuery } from '../schemas/patientAgeQuery.ts'
 
 const c = initContract()
 
@@ -13,7 +15,10 @@ export default c.router({
     method: 'GET',
     path: '/api/patients',
     headers: authorizationHeader,
-    query: paginationQuery.merge(bloodTypeQuery),
+    query: paginationQuery
+      .merge(bloodTypeQuery)
+      .merge(patientAgeQuery)
+      .merge(searchQuery),
     responses: {
       200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },

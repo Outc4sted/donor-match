@@ -1,16 +1,19 @@
 import type { contract } from '@repo/ts-rest'
 import type { RouterImplementation } from '@ts-rest/fastify'
 import paginationSummary from '../../lib/paginationSummary.ts'
+import { buildWhereFilter } from './buildWhereFilter.ts'
 
 const controller: RouterImplementation<typeof contract.patients> = {
   async getPatients({ request, query }) {
     const db = request.requestContext.get('db')
-    const { page = 1, limit, bloodType } = query
+    const { page = 1, limit, bloodType, minAge, maxAge, search } = query
     const skip = (page - 1) * (limit ?? 0)
-
-    const where = {
-      ...(bloodType?.length ? { bloodType: { in: bloodType } } : {}),
-    }
+    const where = buildWhereFilter({
+      bloodType,
+      minAge,
+      maxAge,
+      search,
+    })
 
     const [patients, total] = await Promise.all([
       db.patients.findMany({

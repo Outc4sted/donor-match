@@ -9,12 +9,14 @@ import { DualRangeSlider } from '@/components/ui/dual-range-slider'
 
 export interface Props extends ComponentProps<typeof DualRangeSlider> {
   readonly filterName: string
+  readonly labelSuffix?: string
   readonly currentValues: (string | undefined)[]
   readonly handleFilter: (values: (number | undefined)[]) => void
 }
 
 export default function TableFilterRangeSlider({
   filterName,
+  labelSuffix,
   handleFilter,
   currentValues,
   min = 100,
@@ -35,8 +37,12 @@ export default function TableFilterRangeSlider({
       <PopoverContent className="w-96">
         <div className="flex flex-col gap-1">
           <div className="flex justify-between">
-            <span>{values[0]} g</span>
-            <span>{values[1]} g</span>
+            <span>
+              {values[0]} {labelSuffix}
+            </span>
+            <span>
+              {values[1]} {labelSuffix}
+            </span>
           </div>
 
           <DualRangeSlider
