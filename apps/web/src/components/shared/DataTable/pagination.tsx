@@ -6,15 +6,13 @@ import {
   ChevronsRight,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import PageSizeSelect from './PageSizeSelect'
+import { PageSizeSelect } from './PageSizeSelect'
 
 export interface DataTablePaginationProps<TData> {
   readonly table: Table<TData>
 }
 
-export default function Pagination<TData>({
-  table,
-}: DataTablePaginationProps<TData>) {
+export function Pagination<TData>({ table }: DataTablePaginationProps<TData>) {
   return (
     <div className="flex items-center space-x-6 py-1 lg:space-x-8">
       <PageSizeSelect table={table} />

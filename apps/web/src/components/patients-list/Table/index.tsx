@@ -1,14 +1,14 @@
 import { useStore } from '@nanostores/react'
-import DataTable from '@/components/shared/DataTable'
-import QueryErrorBoundary from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { DataTable } from '@/components/shared/DataTable'
+import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { columns, type GetPatientsQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import apiClient from '@/lib/apiClient'
-import clientStore from '@/lib/stores/clientStore'
-import DataTableToolbar from '@/components/shared/DataTableToolbar'
-import TableFilterMultipleSelector from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
+import { apiClient } from '@/lib/apiClient'
+import { clientStore } from '@/lib/stores/clientStore'
+import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
+import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import { bloodTypes, type BloodType } from '@/constants'
-import TableFilterRangeSlider from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
+import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)
@@ -79,7 +79,7 @@ function BasePatientsTable() {
   )
 }
 
-export default function PatientsTable() {
+export function PatientsTable() {
   return (
     <QueryErrorBoundary>
       <BasePatientsTable />

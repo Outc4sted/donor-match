@@ -1,7 +1,7 @@
 import { contract } from '@repo/ts-rest'
 import { initTsrReactQuery } from '@ts-rest/react-query/v5'
 
-export default initTsrReactQuery(contract, {
+export const apiClient = initTsrReactQuery(contract, {
   baseUrl: '',
   baseHeaders: {
     authorization: '',

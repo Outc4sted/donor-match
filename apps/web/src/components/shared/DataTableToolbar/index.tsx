@@ -13,10 +13,10 @@ export interface Props {
   readonly children?: ReactNode
   readonly search?: string
   readonly setSearch?: Dispatch<SetStateAction<string | undefined>>
-  resetFilters?: () => void
+  readonly resetFilters?: () => void
 }
 
-export default function DataTableToolbar({
+export function DataTableToolbar({
   summary,
   search,
   setSearch,
@@ -25,7 +25,7 @@ export default function DataTableToolbar({
 }: Props) {
   const [inputValue, setInputValue] = useState(search ?? '')
   const handleSearch = () => {
-    setSearch!(inputValue.trim() || undefined)
+    if (setSearch) setSearch(inputValue.trim() || undefined)
   }
 
   useEffect(() => {
@@ -36,14 +36,14 @@ export default function DataTableToolbar({
     <div className="flex items-center gap-4 py-1">
       {summary ? <p className="mr-4 font-bold">{summary}</p> : null}
 
-      {children && (
+      {children ? (
         <div className="flex grow items-center gap-2">
           {children}
-          {resetFilters && (
+          {resetFilters ? (
             <Button onClick={resetFilters}>Reset Filters</Button>
-          )}
+          ) : null}
         </div>
-      )}
+      ) : null}
 
       {setSearch ? (
         <div className="min-w-sm flex w-full max-w-sm">

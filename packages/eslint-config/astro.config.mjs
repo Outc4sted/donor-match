@@ -119,4 +119,20 @@ export default eslintTS.config(
       ],
     },
   },
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    rules: {
+      'no-restricted-exports': [
+        'error',
+        { restrictDefaultExports: { direct: true } },
+      ],
+      'tailwindcss/no-custom-classname': [
+        'warn',
+        {
+          // Tailwind eslint only supports v3 atm...
+          whitelist: ['min-w-sm'],
+        },
+      ],
+    },
+  },
 )

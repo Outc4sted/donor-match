@@ -13,7 +13,7 @@ export interface Props {
   readonly children?: ReactNode
 }
 
-export default function Alert({
+export function Alert({
   message,
   title,
   variant = 'default',

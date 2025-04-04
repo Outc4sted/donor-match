@@ -14,7 +14,7 @@ export interface Props {
   readonly listItems: string[]
 }
 
-export default function SelectFilter({ placeholder, label, listItems }: Props) {
+export function SelectFilter({ placeholder, label, listItems }: Props) {
   return (
     <Select>
       <SelectTrigger className="w-[180px]">

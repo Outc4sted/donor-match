@@ -14,7 +14,7 @@ export interface Props extends ComponentProps<typeof DualRangeSlider> {
   readonly handleFilter: (values: (number | undefined)[]) => void
 }
 
-export default function TableFilterRangeSlider({
+export function TableFilterRangeSlider({
   filterName,
   labelSuffix,
   handleFilter,
@@ -54,10 +54,10 @@ export default function TableFilterRangeSlider({
 
           <DualRangeSlider
             value={values}
-            onValueChange={setValues}
             min={min}
             max={max}
             step={step}
+            onValueChange={setValues}
           />
         </div>
 

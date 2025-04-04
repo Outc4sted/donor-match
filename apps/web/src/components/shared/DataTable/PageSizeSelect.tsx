@@ -9,7 +9,7 @@ import type { DataTablePaginationProps } from './Pagination'
 
 const pageSizes = [20, 50, 100]
 
-export default function PageSizeSelect<TData>({
+export function PageSizeSelect<TData>({
   table,
 }: DataTablePaginationProps<TData>) {
   return (

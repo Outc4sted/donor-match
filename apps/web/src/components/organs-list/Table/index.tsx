@@ -1,19 +1,19 @@
 import { useStore } from '@nanostores/react'
-import DataTable from '@/components/shared/DataTable'
-import QueryErrorBoundary from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { DataTable } from '@/components/shared/DataTable'
+import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { columns, type GetOrgansQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import apiClient from '@/lib/apiClient'
-import clientStore from '@/lib/stores/clientStore'
+import { apiClient } from '@/lib/apiClient'
+import { clientStore } from '@/lib/stores/clientStore'
 import {
   bloodTypes,
   organTypes,
   type BloodType,
   type OrganType,
 } from '@/constants'
-import DataTableToolbar from '@/components/shared/DataTableToolbar'
-import TableFilterMultipleSelector from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
-import TableFilterRangeSlider from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
+import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
+import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
+import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
@@ -94,7 +94,7 @@ function BaseOrgansTable() {
   )
 }
 
-export default function OrgansTable() {
+export function OrgansTable() {
   return (
     <QueryErrorBoundary>
       <BaseOrgansTable />

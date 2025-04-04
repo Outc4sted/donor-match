@@ -1,5 +1,3 @@
-// export { default } from '@repo/eslint-config/astro'
-//
 import astroConfig from '@repo/eslint-config/astro'
 
 export default [
@@ -13,15 +11,5 @@ export default [
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  },
-
-  {
-    'tailwindcss/no-custom-classname': [
-      'warn',
-      {
-        // Tailwind eslint only support v3 atm...
-        whitelist: ['min-w-sm'],
-      },
-    ],
   },
 ]

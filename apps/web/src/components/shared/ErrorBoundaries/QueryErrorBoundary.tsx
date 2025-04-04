@@ -4,14 +4,14 @@ import {
 } from 'react-error-boundary'
 import type { ComponentType, ReactNode } from 'react'
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
-import ErrorFallback from './ErrorFallback'
+import { ErrorFallback } from './ErrorFallback'
 
 export interface Props {
   readonly children: ReactNode
   readonly Fallback?: ComponentType<FallbackProps>
 }
 
-export default function QueryErrorBoundary({
+export function QueryErrorBoundary({
   Fallback = ErrorFallback,
   children,
 }: Props) {

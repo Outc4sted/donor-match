@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import Pagination from './Pagination'
+import { Pagination } from './Pagination'
 import type { PaginationState } from '@/lib/hooks/useInitialTableState'
 
 export interface Props<TData, TValue> {
@@ -27,7 +27,7 @@ export interface Props<TData, TValue> {
   }
 }
 
-export default function DataTable<TData, TValue>({
+export function DataTable<TData, TValue>({
   columns,
   data,
   paginationState,

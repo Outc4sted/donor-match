@@ -1,7 +1,7 @@
 import { QueryClient, keepPreviousData } from '@tanstack/react-query'
 import { atom } from 'nanostores'
 
-export default atom(
+export const clientStore = atom(
   new QueryClient({
     defaultOptions: {
       queries: {

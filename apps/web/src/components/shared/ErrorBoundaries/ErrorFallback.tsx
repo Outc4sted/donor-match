@@ -1,12 +1,12 @@
 import { Button } from '@/components/ui/button'
-import Alert from '@/components/shared/Alert'
+import { Alert } from '@/components/shared/Alert'
 
 export interface Props {
   readonly error: Error
   readonly resetErrorBoundary: () => void
 }
 
-export default function ErrorFallback({ error, resetErrorBoundary }: Props) {
+export function ErrorFallback({ error, resetErrorBoundary }: Props) {
   return (
     <Alert
       variant="destructive"
