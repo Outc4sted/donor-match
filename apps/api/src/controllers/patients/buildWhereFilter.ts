@@ -16,12 +16,6 @@ export function buildNameSearchFilter(
         mode: Prisma.QueryMode.insensitive,
       },
     },
-    {
-      ssn: {
-        contains: search,
-        mode: Prisma.QueryMode.insensitive,
-      },
-    },
   ]
 }
 
