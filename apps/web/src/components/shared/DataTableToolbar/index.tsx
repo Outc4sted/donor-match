@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
-  useRef,
+  useEffect,
+  useState,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
@@ -22,11 +23,14 @@ export default function DataTableToolbar({
   resetFilters,
   children,
 }: Props) {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [inputValue, setInputValue] = useState(search ?? '')
   const handleSearch = () => {
-    const searchQuery = inputRef.current?.value.trim()
-    setSearch!(searchQuery || undefined)
+    setSearch!(inputValue.trim() || undefined)
   }
+
+  useEffect(() => {
+    setInputValue(search ?? '')
+  }, [search])
 
   return (
     <div className="flex items-center gap-4 py-1">
@@ -44,12 +48,12 @@ export default function DataTableToolbar({
       {setSearch ? (
         <div className="min-w-sm flex w-full max-w-sm">
           <Input
-            ref={inputRef}
             className="max-w-md rounded-r-none"
             type="text"
-            defaultValue={search}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
+            value={inputValue}
+            onChange={({ target }) => setInputValue(target.value)}
+            onKeyDown={({ key }) => {
+              if (key === 'Enter') {
                 handleSearch()
               }
             }}
