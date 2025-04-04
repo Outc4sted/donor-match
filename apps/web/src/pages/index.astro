@@ -2,13 +2,13 @@
 import Hero from '@/components/home/Hero/index.astro'
 import Stats from '@/components/home/Stats/index.astro'
 import HowItWorks from '@/components/home/HowItWorks/index.astro'
-import Layout from '@/layouts/Layout.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
 
 const { siteName } = Astro.locals
 ---
 
-<Layout title={siteName}>
+<SiteLayout title={siteName}>
   <Hero />
   <Stats />
   <HowItWorks />
-</Layout>
+</SiteLayout>

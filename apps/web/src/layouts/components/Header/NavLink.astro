@@ -1,0 +1,26 @@
+---
+import clsx from 'clsx'
+
+const navLinkClasses = clsx(
+  'font-medium',
+  'text-gray-700',
+  'hover:text-red-600',
+  'focus-visible:underline',
+  'focus-visible:text-red-600',
+  'focus-visible:outline-hidden',
+)
+
+export interface Props {
+  href: string
+  label: string
+}
+
+const { href, label } = Astro.props
+---
+
+<a
+  href={href}
+  class={`${navLinkClasses} ${Astro.url.pathname === href ? 'text-red-700' : ''}`}
+>
+  {label}
+</a>

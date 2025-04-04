@@ -24,10 +24,17 @@ export interface SearchState {
 }
 
 export interface FilterState {
-  blood: string[]
-  organ: string[]
-  setBloodTypes: Dispatch<SetStateAction<string[]>>
-  setOrgans: Dispatch<SetStateAction<string | null>>
+  search: string | undefined
+  bloodTypes: BloodType[]
+  organs: OrganType[]
+  organWeight: (string | undefined)[]
+  patientAge: (string | undefined)[]
+  setBloodTypes: Dispatch<SetStateAction<BloodType[]>>
+  setOrgans: Dispatch<SetStateAction<OrganType[]>>
+  setSearch: Dispatch<SetStateAction<string | undefined>>
+  setOrganWeight: Dispatch<SetStateAction<(string | undefined)[]>>
+  setPatientAge: Dispatch<SetStateAction<(string | undefined)[]>>
+  resetAllFilters: () => void
 }
 
 export function useInitialTableState() {

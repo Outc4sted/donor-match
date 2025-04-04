@@ -5,10 +5,7 @@ import { columns, type GetPatientsQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
-import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
-import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
-import { bloodTypes, type BloodType } from '@/constants'
-import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
+import { PatientListTableToolbar } from './PatientListTableToolbar'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)
@@ -39,36 +36,10 @@ function BasePatientsTable() {
 
   return (
     <>
-      <DataTableToolbar
+      <PatientListTableToolbar
         summary={data?.pagination.summary}
-        search={filterState.search}
-        setSearch={filterState.setSearch}
-        resetFilters={filterState.resetAllFilters}
-      >
-        <TableFilterMultipleSelector
-          filterName="Blood Type"
-          items={bloodTypes}
-          currentItems={filterState.bloodTypes}
-          onChange={(option) =>
-            filterState.setBloodTypes(
-              option.map(({ value }) => value as BloodType),
-            )
-          }
-        />
-
-        <TableFilterRangeSlider
-          filterName="Patient Age"
-          labelSuffix="years"
-          currentValues={filterState.patientAge}
-          min={0}
-          max={100}
-          handleFilter={(values) =>
-            filterState.setPatientAge(
-              values.map((value) => value?.toString() ?? undefined),
-            )
-          }
-        />
-      </DataTableToolbar>
+        filterState={filterState}
+      />
       <DataTable
         data={data?.patients ?? []}
         columns={columns}

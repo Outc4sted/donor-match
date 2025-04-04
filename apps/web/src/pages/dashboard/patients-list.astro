@@ -1,10 +1,16 @@
 ---
-import Header from '@/components/patients-list/Header/index.astro'
-import PatientsTable from '@/components/patients-list/Table'
-import Layout from '@/layouts/Layout.astro'
+import { PatientsTable } from '@/components/patients-list/Table'
+import DashboardLayout from '@/layouts/containers/DashboardLayout.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
 ---
 
-<Layout title="Patients List">
-  <Header />
-  <PatientsTable client:only="react" />
-</Layout>
+<SiteLayout title="Patients List">
+  <DashboardLayout
+    title="Patient List"
+    subtitle="Search and filter for patients"
+    imageSrc="/patients.png"
+    imageAlt="Illustration of three diverse patients standing together, including an Asian man, a Black woman, and a White man, in a medical setting"
+  >
+    <PatientsTable client:only="react" />
+  </DashboardLayout>
+</SiteLayout>

@@ -5,15 +5,7 @@ import { columns, type GetOrgansQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
-import {
-  bloodTypes,
-  organTypes,
-  type BloodType,
-  type OrganType,
-} from '@/constants'
-import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
-import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
-import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
+import { OrganListTableToolbar } from './OrganListTableToolbar'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
@@ -46,44 +38,10 @@ function BaseOrgansTable() {
 
   return (
     <>
-      <DataTableToolbar
+      <OrganListTableToolbar
         summary={data?.pagination.summary}
-        search={filterState.search}
-        setSearch={filterState.setSearch}
-        resetFilters={filterState.resetAllFilters}
-      >
-        <TableFilterMultipleSelector
-          filterName="Blood Type"
-          items={bloodTypes}
-          currentItems={filterState.bloodTypes}
-          onChange={(option) =>
-            filterState.setBloodTypes(
-              option.map(({ value }) => value as BloodType),
-            )
-          }
-        />
-
-        <TableFilterMultipleSelector
-          filterName="Organ Type"
-          items={organTypes}
-          currentItems={filterState.organs}
-          onChange={(option) =>
-            filterState.setOrgans(option.map(({ value }) => value as OrganType))
-          }
-        />
-
-        <TableFilterRangeSlider
-          filterName="Organ Size"
-          labelSuffix="g"
-          currentValues={filterState.organWeight}
-          handleFilter={(values) =>
-            filterState.setOrganWeight(
-              values.map((value) => value?.toString() ?? undefined),
-            )
-          }
-        />
-      </DataTableToolbar>
-
+        filterState={filterState}
+      />
       <DataTable
         data={data?.organs ?? []}
         columns={columns}
