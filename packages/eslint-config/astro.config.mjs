@@ -76,7 +76,7 @@ export default eslintTS.config(
 
   // Astro
   eslintAstro.configs['flat/recommended'],
-  // eslintAstro.configs['jsx-a11y-recommended'],
+  // eslintAstro.configs['flat/jsx-a11y-strict'],
 
   // Tailwind
   eslintTailwind.configs['flat/recommended'],
@@ -91,15 +91,15 @@ export default eslintTS.config(
       'no-useless-rename': 'error',
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/triple-slash-reference': 'off',
-      // '@typescript-eslint/naming-convention': [
-      //   'error',
-      //   {
-      //     selector: 'variable',
-      //     types: ['boolean'],
-      //     format: ['PascalCase'],
-      //     prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
-      //   },
-      // ],
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          selector: 'variable',
+          types: ['boolean'],
+          format: ['PascalCase'],
+          prefix: ['is', 'should', 'has', 'can', 'did', 'will'],
+        },
+      ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       'unicorn/expiring-todo-comments': 'off',
       '@typescript-eslint/consistent-type-imports': [
