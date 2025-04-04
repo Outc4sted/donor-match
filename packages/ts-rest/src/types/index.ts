@@ -1,5 +1,5 @@
 export interface PaginationSummary {
-  summary: string
+  summary?: string
   total: number
   pages: number
   page: number

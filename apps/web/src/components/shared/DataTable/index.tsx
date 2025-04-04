@@ -23,7 +23,7 @@ export interface Props<TData, TValue> {
   readonly paginationInfo?: {
     total: number
     pages: number
-    summary: string
+    summary?: string
   }
 }
 

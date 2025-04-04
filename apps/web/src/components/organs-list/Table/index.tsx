@@ -11,7 +11,7 @@ import {
   type BloodType,
   type OrganType,
 } from '@/constants'
-import TableToolbar from '@/components/shared/DataTableToolbar'
+import DataTableToolbar from '@/components/shared/DataTableToolbar'
 import TableFilterMultipleSelector from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import TableFilterRangeSlider from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
 
@@ -46,7 +46,7 @@ function BaseOrgansTable() {
 
   return (
     <>
-      <TableToolbar
+      <DataTableToolbar
         summary={data?.pagination.summary}
         search={filterState.search}
         setSearch={filterState.setSearch}
@@ -81,7 +81,7 @@ function BaseOrgansTable() {
             )
           }
         />
-      </TableToolbar>
+      </DataTableToolbar>
 
       <DataTable
         data={data?.organs ?? []}

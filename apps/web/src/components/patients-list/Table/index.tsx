@@ -5,7 +5,7 @@ import { columns, type GetPatientsQuery } from './columns'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
 import apiClient from '@/lib/apiClient'
 import clientStore from '@/lib/stores/clientStore'
-import TableToolbar from '@/components/shared/DataTableToolbar'
+import DataTableToolbar from '@/components/shared/DataTableToolbar'
 import TableFilterMultipleSelector from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import { bloodTypes, type BloodType } from '@/constants'
 import TableFilterRangeSlider from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
@@ -39,7 +39,7 @@ function BasePatientsTable() {
 
   return (
     <>
-      <TableToolbar
+      <DataTableToolbar
         summary={data?.pagination.summary}
         search={filterState.search}
         setSearch={filterState.setSearch}
@@ -67,7 +67,7 @@ function BasePatientsTable() {
             )
           }
         />
-      </TableToolbar>
+      </DataTableToolbar>
       <DataTable
         data={data?.patients ?? []}
         columns={columns}
