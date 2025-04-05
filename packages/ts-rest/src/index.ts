@@ -1,12 +1,13 @@
 import { initContract } from '@ts-rest/core'
-import organsContract from './contracts/organs.ts'
-import patientsContract from './contracts/patients.ts'
+import { organRouter } from './contracts/organs.ts'
+import { patientRouter } from './contracts/patients.ts'
 
 const c = initContract()
 
 export const contract = c.router({
-  organs: organsContract,
-  patients: patientsContract,
+  organs: organRouter,
+  patients: patientRouter,
 })
 
-export { sortableKeys as organsSortableKeys } from './contracts/organs.ts'
+export { organSortableKeys } from './contracts/organs.ts'
+export { patientSortableKeys } from './contracts/patients.ts'

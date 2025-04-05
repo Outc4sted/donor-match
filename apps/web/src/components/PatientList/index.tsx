@@ -6,6 +6,7 @@ import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { PatientListTableToolbar } from './PatientListTableToolbar'
 import { columns, type GetPatientsQuery } from './columns'
+import type { patientSortableKeys } from '@repo/ts-rest'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)
@@ -29,7 +30,9 @@ function BasePatientsTable() {
           bloodType: filterState.bloodTypes,
           minAge: Number(filterState.patientAge[0]) || undefined,
           maxAge: Number(filterState.patientAge[1]) || undefined,
-          sort: sortState.sorting.length ? sortState.sorting[0]?.id : undefined,
+          sort: sortState.sorting.length
+            ? (sortState.sorting[0]?.id as (typeof patientSortableKeys)[number])
+            : undefined,
           sortDir:
             typeof sortState.sorting[0]?.desc === 'boolean'
               ? sortState.sorting[0].desc

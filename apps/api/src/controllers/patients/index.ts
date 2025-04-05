@@ -7,10 +7,10 @@ import { buildSortOrder } from './buildSortOrder.ts'
 const controller: RouterImplementation<typeof contract.patients> = {
   async getPatients({ request, query }) {
     const db = request.requestContext.get('db')
-    const { page = 1, limit, sort, sortDir } = query
+    const { page = 1, limit } = query
     const skip = (page - 1) * (limit ?? 0)
     const where = buildWhereFilter(query)
-    const orderBy = buildSortOrder({ sortDir, sort })
+    const orderBy = buildSortOrder(query)
 
     const [patients, total] = await Promise.all([
       db.patients.findMany({

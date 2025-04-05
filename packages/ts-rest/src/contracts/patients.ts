@@ -8,7 +8,7 @@ import { searchQuery } from '../schemas/searchQuery.ts'
 import { patientAgeQuery } from '../schemas/patientAgeQuery.ts'
 import { createSortQuerySchema } from '../schemas/sortQuery.ts'
 
-export const patientSortKeys = [
+export const patientScalarSortKeys = [
   'createdAt',
   'updatedAt',
   'deactivatedAt',
@@ -22,14 +22,14 @@ export const patientSortKeys = [
   'bloodType',
 ] as const
 const patientCompositeSortKeys = ['patient', 'location'] as const
-export const sortableKeys = [
-  ...patientSortKeys,
+const c = initContract()
+
+export const patientSortableKeys = [
+  ...patientScalarSortKeys,
   ...patientCompositeSortKeys,
 ] as const
 
-const c = initContract()
-
-export default c.router({
+export const patientRouter = c.router({
   getPatients: {
     summary: 'Get all patients',
     method: 'GET',
@@ -39,7 +39,7 @@ export default c.router({
       .merge(bloodTypeQuery)
       .merge(patientAgeQuery)
       .merge(searchQuery)
-      .merge(createSortQuerySchema(sortableKeys)),
+      .merge(createSortQuerySchema(patientSortableKeys)),
     responses: {
       200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },
