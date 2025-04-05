@@ -9,7 +9,7 @@ import { columns, type GetOrgansQuery } from './columns'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
-  const { paginationState, filterState } = useInitialTableState()
+  const { paginationState, sortState, filterState } = useInitialTableState()
 
   const { data } = apiClient.organs.getOrgans.useQuery<GetOrgansQuery>(
     {
@@ -20,6 +20,7 @@ function BaseOrgansTable() {
         filterState.bloodTypes,
         filterState.organs,
         filterState.organWeight,
+        sortState.sorting,
       ],
       queryData: {
         query: {
@@ -30,6 +31,13 @@ function BaseOrgansTable() {
           organType: filterState.organs,
           organMinWeight: Number(filterState.organWeight[0]) || undefined,
           organMaxWeight: Number(filterState.organWeight[1]) || undefined,
+          sort: sortState.sorting.length ? sortState.sorting[0]?.id : undefined,
+          sortDir:
+            typeof sortState.sorting[0]?.desc === 'boolean'
+              ? sortState.sorting[0].desc
+                ? 'desc'
+                : 'asc'
+              : undefined,
         },
       },
     },
@@ -45,6 +53,7 @@ function BaseOrgansTable() {
       <DataTable
         data={data?.organs ?? []}
         columns={columns}
+        sortState={sortState}
         paginationState={paginationState}
         paginationInfo={data?.pagination}
       />

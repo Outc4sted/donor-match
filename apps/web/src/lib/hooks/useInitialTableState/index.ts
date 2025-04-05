@@ -7,6 +7,7 @@ import {
 } from 'react'
 import { useQueryParams } from '../useQueryParams'
 import type { BloodType, OrganType } from '@/constants'
+import type { SortingState } from '@tanstack/react-table'
 
 export interface PaginationState {
   pagination: { pageIndex: number; pageSize: number }
@@ -21,6 +22,11 @@ export interface PaginationState {
 export interface SearchState {
   search: string
   setSearch: Dispatch<SetStateAction<string>>
+}
+
+export interface SortState {
+  sorting: SortingState
+  setSorting: Dispatch<SetStateAction<SortingState>>
 }
 
 export interface FilterState {
@@ -47,6 +53,20 @@ export function useInitialTableState() {
     pageIndex: pageParam ? Number(pageParam) - 1 : 0,
     pageSize: limitParam ? Number(limitParam) : 20,
   })
+
+  // Sorting
+  const sortParam = queryParams.get('sort')
+  const sortDirParam = queryParams.get('sortDir')
+  const [sorting, setSorting] = useState<SortingState>(
+    sortParam
+      ? [
+          {
+            id: sortParam,
+            desc: sortDirParam === 'desc',
+          },
+        ]
+      : [],
+  )
 
   // Filters
   const [search, setSearch] = useState(queryParams.get('search') ?? undefined)
@@ -84,9 +104,17 @@ export function useInitialTableState() {
       organMaxWeight: organWeight[1],
       minAge: patientAge[0],
       maxAge: patientAge[1],
+      sort: sorting.length ? sorting[0]?.id : undefined,
+      sortDir:
+        typeof sorting[0]?.desc === 'boolean'
+          ? sorting[0].desc
+            ? 'desc'
+            : 'asc'
+          : undefined,
     })
   }, [
     pagination,
+    sorting,
     search,
     bloodTypes,
     organs,
@@ -98,6 +126,7 @@ export function useInitialTableState() {
   return {
     queryState: { queryParams, setQueryParams },
     paginationState: { pagination, setPagination },
+    sortState: { sorting, setSorting },
     filterState: {
       search,
       bloodTypes,

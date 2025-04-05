@@ -9,7 +9,7 @@ import { columns, type GetPatientsQuery } from './columns'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)
-  const { paginationState, filterState } = useInitialTableState()
+  const { paginationState, sortState, filterState } = useInitialTableState()
 
   const { data } = apiClient.patients.getPatients.useQuery<GetPatientsQuery>(
     {
@@ -19,6 +19,7 @@ function BasePatientsTable() {
         filterState.search,
         filterState.bloodTypes,
         filterState.patientAge,
+        sortState.sorting,
       ],
       queryData: {
         query: {
@@ -28,6 +29,13 @@ function BasePatientsTable() {
           bloodType: filterState.bloodTypes,
           minAge: Number(filterState.patientAge[0]) || undefined,
           maxAge: Number(filterState.patientAge[1]) || undefined,
+          sort: sortState.sorting.length ? sortState.sorting[0]?.id : undefined,
+          sortDir:
+            typeof sortState.sorting[0]?.desc === 'boolean'
+              ? sortState.sorting[0].desc
+                ? 'desc'
+                : 'asc'
+              : undefined,
         },
       },
     },
@@ -43,6 +51,7 @@ function BasePatientsTable() {
       <DataTable
         data={data?.patients ?? []}
         columns={columns}
+        sortState={sortState}
         paginationState={paginationState}
         paginationInfo={data?.pagination}
       />
