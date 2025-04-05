@@ -6,6 +6,7 @@ import { apiClient } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { OrganListTableToolbar } from './OrganListTableToolbar'
 import { columns, type GetOrgansQuery } from './columns'
+import type { organsSortableKeys } from '@repo/ts-rest'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
@@ -31,7 +32,9 @@ function BaseOrgansTable() {
           organType: filterState.organs,
           organMinWeight: Number(filterState.organWeight[0]) || undefined,
           organMaxWeight: Number(filterState.organWeight[1]) || undefined,
-          sort: sortState.sorting.length ? sortState.sorting[0]?.id : undefined,
+          sort: sortState.sorting.length
+            ? (sortState.sorting[0]?.id as (typeof organsSortableKeys)[number])
+            : undefined,
           sortDir:
             typeof sortState.sorting[0]?.desc === 'boolean'
               ? sortState.sorting[0].desc

@@ -91,6 +91,7 @@ export function useInitialTableState() {
     setOrgans([])
     setOrganWeight([])
     setPatientAge([])
+    setSorting([])
   }, [])
 
   useEffect(() => {

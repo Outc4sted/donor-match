@@ -9,19 +9,21 @@ import { searchQuery } from '../schemas/searchQuery.ts'
 import { organWeightQuery } from '../schemas/organWeightQuery.ts'
 import { createSortQuerySchema } from '../schemas/sortQuery.ts'
 
-export const organKeys = [
+const organSortKeys = [
   'createdAt',
   'updatedAt',
   'deactivatedAt',
-  'organId',
-  'donorId',
-  'recipientId',
   'latitude',
   'longitude',
   'organType',
   'bloodType',
   'organSize',
-] satisfies (keyof organs)[]
+] as const
+const organCompositeSortKeys = ['donor', 'recipient', 'location'] as const
+export const sortableKeys = [
+  ...organSortKeys,
+  ...organCompositeSortKeys,
+] as const
 
 const c = initContract()
 
@@ -36,7 +38,7 @@ export default c.router({
       .merge(organTypeQuery)
       .merge(organWeightQuery)
       .merge(searchQuery)
-      .merge(createSortQuerySchema(organKeys as [string, ...string[]])),
+      .merge(createSortQuerySchema(sortableKeys)),
     responses: {
       200: c.type<{
         organs: (organs & {

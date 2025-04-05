@@ -58,7 +58,16 @@ export function DataTable<TData, TValue>({
   })
 
   const toggleSorting = (header: Header<TData, unknown>) => {
-    const nextSort = header.column.getNextSortingOrder()
+    const currentSort = sortState.sorting.find((s) => s.id === header.id)
+    let nextSort: 'asc' | 'desc' | undefined
+
+    if (!currentSort) {
+      nextSort = 'asc'
+    } else if (currentSort.desc === false) {
+      nextSort = 'desc'
+    } else {
+      nextSort = undefined
+    }
 
     sortState.setSorting(
       nextSort

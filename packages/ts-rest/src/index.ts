@@ -8,3 +8,5 @@ export const contract = c.router({
   organs: organsContract,
   patients: patientsContract,
 })
+
+export { sortableKeys as organsSortableKeys } from './contracts/organs.ts'

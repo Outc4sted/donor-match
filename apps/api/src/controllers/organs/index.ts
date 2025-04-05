@@ -10,7 +10,7 @@ const controller: RouterImplementation<typeof contract.organs> = {
     const { page = 1, limit, sort, sortDir } = query
     const skip = (page - 1) * (limit ?? 0)
     const where = buildWhereFilter(query)
-    const orderBy = buildSortOrder({ sortDir, sort, uniqueColumn: 'organId' })
+    const orderBy = buildSortOrder({ sortDir, sort })
 
     const [organs, total] = await Promise.all([
       db.organs.findMany({
