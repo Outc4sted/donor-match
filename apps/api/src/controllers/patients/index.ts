@@ -10,7 +10,7 @@ const controller: RouterImplementation<typeof contract.patients> = {
     const { page = 1, limit, sort, sortDir } = query
     const skip = (page - 1) * (limit ?? 0)
     const where = buildWhereFilter(query)
-    const orderBy = buildSortOrder({ sortDir, sort, uniqueColumn: 'patientId' })
+    const orderBy = buildSortOrder({ sortDir, sort })
 
     const [patients, total] = await Promise.all([
       db.patients.findMany({

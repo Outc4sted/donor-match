@@ -22,7 +22,7 @@ importers:
         specifier: '*'
         version: 0.6.11(prettier-plugin-astro@0.14.1)(prettier@3.5.3)
       turbo:
-        specifier: ^2.5.0
+        specifier: '*'
         version: 2.5.0
       typescript:
         specifier: latest
