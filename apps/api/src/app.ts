@@ -16,7 +16,7 @@ export default async (appName: string) => {
   })
 
   app.setErrorHandler(async (error, _request, reply) => {
-    app.log.error(`Error with ${appName}`, error.message)
+    app.log.error(`Error with ${appName}\n${error.message}`)
     return reply.code(500).send(error.message)
   })
 
