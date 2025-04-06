@@ -1,7 +1,18 @@
+import clsx from 'clsx'
 import type { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 import { bloodTypes } from '@/constants'
 import type { GetPatientsQuery } from '@/lib/apiClient'
+
+const navLinkClasses = clsx(
+  'font-medium',
+  'text-blue-400',
+  'hover:text-indigo-900',
+  'hover:underline',
+  'focus-visible:underline',
+  'focus-visible:text-indigo-900',
+  'focus-visible:outline-hidden',
+)
 
 export const columns: ColumnDef<GetPatientsQuery['patients'][0]>[] = [
   {
@@ -22,7 +33,14 @@ export const columns: ColumnDef<GetPatientsQuery['patients'][0]>[] = [
       const patientName = info.getValue<string | null>()
       const { patientId } = info.row.original
 
-      return <a href={`/user/${patientId}`}>{patientName}</a>
+      return (
+        <a
+          href={`/user/${patientId}`}
+          className={navLinkClasses}
+        >
+          {patientName}
+        </a>
+      )
     },
   },
   {
