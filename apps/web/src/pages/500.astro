@@ -10,14 +10,14 @@ interface Props {
 }
 
 const {
-  title = '404',
-  subtitle = 'This page does not exist!',
-  imageSrc = '/404.png',
-  imageAlt = 'Illustration of a confused doctor surrounded by health-related icons like a heart monitor and pills.',
+  title = '500',
+  subtitle = 'Something went wrong on our end',
+  imageSrc = '/500.png',
+  imageAlt = 'Illustration of a medical worker standing beside a large, broken heart monitor surrounded by scattered medical equipment.',
 } = Astro.props
 ---
 
-<SiteLayout title="Page not found">
+<SiteLayout title="Server error">
   <PageLayout
     title={title}
     subtitle={subtitle}

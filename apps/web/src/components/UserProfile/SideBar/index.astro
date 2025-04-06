@@ -1,0 +1,47 @@
+---
+import type { GetPatientQuery } from '@/lib/apiClient'
+import { ClipboardPlus, ContactRound, UserPen } from 'lucide-react'
+
+interface Props {
+  patient: GetPatientQuery['patient']
+}
+
+const { patient } = Astro.props
+---
+
+<div
+  id="patient-sidebar"
+  class="md:w-1/4"
+>
+  <div class="rounded-xl bg-white p-6 shadow-sm">
+    <div class="mb-6 text-center">
+      <ContactRound
+        size={100}
+        className="mx-auto mb-4"
+      />
+
+      <h2 class="text-xl font-semibold text-gray-800">
+        {patient.firstName}
+        {patient.lastName}
+      </h2>
+
+      <p class="text-gray-600">Patient ID: {patient.patientId}</p>
+    </div>
+
+    <div class="space-y-4">
+      <div
+        class="flex cursor-pointer items-center space-x-3 text-gray-700 hover:text-red-600"
+      >
+        <ClipboardPlus />
+        <span>Medical History</span>
+      </div>
+
+      <div
+        class="flex cursor-pointer items-center space-x-3 text-gray-700 hover:text-red-600"
+      >
+        <UserPen />
+        <span>Update patient information</span>
+      </div>
+    </div>
+  </div>
+</div>

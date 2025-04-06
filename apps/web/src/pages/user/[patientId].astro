@@ -1,0 +1,27 @@
+---
+import UserProfile from '@/components/UserProfile/index.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
+import Page404 from '@/pages/404.astro'
+import Page500 from '@/pages/500.astro'
+
+const { patientId } = Astro.params
+const { apiClient, siteName } = Astro.locals
+
+if (!patientId) throw new Error('Missing Patient Id')
+
+const { status, body } = await apiClient.patients.getPatient({
+  params: { patientId },
+})
+---
+
+{
+  status === 200 ? (
+    <SiteLayout title={siteName}>
+      <UserProfile patient={body.patient} />
+    </SiteLayout>
+  ) : status === 404 ? (
+    <Page404 subtitle="Can't find patient!" />
+  ) : (
+    <Page500 />
+  )
+}

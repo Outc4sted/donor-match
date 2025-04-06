@@ -1,13 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
-import type { ClientInferResponseBody } from '@ts-rest/core'
-import type { contract } from '@repo/ts-rest'
 import { format } from 'date-fns'
 import { bloodTypes } from '@/constants'
-
-export type GetPatientsQuery = ClientInferResponseBody<
-  typeof contract.patients.getPatients,
-  200
->
+import type { GetPatientsQuery } from '@/lib/apiClient'
 
 export const columns: ColumnDef<GetPatientsQuery['patients'][0]>[] = [
   {

@@ -2,10 +2,10 @@ import { useStore } from '@nanostores/react'
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import { apiClient } from '@/lib/apiClient'
+import { apiClient, type GetPatientsQuery } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { PatientListTableToolbar } from './PatientListTableToolbar'
-import { columns, type GetPatientsQuery } from './columns'
+import { columns } from './columns'
 import type { patientSortableKeys } from '@repo/ts-rest'
 
 function BasePatientsTable() {

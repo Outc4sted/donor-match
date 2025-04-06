@@ -44,4 +44,14 @@ export const patientRouter = c.router({
       200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },
   },
+  getPatient: {
+    summary: 'Get a single patient',
+    method: 'GET',
+    path: '/api/patients/:patientId',
+    headers: authorizationHeader,
+    responses: {
+      200: c.type<{ patient: patients }>(),
+      404: c.type<{ error: string }>(),
+    },
+  },
 })

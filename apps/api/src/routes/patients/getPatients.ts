@@ -1,7 +1,7 @@
 import paginationSummary from '../../lib/paginationSummary.ts'
 import { buildWhereFilter } from './buildWhereFilter.ts'
 import { buildSortOrder } from './buildSortOrder.ts'
-import { PatientsRouter } from './index.ts'
+import type { PatientsRouter } from './index.ts'
 
 export const getPatients: PatientsRouter['getPatients'] = async ({
   request,
