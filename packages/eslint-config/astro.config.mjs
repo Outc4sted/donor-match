@@ -35,6 +35,7 @@ export default eslintTS.config(
         ...globals.browser,
         ...globals.node,
         DMNO_CONFIG: 'readonly',
+        DMNO_PUBLIC_CONFIG: 'readonly',
       },
       parserOptions: {
         project: true,

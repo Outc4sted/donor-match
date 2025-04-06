@@ -14,7 +14,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  site: DMNO_CONFIG.SITE_URL,
+  site: DMNO_PUBLIC_CONFIG.SITE_URL,
 
   server: {
     port: 3000,

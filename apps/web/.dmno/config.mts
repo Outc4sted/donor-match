@@ -1,6 +1,7 @@
 import { DmnoBaseTypes, defineDmnoService, pick, switchBy } from 'dmno'
 
 export default defineDmnoService({
+  name: 'web',
   schema: {
     APP_ENV: pick(),
     API_NODE_HOST: pick('api', 'NODE_HOST'),
