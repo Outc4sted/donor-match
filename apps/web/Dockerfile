@@ -17,30 +17,58 @@ RUN turbo prune web --docker
 FROM base AS installer
 WORKDIR /app
 
+ARG PUBLIC_CLERK_PUBLISHABLE_KEY
+ENV PUBLIC_CLERK_PUBLISHABLE_KEY=$PUBLIC_CLERK_PUBLISHABLE_KEY
+
+ARG CLERK_SECRET_KEY
+ENV CLERK_SECRET_KEY=$CLERK_SECRET_KEY
+
+ENV HOST=0.0.0.0
+ENV PORT=3000
+
 COPY --from=builder /app/out/json/ ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 COPY --from=builder /app/out/full/ ./
 COPY --from=builder /app/.dmno ./.dmno
-COPY --from=builder /app/apps/web/.dmno ./apps/web/.dmno
 COPY --from=builder /app/apps/api/.dmno ./apps/api/.dmno
-COPY --from=builder /app/packages/db/.dmno ./packages/db/.dmno
 
 RUN pnpm turbo build
 
 
+FROM base AS runner
+WORKDIR /app
 
-# FROM nginx:alpine AS runtime
-# WORKDIR /usr/share/nginx/html
-# RUN addgroup --system --gid 1001 nodejs
-# RUN adduser --system --uid 1001 astro
-# USER astro
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 astro
+USER astro
 
-# COPY --from=installer --chown=astro:nodejs /app/nginx/nginx.conf /usr/share/nginx/html
-# COPY --from=installer --chown=astro:nodejs /app ./
-# COPY --from=builder --chown=astro:nodejs /app/.dmno ./.dmno
-# COPY --from=builder --chown=astro:nodejs /app/apps/api/.dmno ./apps/api/.dmno
-# COPY --from=builder /app/dist /usr/share/nginx/html
-
+COPY --from=installer --chown=astro:nodejs /app ./
+COPY --from=builder --chown=astro:nodejs /app/.dmno ./.dmno
+COPY --from=builder --chown=astro:nodejs /app/apps/web/.dmno ./apps/web/.dmno
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
 EXPOSE 3000
+CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
+
+
+# FROM nginx:alpine AS runtime
+# # WORKDIR /usr/share/nginx/html
+# # RUN addgroup --system --gid 1001 nodejs
+# # RUN adduser --system --uid 1001 astro
+# # USER astro
+
+# # RUN mkdir -p /etc/nginx/templates
+# COPY --from=installer /app/apps/web/nginx/default.conf.template /etc/nginx/templates/
+# COPY --from=installer --chown=astro:nodejs /app/apps/web/dist /usr/share/nginx/html
+
+
+# # COPY --from=installer --chown=astro:nodejs /app/nginx/nginx.conf /usr/share/nginx/html
+# # COPY --from=installer --chown=astro:nodejs /app ./
+# # COPY --from=builder --chown=astro:nodejs /app/.dmno ./.dmno
+# # COPY --from=builder --chown=astro:nodejs /app/apps/api/.dmno ./apps/api/.dmno
+# # COPY --from=installer /app/dist /usr/share/nginx/html
+
+
+# EXPOSE 80

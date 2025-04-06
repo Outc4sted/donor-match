@@ -40,7 +40,6 @@
   "files.exclude": {
     "**/node_modules": true,
     "**/pnpm-lock.yaml": true,
-    "**/dist": true,
     "**/.turbo": true,
     "**/.dmno/typegen": true
   },

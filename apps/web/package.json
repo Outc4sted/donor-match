@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "dmno run -- astro dev",
+    "dev": "astro dev",
     "build": "dmno run -- astro build",
     "preview": "dmno run -- astro preview",
     "astro": "dmno run -- astro",
