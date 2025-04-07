@@ -16,15 +16,6 @@ export default defineDmnoService({
         icon: 'logos:nodejs-icon',
       },
     },
-    NODE_PORT: {
-      required: true,
-      summary: 'Fastify server port',
-      extends: DmnoBaseTypes.number,
-      value: '3001',
-      ui: {
-        icon: 'simple-icons:fastify',
-      },
-    },
     NODE_HOST: {
       required: true,
       summary: 'Fastify host',
@@ -33,6 +24,15 @@ export default defineDmnoService({
         local: '127.0.0.1',
         _default: '0.0.0.0',
       }),
+      ui: {
+        icon: 'simple-icons:fastify',
+      },
+    },
+    NODE_PORT: {
+      required: true,
+      summary: 'Fastify server port',
+      extends: DmnoBaseTypes.number,
+      value: '3001',
       ui: {
         icon: 'simple-icons:fastify',
       },

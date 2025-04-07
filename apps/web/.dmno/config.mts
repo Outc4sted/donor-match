@@ -4,19 +4,35 @@ export default defineDmnoService({
   name: 'web',
   schema: {
     APP_ENV: pick(),
-    API_NODE_HOST: pick('api', 'NODE_HOST'),
-    API_NODE_PORT: pick('api', 'NODE_PORT'),
     DONOR_MATCH_API: {
       required: true,
       summary: 'Host for the api',
       extends: DmnoBaseTypes.url,
-      value() {
-        const protocol = ['local', 'docker', 'test'].includes(
-          DMNO_CONFIG.APP_ENV,
-        )
-          ? 'http'
-          : 'https'
-        return `${protocol}://${DMNO_CONFIG.API_NODE_HOST}:${DMNO_CONFIG.API_NODE_PORT}`
+      value: switchBy('APP_ENV', {
+        local: 'http://localhost:3001',
+        docker: 'http://fastify:3001',
+        _default: 'http://127.0.0.1:3001',
+      }),
+    },
+    NODE_HOST: {
+      required: true,
+      summary: 'Astro host',
+      extends: DmnoBaseTypes.string,
+      value: switchBy('APP_ENV', {
+        local: 'localhost',
+        _default: '0.0.0.0',
+      }),
+      ui: {
+        icon: 'vscode-icons:file-type-astro',
+      },
+    },
+    NODE_PORT: {
+      required: true,
+      summary: 'Astro server port',
+      extends: DmnoBaseTypes.number,
+      value: '3000',
+      ui: {
+        icon: 'vscode-icons:file-type-astro',
       },
     },
     SITE_URL: {
@@ -29,13 +45,14 @@ export default defineDmnoService({
       },
       extends: DmnoBaseTypes.url,
       value: switchBy('APP_ENV', {
-        local: 'http://localhost:3000',
-        _default: 'http://127.0.0.1:3000',
+        local: () => `http://localhost:${DMNO_CONFIG.NODE_PORT}`,
+        _default: () => `http://127.0.0.1:${DMNO_CONFIG.NODE_PORT}`,
       }),
       ui: {
         icon: 'vscode-icons:file-type-astro',
       },
     },
+
     CLERK_SECRET_KEY: pick('api'),
     PUBLIC_CLERK_PUBLISHABLE_KEY: pick('api', 'CLERK_PUBLISHABLE_KEY'),
     CI: {

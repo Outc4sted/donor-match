@@ -17,7 +17,8 @@ export default defineConfig({
   site: DMNO_PUBLIC_CONFIG.SITE_URL,
 
   server: {
-    port: 3000,
+    port: DMNO_PUBLIC_CONFIG.NODE_PORT,
+    host: DMNO_PUBLIC_CONFIG.NODE_HOST,
   },
 
   adapter: node({
