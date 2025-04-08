@@ -6,7 +6,8 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "passThroughEnv": ["APP_ENV"]
     },
     "api#build": {
       "dependsOn": ["^@repo/ts-rest#build"],

@@ -16,7 +16,7 @@ export const onRequest = clerkMiddleware(
     }
 
     locals.apiClient = initClient(contract, {
-      baseUrl: import.meta.env.DONOR_MATCH_API,
+      baseUrl: DMNO_PUBLIC_CONFIG.DONOR_MATCH_API,
       baseHeaders: {
         authorization: `Bearer ${token?.value}`,
       },
@@ -26,7 +26,7 @@ export const onRequest = clerkMiddleware(
       request.headers.set('authorization', `Bearer ${token?.value}`)
 
       return fetch(
-        `${import.meta.env.DONOR_MATCH_API}${requestUrl.pathname}${requestUrl.search}`,
+        `${DMNO_PUBLIC_CONFIG.DONOR_MATCH_API}${requestUrl.pathname}${requestUrl.search}`,
         request,
       ).catch(
         () =>
