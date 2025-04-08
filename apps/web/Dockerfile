@@ -1,6 +1,9 @@
 FROM node:current-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV HOST=0.0.0.0
+ENV PORT=3000
+ENV APP_ENV=docker
 
 RUN npm install --global corepack@latest
 RUN corepack use pnpm@latest-10
@@ -23,10 +26,6 @@ ENV PUBLIC_CLERK_PUBLISHABLE_KEY=$PUBLIC_CLERK_PUBLISHABLE_KEY
 ARG CLERK_SECRET_KEY
 ENV CLERK_SECRET_KEY=$CLERK_SECRET_KEY
 
-ENV HOST=0.0.0.0
-ENV PORT=3000
-ENV APP_ENV=docker
-
 COPY --from=builder /app/out/json/ ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
@@ -47,9 +46,6 @@ USER astro
 COPY --from=installer --chown=astro:nodejs /app ./
 COPY --from=builder --chown=astro:nodejs /app/.dmno ./.dmno
 COPY --from=builder --chown=astro:nodejs /app/apps/web/.dmno ./apps/web/.dmno
-ENV HOST=0.0.0.0
-ENV PORT=3000
-ENV APP_ENV=docker
 
 EXPOSE 3000
 CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]

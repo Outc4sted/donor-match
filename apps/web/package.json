@@ -11,7 +11,6 @@
     "check-types": "tsc --noEmit",
     "test": "dmno run -- playwright test",
     "test:ui": "dmno run -- playwright test --ui",
-    "dmno:dev": "dmno dev",
     "env:docker": "dmno resolve --service web --format env > .dmno/.env.docker",
     "lint": "eslint . --fix --cache --max-warnings 0",
     "test:snapshots": "pnpm run test -- --update-snapshots"
