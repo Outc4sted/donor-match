@@ -1,6 +1,4 @@
 FROM node:current-alpine AS base
-ARG APP_ENV
-ENV APP_ENV=$APP_ENV
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
@@ -18,12 +16,6 @@ RUN turbo prune api --docker
 
 FROM base AS installer
 WORKDIR /app
-
-ARG PUBLIC_CLERK_PUBLISHABLE_KEY
-ENV PUBLIC_CLERK_PUBLISHABLE_KEY=$PUBLIC_CLERK_PUBLISHABLE_KEY
-
-ARG CLERK_SECRET_KEY
-ENV CLERK_SECRET_KEY=$CLERK_SECRET_KEY
 
 COPY --from=builder /app/out/json/ ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
