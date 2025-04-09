@@ -46,6 +46,7 @@ export default defineDmnoService({
         url: 'https://clerk.com/glossary#publishable-key',
       },
       extends: DmnoBaseTypes.string,
+      value: 'clerk publishable key',
       ui: {
         icon: 'simple-icons:clerk',
       },
@@ -59,6 +60,7 @@ export default defineDmnoService({
         url: 'https://clerk.com/glossary#secret-key',
       },
       extends: DmnoBaseTypes.string,
+      value: 'clerk secret key',
       ui: {
         icon: 'simple-icons:clerk',
       },
@@ -72,6 +74,7 @@ export default defineDmnoService({
         url: 'https://clerk.com/docs/backend-requests/manual-jwt#use-authenticate-request-to-verify-a-session-token',
       },
       extends: DmnoBaseTypes.string,
+      value: 'clerk jwt key',
       ui: {
         icon: 'simple-icons:clerk',
       },

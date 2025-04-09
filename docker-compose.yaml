@@ -6,7 +6,6 @@ services:
       args:
         APP_ENV: docker
         PUBLIC_CLERK_PUBLISHABLE_KEY: pk_test_Y2FsbS1maXJlZmx5LTc5LmNsZXJrLmFjY291bnRzLmRldiQ
-        CLERK_SECRET_KEY: sk_test_TlSWrYBvihgopn8wx21othrZmHiVlAkund5mESDTW3
     ports:
       - 3000:3000
     env_file: ./apps/web/.dmno/.env.docker
