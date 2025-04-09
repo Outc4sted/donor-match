@@ -52,7 +52,6 @@ export default defineDmnoService({
         icon: 'vscode-icons:file-type-astro',
       },
     },
-
     CLERK_SECRET_KEY: pick('api'),
     PUBLIC_CLERK_PUBLISHABLE_KEY: pick('api', 'CLERK_PUBLISHABLE_KEY'),
     CI: {

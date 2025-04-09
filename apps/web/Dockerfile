@@ -31,6 +31,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 COPY --from=builder /app/out/full/ ./
 COPY --from=builder /app/.dmno ./.dmno
 COPY --from=builder /app/apps/api/.dmno ./apps/api/.dmno
+
 RUN pnpm turbo build
 
 
@@ -44,7 +45,9 @@ USER astro
 COPY --from=installer --chown=astro:nodejs /app ./
 
 EXPOSE 3000
-CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
+CMD ["pnpm", "exec", "dmno", "run", "--", "node", "apps/web/dist/server/entry.mjs"]
+# CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
+
 
 # FROM nginx:alpine AS runtime
 # # WORKDIR /usr/share/nginx/html
