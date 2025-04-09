@@ -7,7 +7,7 @@
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$"],
       "outputs": ["dist/**"],
-      "passThroughEnv": ["APP_ENV"]
+      "passThroughEnv": ["APP_ENV", "CLERK_SECRET_KEY"]
     },
     "api#build": {
       "dependsOn": ["^@repo/ts-rest#build"],

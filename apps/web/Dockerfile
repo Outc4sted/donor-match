@@ -19,11 +19,11 @@ RUN turbo prune web --docker
 FROM base AS installer
 WORKDIR /app
 
-# ARG PUBLIC_CLERK_PUBLISHABLE_KEY
-# ENV PUBLIC_CLERK_PUBLISHABLE_KEY=$PUBLIC_CLERK_PUBLISHABLE_KEY
+ARG PUBLIC_CLERK_PUBLISHABLE_KEY
+ENV PUBLIC_CLERK_PUBLISHABLE_KEY=$PUBLIC_CLERK_PUBLISHABLE_KEY
 
-# ARG CLERK_SECRET_KEY
-# ENV CLERK_SECRET_KEY=$CLERK_SECRET_KEY
+ARG CLERK_SECRET_KEY
+ENV CLERK_SECRET_KEY=$CLERK_SECRET_KEY
 
 COPY --from=builder /app/out/json/ ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
@@ -45,8 +45,7 @@ USER astro
 COPY --from=installer --chown=astro:nodejs /app ./
 
 EXPOSE 3000
-CMD ["pnpm", "exec", "dmno", "run", "--", "node", "apps/web/dist/server/entry.mjs"]
-# CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
+CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
 
 
 # FROM nginx:alpine AS runtime
