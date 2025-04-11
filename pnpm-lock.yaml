@@ -372,9 +372,6 @@ importers:
       typescript:
         specifier: latest
         version: 5.8.3
-      zod:
-        specifier: '*'
-        version: 3.24.2
 
   packages/ts-rest:
     dependencies:
