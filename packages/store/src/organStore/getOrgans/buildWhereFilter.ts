@@ -36,8 +36,8 @@ export function buildNameSearchFilter(
 }
 
 interface FilterInput {
-  bloodType?: (keyof typeof BloodType)[]
-  organType?: (keyof typeof OrganType)[]
+  bloodType?: BloodType[]
+  organType?: OrganType[]
   organMinWeight?: number
   organMaxWeight?: number
   search?: string
@@ -56,12 +56,8 @@ export function buildWhereFilter({
   }
 
   return {
-    ...(bloodType?.length
-      ? { bloodType: { in: bloodType as BloodType[] } }
-      : {}),
-    ...(organType?.length
-      ? { organType: { in: organType as OrganType[] } }
-      : {}),
+    ...(bloodType?.length ? { bloodType: { in: bloodType } } : {}),
+    ...(organType?.length ? { organType: { in: organType } } : {}),
     ...(Object.keys(organSize).length ? { organSize } : {}),
     ...(search ? { OR: buildNameSearchFilter(search) } : {}),
   }

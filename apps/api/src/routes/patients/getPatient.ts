@@ -1,3 +1,4 @@
+import { patientService } from '../../services/patientService.ts'
 import type { PatientsRouter } from './index.ts'
 
 export const getPatient: PatientsRouter['getPatient'] = async ({
@@ -5,10 +6,7 @@ export const getPatient: PatientsRouter['getPatient'] = async ({
   params: { patientId },
 }) => {
   const db = request.requestContext.get('db')
-
-  const patient = await db.patients.findUnique({
-    where: { patientId },
-  })
+  const patient = await patientService.getPatient(db, patientId)
 
   if (!patient) {
     return {
@@ -21,6 +19,6 @@ export const getPatient: PatientsRouter['getPatient'] = async ({
 
   return {
     status: 200,
-    body: { patient },
+    body: patient,
   }
 }

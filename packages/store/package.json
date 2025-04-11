@@ -1,0 +1,28 @@
+{
+  "name": "@repo/store",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "types": "./src/index.ts",
+    "default": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint . --fix --cache --max-warnings 0",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@repo/ts-rest": "workspace:*",
+    "@ts-rest/core": "*",
+    "eslint": "*",
+    "nodemon": "*",
+    "@prisma/client": "*",
+    "typescript": "latest",
+    "@zenstackhq/runtime": "*"
+  }
+}

@@ -1,9 +1,5 @@
-import type { Prisma } from '@prisma/client'
-
-interface SortInput {
-  sortDir?: 'asc' | 'desc'
-  sort?: string
-}
+import { Prisma } from '@prisma/client'
+import { SortInput } from '../../types.ts'
 
 export function buildSortOrder({ sortDir, sort }: SortInput) {
   const isValidSortDir = sortDir === 'asc' || sortDir === 'desc'

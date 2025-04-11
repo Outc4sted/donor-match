@@ -38,7 +38,8 @@ export const organRouter = c.router({
       .merge(organTypeQuery)
       .merge(organWeightQuery)
       .merge(searchQuery)
-      .merge(createSortQuerySchema(organSortableKeys)),
+      .merge(createSortQuerySchema(organSortableKeys))
+      .optional(),
     responses: {
       200: c.type<{
         organs: (organs & {

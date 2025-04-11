@@ -39,7 +39,8 @@ export const patientRouter = c.router({
       .merge(bloodTypeQuery)
       .merge(patientAgeQuery)
       .merge(searchQuery)
-      .merge(createSortQuerySchema(patientSortableKeys)),
+      .merge(createSortQuerySchema(patientSortableKeys))
+      .optional(),
     responses: {
       200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },
