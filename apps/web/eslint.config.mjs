@@ -12,4 +12,20 @@ export default [
       },
     },
   },
+
+  // Allow children props for TanStack Form
+  {
+    files: ['**/components/**/*Form/**/*.tsx'],
+    rules: {
+      'react/no-children-prop': 'off',
+    },
+  },
+
+  // Allow Zod error message types
+  {
+    files: ['**/components/**/*.{ts,tsx}'],
+    rules: {
+      camelcase: ['error', { allow: ['required_error', 'invalid_type_error'] }],
+    },
+  },
 ]

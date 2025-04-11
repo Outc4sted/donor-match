@@ -6,7 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { multiSelectOptions } from '@/lib/utils'
+import { selectOptions } from '@/lib/utils'
 
 export interface Props extends ComponentProps<typeof MultipleSelector> {
   readonly items: Record<string, string>
@@ -29,7 +29,7 @@ export function TableFilterMultipleSelector({
       <PopoverContent className="w-96">
         <MultipleSelector
           placeholder={`Filter by ${filterName.toLowerCase()}`}
-          defaultOptions={multiSelectOptions(items)}
+          defaultOptions={selectOptions(items)}
           value={currentItems.map((item) => ({
             value: item,
             label: items[item] ?? '',
