@@ -6,10 +6,7 @@ export const getPatients: PatientsRouter['getPatients'] = async ({
   query,
 }) => {
   const db = request.requestContext.get('db')
-  const patients = await patientService.getPatients(db, query)
+  const response = await patientService.getPatients(db, query)
 
-  return {
-    status: 200,
-    body: patients,
-  }
+  return response
 }

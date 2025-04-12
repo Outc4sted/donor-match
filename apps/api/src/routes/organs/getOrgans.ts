@@ -6,10 +6,7 @@ export const getOrgans: OrgansRouter['getOrgans'] = async ({
   query,
 }) => {
   const db = request.requestContext.get('db')
-  const organs = await organService.getOrgans(db, query)
+  const response = await organService.getOrgans(db, query)
 
-  return {
-    status: 200,
-    body: organs,
-  }
+  return response
 }

@@ -9,7 +9,7 @@ model patients extends Base {
   firstName       String
   lastName        String
   age             Int
-  ssn             String?    @unique @omit
+  ssn             String     @unique @omit
   bloodType       BloodType
 
   organsDonated   organs[]   @relation("DonorRelation")

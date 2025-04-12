@@ -42,7 +42,7 @@ model patients {
   firstName       String
   lastName        String
   age             Int
-  ssn             String?    @unique()
+  ssn             String     @unique()
   bloodType       BloodType
   organsDonated   organs[]   @relation("DonorRelation")
   organsReceived  organs[]   @relation("RecipientRelation")

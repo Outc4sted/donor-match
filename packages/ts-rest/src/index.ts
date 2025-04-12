@@ -9,5 +9,5 @@ export const contract = c.router({
   patients: patientRouter,
 })
 
-export { organSortableKeys } from './contracts/organs.ts'
-export { patientSortableKeys } from './contracts/patients.ts'
+export { organSortableKeys } from './schemas/organs/getAllOrgansQuery.ts'
+export { patientSortableKeys } from './schemas/patients/getAllPatientsQuery.ts'

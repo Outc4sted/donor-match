@@ -1,33 +1,11 @@
 import type { patients } from '@repo/db'
 import { initContract } from '@ts-rest/core'
-import { authorizationHeader } from '../schemas/authorizationHeader.ts'
-import { paginationQuery } from '../schemas/paginationQuery.ts'
+import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
 import type { PaginationSummary } from '../types/index.ts'
-import { bloodTypeQuery } from '../schemas/bloodTypeQuery.ts'
-import { searchQuery } from '../schemas/searchQuery.ts'
-import { patientAgeQuery } from '../schemas/patientAgeQuery.ts'
-import { createSortQuerySchema } from '../schemas/sortQuery.ts'
+import { getAllPatientsQuery } from '../schemas/patients/getAllPatientsQuery.ts'
+import { createPatientBody } from '../schemas/patients/createPatientBody.ts'
 
-export const patientScalarSortKeys = [
-  'createdAt',
-  'updatedAt',
-  'deactivatedAt',
-  'patientId',
-  'latitude',
-  'longitude',
-  'firstName',
-  'lastName',
-  'age',
-  'ssn',
-  'bloodType',
-] as const
-const patientCompositeSortKeys = ['patient', 'location'] as const
 const c = initContract()
-
-export const patientSortableKeys = [
-  ...patientScalarSortKeys,
-  ...patientCompositeSortKeys,
-] as const
 
 export const patientRouter = c.router({
   getPatients: {
@@ -35,12 +13,7 @@ export const patientRouter = c.router({
     method: 'GET',
     path: '/api/patients',
     headers: authorizationHeader,
-    query: paginationQuery
-      .merge(bloodTypeQuery)
-      .merge(patientAgeQuery)
-      .merge(searchQuery)
-      .merge(createSortQuerySchema(patientSortableKeys))
-      .optional(),
+    query: getAllPatientsQuery,
     responses: {
       200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
     },
@@ -53,6 +26,18 @@ export const patientRouter = c.router({
     responses: {
       200: c.type<{ patient: patients }>(),
       404: c.type<{ error: string }>(),
+    },
+  },
+  createPatient: {
+    summary: 'Create a new patient',
+    method: 'POST',
+    path: '/api/patients',
+    headers: authorizationHeader,
+    body: createPatientBody,
+    responses: {
+      200: c.type<{ patient: patients }>(),
+      409: c.type<{ error: string }>(),
+      500: c.type<{ error: string }>(),
     },
   },
 })

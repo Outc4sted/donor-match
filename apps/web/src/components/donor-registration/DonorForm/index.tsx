@@ -1,12 +1,15 @@
+import { useStore } from '@nanostores/react'
 import { SubmitButton } from '@/components/shared/FormControls/SubmitButton'
 import { InputField } from '@/components/shared/FormControls/InputField'
 import { SingleSelectorField } from '@/components/shared/FormControls/SingleSelectorField'
 import { fieldContext, formContext } from '@/lib/hooks/useFormContext'
 import { createFormHook } from '@tanstack/react-form'
 import { validationSchema } from './validationSchema'
-import { bloodTypes } from '@/constants'
+import { bloodTypes, type BloodType } from '@/constants'
 import { selectOptions } from '@/lib/utils'
 import { SSNField } from '@/components/shared/FormControls/SSNField'
+import { clientStore } from '@/lib/stores/clientStore'
+import { apiClient } from '@/lib/apiClient'
 
 const { useAppForm } = createFormHook({
   fieldComponents: {
@@ -22,11 +25,21 @@ const { useAppForm } = createFormHook({
 })
 
 export function DonorForm() {
+  const queryClient = useStore(clientStore)
+  const { mutate } = apiClient.patients.createPatient.useMutation(
+    {
+      onError: (error) => {
+        console.error(error)
+      },
+    },
+    queryClient,
+  )
+
   const form = useAppForm({
     defaultValues: {
       firstName: '',
       lastName: '',
-      bloodType: '',
+      bloodType: undefined as unknown as BloodType,
       age: undefined as unknown as number,
       ssn: '',
     },
@@ -34,9 +47,7 @@ export function DonorForm() {
       onSubmit: validationSchema,
     },
     onSubmit: ({ value }) => {
-      console.log('🚀 ~ DonorForm ~ value:', value)
-      // eslint-disable-next-line no-alert
-      alert(JSON.stringify(value, null, 2))
+      mutate({ body: value })
     },
   })
 
