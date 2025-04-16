@@ -2,7 +2,7 @@ import { useStore } from '@nanostores/react'
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import { apiClient, type GetPatientsQuery } from '@/lib/apiClient'
+import { apiClient, type GetPatientsResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { PatientListTableToolbar } from './PatientListTableToolbar'
 import { columns } from './columns'
@@ -12,7 +12,7 @@ function BasePatientsTable() {
   const queryClient = useStore(clientStore)
   const { paginationState, sortState, filterState } = useInitialTableState()
 
-  const { data } = apiClient.patients.getPatients.useQuery<GetPatientsQuery>(
+  const { data } = apiClient.patients.getPatients.useQuery<GetPatientsResponse>(
     {
       queryKey: [
         'patients',

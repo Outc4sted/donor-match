@@ -37,7 +37,9 @@ export function SingleSelectorField({
         value={field.state.value}
         onValueChange={field.handleChange}
       >
-        <SelectTrigger className="w-full">
+        <SelectTrigger
+          className={`w-full ${error ? 'border-red-500 focus:ring-red-500' : ''}`}
+        >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
 

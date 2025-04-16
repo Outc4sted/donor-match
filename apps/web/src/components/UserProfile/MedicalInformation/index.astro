@@ -1,10 +1,10 @@
 ---
 import { bloodTypes } from '@/constants'
-import type { GetPatientQuery } from '@/lib/apiClient'
+import type { GetPatientResponse } from '@/lib/apiClient'
 import { format } from 'date-fns'
 
 interface Props {
-  patient: GetPatientQuery['patient']
+  patient: GetPatientResponse['patient']
 }
 
 const { patient } = Astro.props

@@ -2,7 +2,7 @@ import { useStore } from '@nanostores/react'
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import { apiClient, type GetOrgansQuery } from '@/lib/apiClient'
+import { apiClient, type GetOrgansResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { OrganListTableToolbar } from './OrganListTableToolbar'
 import { columns } from './columns'
@@ -12,7 +12,7 @@ function BaseOrgansTable() {
   const queryClient = useStore(clientStore)
   const { paginationState, sortState, filterState } = useInitialTableState()
 
-  const { data } = apiClient.organs.getOrgans.useQuery<GetOrgansQuery>(
+  const { data } = apiClient.organs.getOrgans.useQuery<GetOrgansResponse>(
     {
       queryKey: [
         'organs',

@@ -11,6 +11,9 @@ export const clientStore = atom(
         throwOnError: true,
         placeholderData: keepPreviousData,
       },
+      mutations: {
+        throwOnError: true,
+      },
     },
   }),
 )

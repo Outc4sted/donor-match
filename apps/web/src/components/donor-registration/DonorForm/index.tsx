@@ -1,35 +1,23 @@
 import { useStore } from '@nanostores/react'
-import { SubmitButton } from '@/components/shared/FormControls/SubmitButton'
-import { InputField } from '@/components/shared/FormControls/InputField'
-import { SingleSelectorField } from '@/components/shared/FormControls/SingleSelectorField'
-import { fieldContext, formContext } from '@/lib/hooks/useFormContext'
-import { createFormHook } from '@tanstack/react-form'
 import { validationSchema } from './validationSchema'
 import { bloodTypes, type BloodType } from '@/constants'
 import { selectOptions } from '@/lib/utils'
-import { SSNField } from '@/components/shared/FormControls/SSNField'
 import { clientStore } from '@/lib/stores/clientStore'
 import { apiClient } from '@/lib/apiClient'
+import { useMutation } from '@tanstack/react-query'
+import { DonorRegistrationSuccess } from './DonorRegistrationSuccess'
+import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { useAppForm } from './useAppForm'
 
-const { useAppForm } = createFormHook({
-  fieldComponents: {
-    InputField,
-    SingleSelectorField,
-    SSNField,
-  },
-  formComponents: {
-    SubmitButton,
-  },
-  fieldContext,
-  formContext,
-})
-
-export function DonorForm() {
+export function BaseDonorForm() {
   const queryClient = useStore(clientStore)
-  const { mutate } = apiClient.patients.createPatient.useMutation(
+
+  const { mutateAsync, isSuccess, data } = useMutation(
     {
-      onError: (error) => {
-        console.error(error)
+      mutationFn: apiClient.patients.createPatient.mutate,
+      onSuccess: ({ status }) => {
+        if (status === 500)
+          throw new Error('Something went wrong on the server')
       },
     },
     queryClient,
@@ -39,68 +27,88 @@ export function DonorForm() {
     defaultValues: {
       firstName: '',
       lastName: '',
-      bloodType: undefined as unknown as BloodType,
-      age: undefined as unknown as number,
+      bloodType: '' as unknown as BloodType,
+      age: '' as unknown as number,
       ssn: '',
     },
     validators: {
       onSubmit: validationSchema,
-    },
-    onSubmit: ({ value }) => {
-      mutate({ body: value })
+      onSubmitAsync: async ({ value }) => {
+        const { status } = await mutateAsync({ body: value })
+
+        if (status === 200) form.reset()
+        else if (status === 409) {
+          return {
+            form: 'Duplicate SSN detected',
+            fields: {
+              ssn: [{ message: 'This SSN is already registered' }],
+            },
+          }
+        }
+      },
     },
   })
 
+  if (isSuccess && data.status === 200)
+    return <DonorRegistrationSuccess patient={data.body.patient} />
+
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault()
-        await form.validate('submit')
-        form.handleSubmit()
-      }}
-    >
-      <h2 className="mb-4 text-4xl font-bold text-gray-900">
-        Donor Registration
-      </h2>
+    <div className="mb-12 text-center">
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          await form.validate('submit')
+          form.handleSubmit()
+        }}
+      >
+        <form.AppField
+          children={(field) => <field.InputField label="First name" />}
+          name="firstName"
+        />
 
-      <form.AppField
-        children={(field) => <field.InputField label="First name" />}
-        name="firstName"
-      />
+        <form.AppField
+          children={(field) => <field.InputField label="Last name" />}
+          name="lastName"
+        />
 
-      <form.AppField
-        children={(field) => <field.InputField label="Last name" />}
-        name="lastName"
-      />
+        <form.AppField
+          children={(field) => (
+            <field.InputField
+              label="Age"
+              type="number"
+            />
+          )}
+          name="age"
+        />
 
-      <form.AppField
-        children={(field) => (
-          <field.InputField
-            label="Age"
-            type="number"
-          />
-        )}
-        name="age"
-      />
+        <form.AppField
+          children={(field) => <field.SSNField />}
+          name="ssn"
+        />
 
-      <form.AppField
-        children={(field) => <field.SSNField />}
-        name="ssn"
-      />
+        <form.AppField
+          children={(field) => (
+            <field.SingleSelectorField
+              label="Blood Type"
+              options={selectOptions(bloodTypes)}
+            />
+          )}
+          name="bloodType"
+        />
 
-      <form.AppField
-        children={(field) => (
-          <field.SingleSelectorField
-            label="Blood Type"
-            options={selectOptions(bloodTypes)}
-          />
-        )}
-        name="bloodType"
-      />
+        <form.AppForm>
+          <form.SubmitButton label="Register" />
+        </form.AppForm>
+      </form>
+    </div>
+  )
+}
 
-      <form.AppForm>
-        <form.SubmitButton label="Register" />
-      </form.AppForm>
-    </form>
+export function DonorForm() {
+  return (
+    <QueryErrorBoundary>
+      <BaseDonorForm />
+    </QueryErrorBoundary>
   )
 }

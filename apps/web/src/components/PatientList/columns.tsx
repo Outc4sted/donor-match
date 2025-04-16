@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import type { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
 import { bloodTypes } from '@/constants'
-import type { GetPatientsQuery } from '@/lib/apiClient'
+import type { GetPatientsResponse } from '@/lib/apiClient'
 
 const navLinkClasses = clsx(
   'font-medium',
@@ -14,7 +14,7 @@ const navLinkClasses = clsx(
   'focus-visible:outline-hidden',
 )
 
-export const columns: ColumnDef<GetPatientsQuery['patients'][0]>[] = [
+export const columns: ColumnDef<GetPatientsResponse['patients'][0]>[] = [
   {
     accessorKey: 'createdAt',
     header: 'Created',

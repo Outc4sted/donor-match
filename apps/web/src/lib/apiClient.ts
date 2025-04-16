@@ -9,17 +9,22 @@ export const apiClient = initTsrReactQuery(contract, {
   },
 })
 
-export type GetOrgansQuery = ClientInferResponseBody<
+export type GetOrgansResponse = ClientInferResponseBody<
   typeof contract.organs.getOrgans,
   200
 >
 
-export type GetPatientsQuery = ClientInferResponseBody<
+export type GetPatientsResponse = ClientInferResponseBody<
   typeof contract.patients.getPatients,
   200
 >
 
-export type GetPatientQuery = ClientInferResponseBody<
+export type GetPatientResponse = ClientInferResponseBody<
   typeof contract.patients.getPatient,
+  200
+>
+
+export type CreatePatientResponse = ClientInferResponseBody<
+  typeof contract.patients.createPatient,
   200
 >
