@@ -9,20 +9,37 @@ export default defineConfig({
   integrations: [
     dmnoAstroIntegration(),
     starlight({
-      title: 'My Docs',
+      title: 'Donor Match Docs',
       social: [
         {
           icon: 'github',
           label: 'GitHub',
-          href: 'https://github.com/withastro/starlight',
+          href: 'https://github.com/outc4sted/donor-match',
         },
       ],
       sidebar: [
         {
           label: 'Guides',
+          items: [{ label: 'Getting Started', slug: 'guides/getting-started' }],
+        },
+        {
+          label: 'Apps',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', slug: 'guides/example' },
+            { label: 'Overview', slug: 'apps/overview' },
+            { label: 'API App', slug: 'apps/api-overview' },
+            { label: 'Web App', slug: 'apps/web-overview' },
+            { label: 'Docs App', slug: 'apps/docs-overview' },
+          ],
+        },
+        {
+          label: 'Packages',
+          items: [
+            { label: 'Overview', slug: 'packages/overview' },
+            { label: 'DB Library', slug: 'packages/db-overview' },
+            { label: 'TS-REST Library', slug: 'packages/ts-rest-overview' },
+            { label: 'Store Library', slug: 'packages/store-overview' },
+            { label: 'TSConfig Library', slug: 'packages/tsconfig-overview' },
+            { label: 'ESLint Library', slug: 'packages/eslint-overview' },
           ],
         },
         {

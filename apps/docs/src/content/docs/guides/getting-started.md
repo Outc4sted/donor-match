@@ -1,5 +1,5 @@
 ---
-title: Example Guide
+title: Getting Started
 description: A guide in my new Starlight docs site.
 ---
 
@@ -8,4 +8,7 @@ Writing a good guide requires thinking about what your users are trying to do.
 
 ## Further reading
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+install pnpm
+pnpm build
+pnpm dev
+Turbo commands
