@@ -1,5 +1,7 @@
 ---
 import { Button } from '@/components/ui/button'
+import { Image } from 'astro:assets'
+import HeroImage from '@/assets/hero.png'
 ---
 
 <section
@@ -33,9 +35,9 @@ import { Button } from '@/components/ui/button'
       </div>
 
       <div class="md:w-1/2">
-        <img
+        <Image
           class="h-auto w-full rounded-xl shadow-lg"
-          src="/hero.png"
+          src={HeroImage}
           alt="medical professional team in hospital setting, caring atmosphere, modern medical facility, soft lighting"
         />
       </div>

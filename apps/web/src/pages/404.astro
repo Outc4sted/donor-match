@@ -1,19 +1,25 @@
 ---
 import PageLayout from '@/layouts/containers/PageLayout.astro'
 import SiteLayout from '@/layouts/SiteLayout.astro'
+import Image404 from '@/assets/404.png'
+import type { ImageMetadata } from 'astro'
 
 interface Props {
   title?: string
   subtitle?: string
-  imageSrc?: string
-  imageAlt?: string
+  image?: {
+    src: ImageMetadata
+    alt: string
+  }
 }
 
 const {
   title = '404',
   subtitle = 'This page does not exist!',
-  imageSrc = '/404.png',
-  imageAlt = 'Illustration of a confused doctor surrounded by health-related icons like a heart monitor and pills.',
+  image = {
+    src: Image404,
+    alt: 'Illustration of a confused doctor surrounded by health-related icons like a heart monitor and pills.',
+  },
 } = Astro.props
 ---
 
@@ -21,7 +27,9 @@ const {
   <PageLayout
     title={title}
     subtitle={subtitle}
-    imageSrc={imageSrc}
-    imageAlt={imageAlt}
+    image={{
+      src: image.src,
+      alt: image.alt,
+    }}
   />
 </SiteLayout>

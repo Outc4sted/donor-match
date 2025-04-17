@@ -1,12 +1,17 @@
 ---
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+
 export interface Props {
   title: string
   subtitle?: string
-  imageSrc?: string
-  imageAlt?: string
+  image?: {
+    src: ImageMetadata
+    alt: string
+  }
 }
 
-const { title, subtitle, imageSrc, imageAlt } = Astro.props
+const { title, subtitle, image } = Astro.props
 ---
 
 <section
@@ -23,12 +28,12 @@ const { title, subtitle, imageSrc, imageAlt } = Astro.props
     </div>
 
     {
-      imageSrc && (
+      image && (
         <div class="pointer-events-none flex justify-center md:w-1/2">
-          <img
+          <Image
             class="h-auto w-2/5 rounded-xl opacity-90"
-            src={imageSrc}
-            alt={imageAlt}
+            src={image.src}
+            alt={image.alt}
           />
         </div>
       )

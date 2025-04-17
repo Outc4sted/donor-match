@@ -2,14 +2,17 @@
 import { PatientsTable } from '@/components/PatientList'
 import PageLayout from '@/layouts/containers/PageLayout.astro'
 import SiteLayout from '@/layouts/SiteLayout.astro'
+import PatientListImage from '@/assets/patients.png'
 ---
 
 <SiteLayout title="Patients List">
   <PageLayout
     title="Patient List"
     subtitle="Search and filter for patients"
-    imageSrc="/patients.png"
-    imageAlt="Illustration of three diverse patients standing together, including an Asian man, a Black woman, and a White man, in a medical setting"
+    image={{
+      src: PatientListImage,
+      alt: 'Illustration of three diverse patients standing together, including an Asian man, a Black woman, and a White man, in a medical setting',
+    }}
   >
     <PatientsTable client:only="react" />
   </PageLayout>
