@@ -2,6 +2,7 @@
 import dmnoAstroIntegration from '@dmno/astro-integration'
 import { defineConfig } from 'astro/config'
 import starlight from '@astrojs/starlight'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,6 +32,10 @@ export default defineConfig({
       ],
     }),
   ],
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   site: DMNO_PUBLIC_CONFIG.SITE_URL,
 

@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "@astrojs/starlight": "*",
+    "@astrojs/starlight-tailwind": "*",
     "@dmno/astro-integration": "*",
+    "@tailwindcss/vite": "*",
     "astro": "*",
     "dmno": "*",
-    "sharp": "*"
+    "sharp": "*",
+    "tailwindcss": "*"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
