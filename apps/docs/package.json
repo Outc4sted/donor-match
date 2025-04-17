@@ -1,0 +1,25 @@
+{
+  "name": "docs",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "dmno run -- astro dev",
+    "start": "dmno run -- astro dev",
+    "build": "dmno run -- astro build",
+    "preview": "dmno run -- astro preview",
+    "astro": "dmno run -- astro"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "*",
+    "@dmno/astro-integration": "*",
+    "astro": "*",
+    "dmno": "*",
+    "sharp": "*"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "eslint": "*"
+  }
+}
