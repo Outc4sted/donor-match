@@ -1,0 +1,14 @@
+---
+import PageLayout from '@/layouts/containers/PageLayout.astro'
+import SiteLayout from '@/layouts/SiteLayout.astro'
+
+const { resource = 'Resource' } = Astro.params
+const title = resource
+  .split('-')
+  .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+  .join(' ')
+---
+
+<SiteLayout title={title}>
+  <PageLayout title={title} />
+</SiteLayout>

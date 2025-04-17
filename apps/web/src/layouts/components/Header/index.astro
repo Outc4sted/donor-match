@@ -9,9 +9,9 @@ import { Button } from '@/components/ui/button'
 import { HeartPulse } from 'lucide-react'
 import NavLink from './NavLink.astro'
 
-const SignedInNavLinks = {
-  '/dashboard/organs-list': 'Organ List',
-  '/dashboard/patients-list': 'Patient List',
+const signedInNavLinks = {
+  '/dashboard/organ-list': 'Organ List',
+  '/dashboard/patient-list': 'Patient List',
 }
 
 const { siteName } = Astro.locals
@@ -36,7 +36,7 @@ const { siteName } = Astro.locals
 
         <SignedIn>
           {
-            Object.entries(SignedInNavLinks).map(([href, label]) => (
+            Object.entries(signedInNavLinks).map(([href, label]) => (
               <NavLink
                 href={href}
                 label={label}
