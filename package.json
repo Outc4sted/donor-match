@@ -12,13 +12,13 @@
     "env:docker": "APP_ENV=docker turbo run env:docker"
   },
   "devDependencies": {
-    "prettier": "^3.5.3",
+    "prettier": "*",
     "prettier-plugin-astro": "*",
     "prettier-plugin-tailwindcss": "*",
     "turbo": "*",
     "typescript": "latest"
   },
-  "packageManager": "pnpm@10.8.1",
+  "packageManager": "pnpm@10.12.4",
   "engines": {
     "node": ">=18"
   },
