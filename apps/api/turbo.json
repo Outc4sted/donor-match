@@ -4,7 +4,11 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "dependsOn": ["@repo/db#schema:gen", "@repo/db#build"],
+      "dependsOn": [
+        "@repo/db#schema:gen",
+        "@repo/db#build",
+        "@repo/store#build"
+      ],
       "passThroughEnv": [
         "NODE_ENVIRONMENT",
         "NODE_HOST",

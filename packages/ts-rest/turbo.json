@@ -1,8 +1,0 @@
-{
-  "extends": ["//"],
-  "tasks": {
-    "dev": {
-      "dependsOn": ["@repo/db#schema:gen", "@repo/db#build"]
-    }
-  }
-}
