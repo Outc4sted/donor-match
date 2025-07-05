@@ -1,8 +1,9 @@
 # build output
 dist
 
-# generated types
+# generated
 .astro
+packages/db/src/prisma
 
 # turbo
 .turbo

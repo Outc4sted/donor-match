@@ -3,7 +3,7 @@
 
 # generated
 **/.astro
-packages/db/src/prisma/
+packages/db/src/prisma
 
 # dependencies
 **/node_modules
