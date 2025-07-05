@@ -1,9 +1,9 @@
 # build output
 **/dist
 
-# generated types
+# generated
 **/.astro
-**/schema.prisma
+packages/db/src/prisma/
 
 # dependencies
 **/node_modules
