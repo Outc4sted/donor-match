@@ -4,57 +4,15 @@
   "globalPassThroughEnv": ["DMNO_PARENT_SERVER"],
   "globalEnv": ["APP_ENV"],
   "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^build"]
+    },
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$"],
-      "outputs": ["dist/**"]
-    },
-    "api#build": {
-      "dependsOn": ["^@repo/ts-rest#build"],
-      "inputs": ["$TURBO_DEFAULT$"],
-      "env": [
-        "NODE_ENVIRONMENT",
-        "NODE_HOST",
-        "NODE_PORT",
-        "FRONTEND_HOST",
-        "CLERK_PUBLISHABLE_KEY",
-        "CLERK_SECRET_KEY",
-        "CLERK_JWT_KEY",
-        "DATABASE_URL"
-      ]
-    },
-    "web#build": {
-      "dependsOn": ["^@repo/ts-rest#build"],
-      "inputs": ["$TURBO_DEFAULT$"],
-      "env": [
-        "CLERK_SECRET_KEY",
-        "DONOR_MATCH_API",
-        "NODE_HOST",
-        "NODE_PORT",
-        "SITE_URL",
-        "CLERK_SECRET_KEY",
-        "PUBLIC_CLERK_PUBLISHABLE_KEY"
-      ]
-    },
-    "@repo/ts-rest#build": {
-      "dependsOn": ["^@repo/db#build"],
-      "inputs": ["$TURBO_DEFAULT$"]
-    },
-    "@repo/db#build": {
-      "dependsOn": ["@repo/db#schema:gen"],
-      "inputs": ["$TURBO_DEFAULT$"],
-      "env": [
-        "DATABASE_URL",
-        "POSTGRES_USER",
-        "POSTGRES_PASSWORD",
-        "POSTGRES_DB",
-        "POSTGRES_PORT",
-        "POSTGRES_HOST"
-      ]
-    },
-    "@repo/db#schema:gen": {
-      "inputs": ["$TURBO_DEFAULT$"],
-      "outputs": ["schema.prisma"]
+      "outputs": ["dist/**"],
+      "cache": true
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -63,13 +21,7 @@
       "dependsOn": ["^check-types"]
     },
     "env:docker": {
-      "dependsOn": ["^env:docker"],
-      "inputs": ["$TURBO_DEFAULT$"]
-    },
-    "dev": {
-      "inputs": ["$TURBO_DEFAULT$"],
-      "cache": false,
-      "persistent": true
+      "dependsOn": ["^env:docker"]
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "dev": {
+      "dependsOn": ["schema:gen", "schema:push", "build"]
+    },
+    "build": {
+      "dependsOn": ["schema:gen"]
+    },
+    "schema:gen": {
+      "outputs": ["src/prisma/**"],
+      "env": ["DATABASE_URL"]
+    },
+    "schema:push": {
+      "dependsOn": ["schema:gen"],
+      "env": ["DATABASE_URL"]
+    }
+  }
+}

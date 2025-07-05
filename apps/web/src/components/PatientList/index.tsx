@@ -6,7 +6,7 @@ import { apiClient, type GetPatientsResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { PatientListTableToolbar } from './PatientListTableToolbar'
 import { columns } from './columns'
-import type { patientSortableKeys } from '@repo/ts-rest'
+import type { patientSortableKeys } from '@repo/ts-rest/schemas/patients/getAllPatientsQuery'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)

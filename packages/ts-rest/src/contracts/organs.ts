@@ -1,8 +1,8 @@
-import type { organs, patients } from '@repo/db'
+import type { organs, patients } from '@repo/db/prisma'
 import { initContract } from '@ts-rest/core'
 import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
-import type { PaginationSummary } from '../types/index.ts'
 import { getAllOrgansQuery } from '../schemas/organs/getAllOrgansQuery.ts'
+import type { PaginationSummary } from '../lib/paginationSummary.ts'
 
 const c = initContract()
 

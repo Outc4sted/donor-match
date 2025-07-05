@@ -3,11 +3,11 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "turbo run build",
+    "build": "dmno run -- turbo run build",
     "dev": "dmno run -- turbo run dev",
     "lint": "dmno run -- turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "dmno": "dmno dev",
+    "dmno": "dmno",
     "check-types": "dmno run -- turbo run check-types",
     "env:docker": "APP_ENV=docker turbo run env:docker"
   },
@@ -20,7 +20,7 @@
   },
   "packageManager": "pnpm@10.12.4",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "dependencies": {
     "dmno": "*"

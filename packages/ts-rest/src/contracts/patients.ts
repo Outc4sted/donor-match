@@ -1,9 +1,9 @@
-import type { patients } from '@repo/db'
+import type { patients } from '@repo/db/prisma'
 import { initContract } from '@ts-rest/core'
 import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
-import type { PaginationSummary } from '../types/index.ts'
 import { getAllPatientsQuery } from '../schemas/patients/getAllPatientsQuery.ts'
 import { createPatientBody } from '../schemas/patients/createPatientBody.ts'
+import type { PaginationSummary } from '../lib/paginationSummary.ts'
 
 const c = initContract()
 

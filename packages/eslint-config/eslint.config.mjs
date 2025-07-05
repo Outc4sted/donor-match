@@ -10,6 +10,7 @@ export default eslintTS.config(
   {
     ignores: [
       '**/dist',
+      '**/generated',
       '**/node_modules',
       '**/.github',
       '**/.changeset',

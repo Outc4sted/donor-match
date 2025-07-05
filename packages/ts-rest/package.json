@@ -4,8 +4,22 @@
   "type": "module",
   "private": true,
   "exports": {
-    "types": "./src/index.ts",
-    "default": "./dist/index.js"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./src/lib/*.ts",
+      "default": "./dist/lib/*.js"
+    },
+    "./schemas/organs/*": {
+      "types": "./src/schemas/organs/*.ts",
+      "default": "./dist/schemas/organs/*.js"
+    },
+    "./schemas/patients/*": {
+      "types": "./src/schemas/patients/*.ts",
+      "default": "./dist/schemas/patients/*.js"
+    }
   },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",

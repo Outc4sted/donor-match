@@ -1,4 +1,4 @@
-import { BloodTypeKeys } from '@repo/db'
+import { BloodTypeKeys } from '@repo/db/constants'
 import { z } from 'zod'
 
 export const createPatientBody = z.object({

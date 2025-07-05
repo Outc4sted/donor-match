@@ -6,7 +6,7 @@ import { apiClient, type GetOrgansResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
 import { OrganListTableToolbar } from './OrganListTableToolbar'
 import { columns } from './columns'
-import type { organSortableKeys } from '@repo/ts-rest'
+import type { organSortableKeys } from '@repo/ts-rest/schemas/organs/getAllOrgansQuery'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)

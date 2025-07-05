@@ -1,4 +1,4 @@
-import { OrganTypeKeys } from '@repo/db'
+import { OrganTypeKeys } from '@repo/db/constants'
 import { z } from 'zod'
 
 const OrganTypeEnum = z.enum(OrganTypeKeys)

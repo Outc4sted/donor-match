@@ -1,0 +1,20 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["@repo/db#schema:gen", "@repo/db#build"],
+      "passThroughEnv": [
+        "NODE_ENVIRONMENT",
+        "NODE_HOST",
+        "NODE_PORT",
+        "FRONTEND_HOST",
+        "CLERK_PUBLISHABLE_KEY",
+        "CLERK_SECRET_KEY",
+        "CLERK_JWT_KEY",
+        "DATABASE_URL"
+      ]
+    }
+  }
+}

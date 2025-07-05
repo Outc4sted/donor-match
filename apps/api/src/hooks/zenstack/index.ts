@@ -1,7 +1,7 @@
 import { type FastifyRequest, type FastifyReply } from 'fastify'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@repo/db/prisma'
+import { enhance } from '@repo/db/zenstack/enhance'
 import type { ClerkClient } from '@clerk/backend'
-import { enhance } from '@zenstackhq/runtime'
 
 const prisma = new PrismaClient()
 

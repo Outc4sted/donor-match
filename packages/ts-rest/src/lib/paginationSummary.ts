@@ -1,3 +1,11 @@
+export interface PaginationSummary {
+  summary?: string
+  total: number
+  pages: number
+  page: number
+  limit?: number
+}
+
 interface Props {
   page?: number
   limit?: number
@@ -12,7 +20,7 @@ export function paginationSummary({
   total,
   name,
   pluralName,
-}: Props) {
+}: Props): PaginationSummary {
   const pages = limit ? Math.ceil(total / limit) : 1
   const rangeStart = (page - 1) * (limit ?? 0) + 1
   const rangeEnd = limit ? Math.min((page - 1) * limit + limit, total) : total

@@ -4,24 +4,36 @@
   "type": "module",
   "private": true,
   "exports": {
-    "types": "./src/index.ts",
-    "default": "./dist/index.js"
+    "./zenstack": {
+      "types": "./src/prisma/generated/logical-prisma-client/index.d.ts",
+      "default": "./src/prisma/generated/logical-prisma-client/index.js"
+    },
+    "./zenstack/enhance": "./src/prisma/generated/enhance.ts",
+    "./prisma": {
+      "types": "./src/prisma/generated/prisma-client-js/index.d.ts",
+      "default": "./src/prisma/generated/prisma-client-js/index.js"
+    },
+    "./constants": {
+      "types": "./src/constants/index.ts",
+      "default": "./dist/constants/index.js"
+    },
+    "./types": "./src/types.ts"
   },
   "scripts": {
-    "dev": "concurrently -n constants,models -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
-    "watch:ts": "nodemon --watch src/constants --watch src/index.ts --ext ts,json --exec \"pnpm run build\"",
-    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\"",
+    "dev": "concurrently -n models,constants -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
+    "watch:ts": "nodemon --watch src/constants --ext ts,json --exec \"pnpm run build\" --on-change-only",
+    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-types": "tsc --noEmit",
-    "schema:gen": "zenstack generate --schema ./src/schema.zmodel",
+    "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
     "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
     "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",
     "lint": "eslint . --fix --cache --max-warnings 0",
-    "seed": "prisma db seed",
+    "seed": "dmno run -- prisma db seed",
     "build": "tsc"
   },
   "prisma": {
-    "seed": "tsx src/prisma/seeds/index.ts"
+    "seed": "tsx src/seeds/index.ts"
   },
   "dependencies": {
     "@prisma/client": "*",
@@ -30,11 +42,11 @@
   },
   "devDependencies": {
     "@faker-js/faker": "*",
-    "@repo/typescript-config": "workspace:*",
     "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/node": "*",
-    "eslint": "*",
     "concurrently": "*",
+    "eslint": "*",
     "nodemon": "*",
     "prisma": "*",
     "tsx": "*",

@@ -4,8 +4,18 @@
   "type": "module",
   "private": true,
   "exports": {
-    "types": "./src/index.ts",
-    "default": "./dist/index.js"
+    "./organStore": {
+      "types": "./src/stores/organStore/index.ts",
+      "default": "./dist/stores/organStore/index.js"
+    },
+    "./patientStore": {
+      "types": "./src/stores/patientStore/index.ts",
+      "default": "./dist/stores/patientStore/index.js"
+    },
+    "./types": {
+      "types": "./src/types.ts",
+      "default": "./dist/types.js"
+    }
   },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",
@@ -21,8 +31,6 @@
     "@ts-rest/core": "*",
     "eslint": "*",
     "nodemon": "*",
-    "@prisma/client": "*",
-    "typescript": "latest",
-    "@zenstackhq/runtime": "*"
+    "typescript": "latest"
   }
 }
