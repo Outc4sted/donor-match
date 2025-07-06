@@ -1,8 +1,7 @@
 import { BloodType } from '@repo/db/prisma/enums'
+import { z } from 'zod/v4'
 
-import { z } from 'zod'
-
-const BloodTypeEnum = z.nativeEnum(BloodType)
+const BloodTypeEnum = z.enum(BloodType)
 
 export const bloodTypeQuery = z
   .object({

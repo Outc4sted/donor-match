@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from 'zod/v4'
 
 export const authorizationHeader = z
   .object({
@@ -10,7 +10,7 @@ export const authorizationHeader = z
       Boolean(headers.authorization) ||
       (headers.cookie !== undefined && headers.cookie.includes('__session=')),
     {
-      message:
+      error:
         'Either an authorization header or a __session cookie must be provided',
     },
   )

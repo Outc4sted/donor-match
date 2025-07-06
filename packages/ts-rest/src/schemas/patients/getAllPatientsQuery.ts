@@ -3,6 +3,7 @@ import { patientAgeQuery } from '../patientAgeQuery.ts'
 import { paginationQuery } from '../shared/paginationQuery.ts'
 import { searchQuery } from '../shared/searchQuery.ts'
 import { createSortQuerySchema } from '../shared/sortQuery.ts'
+import { z } from 'zod/v4'
 
 export const patientScalarSortKeys = [
   'createdAt',
@@ -24,9 +25,12 @@ export const patientSortableKeys = [
   ...patientCompositeSortKeys,
 ] as const
 
-export const getAllPatientsQuery = paginationQuery
-  .merge(bloodTypeQuery)
-  .merge(patientAgeQuery)
-  .merge(searchQuery)
-  .merge(createSortQuerySchema(patientSortableKeys))
+export const getAllPatientsQuery = z
+  .object({
+    ...paginationQuery.shape,
+    ...bloodTypeQuery.shape,
+    ...patientAgeQuery.shape,
+    ...searchQuery.shape,
+    ...createSortQuerySchema(patientSortableKeys).shape,
+  })
   .optional()

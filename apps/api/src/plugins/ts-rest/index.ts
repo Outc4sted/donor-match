@@ -7,15 +7,19 @@ import authHook from '../../hooks/authenticate/index.ts'
 import zenstackHook from '../../hooks/zenstack/index.ts'
 
 export default async (fastify: FastifyInstance) => {
-  const { router: createRouter, registerRouter } = initServer()
-  const router = createRouter(contract, {
-    organs: organsRoutes,
-    patients: patientsRoutes,
-  })
+  const { router, plugin } = initServer()
 
-  registerRouter(contract, router, fastify, {
-    hooks: {
-      onRequest: [authHook(fastify.clerk), zenstackHook(fastify.clerk)],
+  fastify.register(
+    plugin(
+      router(contract, {
+        organs: organsRoutes,
+        patients: patientsRoutes,
+      }),
+    ),
+    {
+      hooks: {
+        onRequest: [authHook(fastify.clerk), zenstackHook(fastify.clerk)],
+      },
     },
-  })
+  )
 }

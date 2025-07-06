@@ -28,7 +28,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/db": "workspace:*",
     "@repo/ts-rest": "workspace:*",
-    "@ts-rest/core": "*",
+    "@ts-rest/core": "3.53.0-rc.1",
     "eslint": "*",
     "nodemon": "*",
     "typescript": "latest"

@@ -1,4 +1,4 @@
-import { type DbClient } from '@repo/store/types'
+import { type DbClient } from '@repo/db/types'
 import {
   createPatient,
   getPatient,

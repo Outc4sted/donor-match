@@ -1,4 +1,4 @@
-import { type DbClient } from '@repo/store/types'
+import { type DbClient } from '@repo/db/types'
 import { getOrgans } from '@repo/store/organStore'
 import { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
 import { contract } from '@repo/ts-rest'

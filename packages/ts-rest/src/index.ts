@@ -9,6 +9,4 @@ export const contract = c.router({
   patients: patientRouter,
 })
 
-//
-// export { organSortableKeys } from './schemas/organs/getAllOrgansQuery.ts'
-// export { patientSortableKeys } from './schemas/patients/getAllPatientsQuery.ts'
+export * from '@repo/db/prisma/enums'
