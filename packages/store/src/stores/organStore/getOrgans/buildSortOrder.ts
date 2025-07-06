@@ -1,4 +1,4 @@
-import { Prisma } from '@repo/db/prisma'
+import type { Prisma } from '@repo/db/prisma/client'
 import { SortInput } from '../../../types.ts'
 
 export function buildSortOrder({ sortDir, sort }: SortInput) {

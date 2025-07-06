@@ -1,8 +1,8 @@
-import type { DefaultArgs } from './prisma/generated/logical-prisma-client/runtime/library.d.ts'
+import type { DefaultArgs } from '@prisma/client/runtime/library'
 import type {
   Prisma,
   PrismaClient,
-} from './prisma/generated/prisma-client-js/index.ts'
+} from './prisma/generated/prisma-client/client.ts'
 
 export type PrismaTransaction = Omit<
   PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>,

@@ -1,7 +1,6 @@
-import { PrismaClient } from '../prisma/generated/prisma-client-js/index.js'
+import { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
 import { faker } from '@faker-js/faker'
-import { BloodTypeKeys } from '../constants/index.ts'
-
+import { BloodType } from '../prisma/generated/prisma-client/enums.ts'
 const MAX_PATIENTS = 300
 
 export const generatePatient = () => ({
@@ -14,7 +13,7 @@ export const generatePatient = () => ({
     .int({ min: 100_00_0000, max: 999_99_9999 })
     .toString()
     .replace(/(\d{3})(\d{2})(\d{4})/, '$1-$2-$3'),
-  bloodType: faker.helpers.arrayElement(BloodTypeKeys),
+  bloodType: faker.helpers.arrayElement(Object.values(BloodType)),
 })
 
 export default async (prisma: PrismaClient) => {

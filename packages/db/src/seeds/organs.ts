@@ -1,9 +1,12 @@
 import type {
   PrismaClient,
   patients,
-} from '../prisma/generated/prisma-client-js/index.js'
+} from '../prisma/generated/prisma-client/client.ts'
 import { faker } from '@faker-js/faker'
-import { OrganTypeKeys, BloodTypeKeys } from '../constants/index.ts'
+import {
+  OrganType,
+  BloodType,
+} from '../prisma/generated/prisma-client/enums.ts'
 
 const MAX_ORGANS = 200
 
@@ -18,8 +21,8 @@ export const generateOrgan = ({
   recipientId: recipientId ?? null,
   latitude: faker.location.latitude(),
   longitude: faker.location.longitude(),
-  organType: faker.helpers.arrayElement(OrganTypeKeys),
-  bloodType: faker.helpers.arrayElement(BloodTypeKeys),
+  organType: faker.helpers.arrayElement(Object.values(OrganType)),
+  bloodType: faker.helpers.arrayElement(Object.values(BloodType)),
   organSize: faker.number.int({ min: 50, max: 5000 }),
 })
 

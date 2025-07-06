@@ -1,4 +1,5 @@
-import { type BloodType, Prisma } from '@repo/db/prisma'
+import { Prisma } from '@repo/db/prisma/client'
+import { type BloodType } from '@repo/db/prisma/enums'
 
 interface FilterInput {
   bloodType?: (keyof typeof BloodType)[]

@@ -1,4 +1,4 @@
-import type { patients } from '@repo/db/prisma'
+import type { patientsModel } from '@repo/db/prisma/models'
 import { initContract } from '@ts-rest/core'
 import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
 import { getAllPatientsQuery } from '../schemas/patients/getAllPatientsQuery.ts'
@@ -15,7 +15,10 @@ export const patientRouter = c.router({
     headers: authorizationHeader,
     query: getAllPatientsQuery,
     responses: {
-      200: c.type<{ patients: patients[]; pagination: PaginationSummary }>(),
+      200: c.type<{
+        patients: patientsModel[]
+        pagination: PaginationSummary
+      }>(),
     },
   },
   getPatient: {
@@ -24,7 +27,7 @@ export const patientRouter = c.router({
     path: '/api/patients/:patientId',
     headers: authorizationHeader,
     responses: {
-      200: c.type<{ patient: patients }>(),
+      200: c.type<{ patient: patientsModel }>(),
       404: c.type<{ error: string }>(),
     },
   },
@@ -35,7 +38,7 @@ export const patientRouter = c.router({
     headers: authorizationHeader,
     body: createPatientBody,
     responses: {
-      200: c.type<{ patient: patients }>(),
+      200: c.type<{ patient: patientsModel }>(),
       409: c.type<{ error: string }>(),
       500: c.type<{ error: string }>(),
     },

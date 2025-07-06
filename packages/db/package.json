@@ -4,25 +4,13 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./zenstack": {
-      "types": "./src/prisma/generated/logical-prisma-client/index.d.ts",
-      "default": "./src/prisma/generated/logical-prisma-client/index.js"
-    },
+    "./prisma/*": "./src/prisma/generated/prisma-client/*.ts",
+    "./zenstack/*": "./src/prisma/generated/logical-prisma-client/*.ts",
     "./zenstack/enhance": "./src/prisma/generated/enhance.ts",
-    "./prisma": {
-      "types": "./src/prisma/generated/prisma-client-js/index.d.ts",
-      "default": "./src/prisma/generated/prisma-client-js/index.js"
-    },
-    "./constants": {
-      "types": "./src/constants/index.ts",
-      "default": "./dist/constants/index.js"
-    },
     "./types": "./src/types.ts"
   },
   "scripts": {
-    "dev": "concurrently -n models,constants -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
-    "watch:ts": "nodemon --watch src/constants --ext ts,json --exec \"pnpm run build\" --on-change-only",
-    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
+    "dev": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-types": "tsc --noEmit",
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
@@ -45,7 +33,6 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "*",
-    "concurrently": "*",
     "eslint": "*",
     "nodemon": "*",
     "prisma": "*",

@@ -1,7 +1,7 @@
-import { OrganTypeKeys } from '@repo/db/constants'
+import { OrganType } from '@repo/db/prisma/enums'
 import { z } from 'zod'
 
-const OrganTypeEnum = z.enum(OrganTypeKeys)
+const OrganTypeEnum = z.nativeEnum(OrganType)
 
 export const organTypeQuery = z
   .object({

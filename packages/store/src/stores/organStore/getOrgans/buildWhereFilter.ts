@@ -1,4 +1,5 @@
-import { BloodType, OrganType, Prisma } from '@repo/db/prisma'
+import { Prisma } from '@repo/db/prisma/client'
+import type { BloodType, OrganType } from '@repo/db/prisma/enums'
 
 export function buildNameSearchFilter(
   search: string,

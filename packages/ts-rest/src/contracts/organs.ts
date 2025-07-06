@@ -1,4 +1,4 @@
-import type { organs, patients } from '@repo/db/prisma'
+import type { organsModel, patientsModel } from '@repo/db/prisma/models'
 import { initContract } from '@ts-rest/core'
 import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
 import { getAllOrgansQuery } from '../schemas/organs/getAllOrgansQuery.ts'
@@ -15,10 +15,10 @@ export const organRouter = c.router({
     query: getAllOrgansQuery,
     responses: {
       200: c.type<{
-        organs: (organs & {
-          donor: Pick<patients, 'patientId' | 'firstName' | 'lastName'>
+        organs: (organsModel & {
+          donor: Pick<patientsModel, 'patientId' | 'firstName' | 'lastName'>
           recipient: Pick<
-            patients,
+            patientsModel,
             'patientId' | 'firstName' | 'lastName'
           > | null
         })[]

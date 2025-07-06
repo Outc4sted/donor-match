@@ -2,14 +2,13 @@ import {
   PrismaClient,
   patients,
   organs,
-} from '../prisma/generated/prisma-client-js/index.js'
+} from '../prisma/generated/prisma-client/client.ts'
 import { faker } from '@faker-js/faker'
-import { OrganTypeKeys } from '../constants/index.ts'
-
+import { OrganType } from '../prisma/generated/prisma-client/enums.ts'
 const MAX_WAITLIST = 70
 
 export const generateWaitlistEntry = (patientId: string) => {
-  const organType = faker.helpers.arrayElement(OrganTypeKeys)
+  const organType = faker.helpers.arrayElement(Object.values(OrganType))
 
   const size =
     Math.random() < 0.8 ? faker.number.int({ min: 200, max: 4000 }) : undefined

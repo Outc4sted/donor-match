@@ -1,4 +1,4 @@
-import { BloodTypeKeys } from '@repo/db/constants'
+import { BloodType } from '@repo/db/prisma/enums'
 import { z } from 'zod'
 
 export const createPatientBody = z.object({
@@ -11,7 +11,7 @@ export const createPatientBody = z.object({
     .min(18, {
       message: 'Patient must be at least 18 to become an organ donor',
     }),
-  bloodType: z.enum(BloodTypeKeys, {
+  bloodType: z.nativeEnum(BloodType, {
     required_error: 'Blood type is required',
   }),
   ssn: z.string().regex(/^(?!000|666|9\d{2})\d{3}-\d{2}-\d{4}$/, {

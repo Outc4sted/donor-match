@@ -1,4 +1,4 @@
-import { PrismaClient } from '../prisma/generated/prisma-client-js/index.js'
+import { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
 import seedPatients from './patients.ts'
 import seedOrgans from './organs.ts'
 import seedWaitList from './waitlist.ts'

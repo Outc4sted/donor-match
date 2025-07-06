@@ -1,6 +1,6 @@
 import { contract } from '@repo/ts-rest'
 import type { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
-import { Prisma } from '@repo/db/prisma'
+import { Prisma } from '@repo/db/prisma/client'
 import type { DbClient } from '@repo/db/types'
 
 export async function createPatient(
