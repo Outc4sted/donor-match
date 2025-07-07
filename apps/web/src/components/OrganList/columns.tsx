@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import type { ColumnDef } from '@tanstack/react-table'
 import { format } from 'date-fns'
-import { bloodTypes, organTypes } from '@/constants'
 import type { GetOrgansResponse } from '@/lib/apiClient'
+import { organTypes, bloodTypes } from '@repo/ts-rest'
 
 const navLinkClasses = clsx(
   'font-medium',

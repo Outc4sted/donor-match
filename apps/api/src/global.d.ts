@@ -1,6 +1,6 @@
 import type { ClerkClient, User } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
-import type { PrismaClient } from '@repo/db/zenstack/client'
+import type { PrismaClient } from '@repo/db/prisma/client'
 
 declare module 'fastify' {
   interface FastifyInstance {

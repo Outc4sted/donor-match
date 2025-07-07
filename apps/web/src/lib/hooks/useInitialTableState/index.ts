@@ -6,8 +6,8 @@ import {
   type SetStateAction,
 } from 'react'
 import { useQueryParams } from '../useQueryParams'
-import type { BloodType, OrganType } from '@/constants'
 import type { SortingState } from '@tanstack/react-table'
+import type { BloodType, OrganType } from '@repo/ts-rest'
 
 export interface PaginationState {
   pagination: { pageIndex: number; pageSize: number }

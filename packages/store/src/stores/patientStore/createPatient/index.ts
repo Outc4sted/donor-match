@@ -1,7 +1,10 @@
 import { contract } from '@repo/ts-rest'
 import type { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
-import { Prisma } from '@repo/db/prisma/client'
 import type { DbClient } from '@repo/db/types'
+import {
+  toTypedPrismaError,
+  PrismaUniqueConstraintError,
+} from '@repo/db/prisma/errors'
 
 export async function createPatient(
   db: DbClient,
@@ -18,13 +21,12 @@ export async function createPatient(
       body: { patient },
     }
   } catch (error) {
-    if (
-      error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === 'P2002'
-    ) {
+    const typedError = toTypedPrismaError(error)
+
+    if (typedError instanceof PrismaUniqueConstraintError) {
       return {
         status: 409,
-        body: { error: error.message },
+        body: { error: typedError.message },
       }
     }
 

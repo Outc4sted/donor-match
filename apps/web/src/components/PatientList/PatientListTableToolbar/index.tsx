@@ -1,8 +1,8 @@
 import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
 import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
-import { bloodTypes, type BloodType } from '@/constants'
 import type { FilterState } from '@/lib/hooks/useInitialTableState'
+import { type BloodType, bloodTypes } from '@repo/ts-rest'
 
 export interface Props {
   readonly summary: string | undefined

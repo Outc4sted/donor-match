@@ -12,11 +12,6 @@
     "env:docker": "APP_ENV=docker turbo run env:docker",
     "prepare": "node .husky/install.mjs"
   },
-  "lint-staged": {
-    "**/*.{js,ts,tsx,md}": [
-      "turbo lint --filter=[HEAD^1] && pnpm run format"
-    ]
-  },
   "devDependencies": {
     "husky": "*",
     "lint-staged": "*",

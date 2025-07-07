@@ -5,6 +5,7 @@
   "private": true,
   "exports": {
     "./prisma/*": "./src/prisma/generated/prisma-client/*.ts",
+    "./prisma/errors": "./src/errors/index.ts",
     "./zenstack/*": "./src/prisma/generated/logical-prisma-client/*.ts",
     "./zenstack/enhance": "./src/prisma/generated/enhance.ts",
     "./types": "./src/types.ts"
