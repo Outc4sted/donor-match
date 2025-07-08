@@ -17,9 +17,9 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
-      "pnpm run lint"
+      "pnpm --filter=web run lint"
     ],
-    "**/*.{js,ts,tsx,json}": [
+    "**/*.{js,ts,tsx,json,md}": [
       "pnpm -w run format"
     ]
   },
