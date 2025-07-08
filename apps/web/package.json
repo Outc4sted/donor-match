@@ -12,8 +12,13 @@
     "test": "dmno run -- playwright test",
     "test:ui": "dmno run -- playwright test --ui",
     "env:docker": "dmno resolve --service web --format env > .dmno/.env.docker",
-    "lint": "eslint . --fix --cache --max-warnings 0",
+    "lint": "eslint --fix --cache --max-warnings 0",
     "test:snapshots": "pnpm run test -- --update-snapshots"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm run lint"
+    ]
   },
   "dependencies": {
     "@astrojs/node": "*",

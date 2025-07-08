@@ -14,14 +14,8 @@
       "outputs": ["dist/**"],
       "cache": true
     },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "check-types": {
-      "dependsOn": ["^check-types"]
-    },
-    "env:docker": {
-      "dependsOn": ["^env:docker"]
-    }
+    "lint": {},
+    "check-types": {},
+    "env:docker": {}
   }
 }
