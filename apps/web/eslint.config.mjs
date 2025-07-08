@@ -20,12 +20,4 @@ export default [
       'react/no-children-prop': 'off',
     },
   },
-
-  // Allow Zod error message types
-  {
-    files: ['**/components/**/*.{ts,tsx}'],
-    rules: {
-      camelcase: ['error', { allow: ['required_error', 'invalid_type_error'] }],
-    },
-  },
 ]

@@ -3,25 +3,23 @@
  * @type {import("prettier").Config}
  */
 const config = {
-  arrowParens: "always",
+  arrowParens: 'always',
   singleAttributePerLine: true,
-  endOfLine: "lf",
+  endOfLine: 'lf',
   bracketSpacing: true,
   tabWidth: 2,
-  trailingComma: "all",
+  trailingComma: 'all',
   singleQuote: true,
   semi: false,
-  plugins: [
-    "prettier-plugin-astro"
-  ],
+  plugins: ['prettier-plugin-astro'],
   overrides: [
     {
-      files: ["**/*.astro"],
+      files: ['**/*.astro'],
       options: {
-          parser: "astro"
-      }
-    }
-  ]
-};
+        parser: 'astro',
+      },
+    },
+  ],
+}
 
-export default config;
+export default config

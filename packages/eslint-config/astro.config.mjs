@@ -23,7 +23,6 @@ export default eslintTS.config(
       '**/.changeset',
       '**/.dmno',
       'eslint.config.mjs',
-      '**/components/ui/**/*.tsx',
     ],
   },
 
