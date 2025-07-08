@@ -16,11 +16,11 @@
     "test:snapshots": "pnpm run test -- --update-snapshots"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "sh -c 'pnpm --filter=web run check-types'",
       "pnpm --filter=web run lint"
     ],
-    "**/*.{js,ts,tsx,json,md}": [
+    "**/*.{mjs,ts,tsx,json,md}": [
       "pnpm -w run prettier"
     ]
   },

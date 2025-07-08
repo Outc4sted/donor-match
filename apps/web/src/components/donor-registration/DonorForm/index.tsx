@@ -4,10 +4,10 @@ import { clientStore } from '@/lib/stores/clientStore'
 import { apiClient } from '@/lib/apiClient'
 import { useMutation } from '@tanstack/react-query'
 import { type BloodType, bloodTypes } from '@repo/ts-rest'
+import { createPatientBody } from '@repo/ts-rest/schemas/patients/createPatientBody'
 import { DonorRegistrationSuccess } from './DonorRegistrationSuccess'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { useAppForm } from './useAppForm'
-import { createPatientBody } from '@repo/ts-rest/schemas/patients/createPatientBody'
 
 export function BaseDonorForm() {
   const queryClient = useStore(clientStore)
