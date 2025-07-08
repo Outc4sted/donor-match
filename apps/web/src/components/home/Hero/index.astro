@@ -6,12 +6,27 @@ import HeroImage from '@/assets/hero.png'
 
 <section
   id="hero"
-  class="bg-gradient-to-br from-red-100 to-white pb-20 pt-32"
+  class="bg-gradient-to-br from-red-100 to-white pt-32 pb-20"
 >
   <div class="container mx-auto px-4">
-    <div class="mr-4 flex flex-col items-center justify-between md:flex-row">
-      <div class="mb-10 md:mb-0 md:w-1/2">
-        <h1 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl">
+    <div
+      class={`
+        mr-4 flex flex-col items-center justify-between
+        md:flex-row
+      `}
+    >
+      <div
+        class={`
+          mb-10
+          md:mb-0 md:w-1/2
+        `}
+      >
+        <h1
+          class={`
+            mb-6 text-4xl font-bold text-gray-900
+            md:text-5xl
+          `}
+        >
           Save Lives Through Organ Donation
         </h1>
 
@@ -22,12 +37,18 @@ import HeroImage from '@/assets/hero.png'
 
         <div class="flex space-x-4">
           <Button
-            className="rounded-lg bg-red-600 px-8 py-3 text-white hover:bg-red-700"
+            className={`
+              rounded-lg bg-red-600 px-8 py-3 text-white
+              hover:bg-red-700
+            `}
           >
             Register as Donor
           </Button>
           <Button
-            className="rounded-lg border border-red-600 bg-white px-8 py-3 text-red-600 hover:bg-red-50"
+            className={`
+              rounded-lg border border-red-600 bg-white px-8 py-3 text-red-600
+              hover:bg-red-50
+            `}
           >
             <a href="/resources/learn-more">Learn More</a>
           </Button>

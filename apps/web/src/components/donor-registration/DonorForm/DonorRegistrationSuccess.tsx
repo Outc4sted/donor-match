@@ -70,9 +70,17 @@ export function DonorRegistrationSuccess({ patient }: Props) {
 
       <div
         id="action-buttons"
-        className="flex flex-col justify-center gap-4 sm:flex-row"
+        className={`
+          flex flex-col justify-center gap-4
+          sm:flex-row
+        `}
       >
-        <Button className="flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-neutral-700 hover:bg-neutral-50">
+        <Button
+          className={`
+            flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-neutral-700
+            hover:bg-neutral-50
+          `}
+        >
           <House />
           <a href="/">Return to Home</a>
         </Button>

@@ -32,7 +32,14 @@ export function SSNField({ label = 'SSN', isOptional = false }: Props) {
         name={field.name}
         value={field.state.value ?? ''}
         type="text"
-        className={error ? 'border-red-500 focus:ring-red-500' : ''}
+        className={
+          error
+            ? `
+              border-red-500
+              focus:ring-red-500
+            `
+            : ''
+        }
         onChange={({ target }) => {
           const formatted = formatSSN(target.value)
           field.handleChange(formatted)

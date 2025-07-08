@@ -27,7 +27,14 @@ export function InputField({
         name={field.name}
         value={field.state.value}
         type={type}
-        className={error ? 'border-red-500 focus:ring-red-500' : ''}
+        className={
+          error
+            ? `
+              border-red-500
+              focus:ring-red-500
+            `
+            : ''
+        }
         onChange={(e) => field.handleChange(e.target.value)}
       />
     </FormFieldLayout>

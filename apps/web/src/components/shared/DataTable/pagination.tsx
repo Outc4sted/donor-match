@@ -14,7 +14,12 @@ export interface DataTablePaginationProps<TData> {
 
 export function Pagination<TData>({ table }: DataTablePaginationProps<TData>) {
   return (
-    <div className="flex items-center space-x-6 py-1 lg:space-x-8">
+    <div
+      className={`
+        flex items-center space-x-6 py-1
+        lg:space-x-8
+      `}
+    >
       <PageSizeSelect table={table} />
 
       <div className="ml-auto flex w-[100px] items-center justify-center text-sm font-medium">

@@ -24,7 +24,12 @@ const { siteName } = Astro.locals
   class="bg-gray-900 py-12 text-white"
 >
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
+    <div
+      class={`
+        grid grid-cols-1 gap-8
+        md:grid-cols-4
+      `}
+    >
       <div>
         <div class="mb-6 flex items-center space-x-2">
           <HeartPulse className="text-2xl text-red-500" />

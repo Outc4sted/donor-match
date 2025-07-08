@@ -15,7 +15,10 @@ export function SubmitButton({ label = 'Submit' }: Props) {
           type="submit"
           disabled={isSubmitting}
           aria-disabled={isSubmitting}
-          className="rounded-lg bg-red-600 px-8 py-3 text-white hover:bg-red-700"
+          className={`
+            rounded-lg bg-red-600 px-8 py-3 text-white
+            hover:bg-red-700
+          `}
         >
           {label}
         </Button>

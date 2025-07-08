@@ -20,7 +20,10 @@ const { href, label } = Astro.props
 
 <a
   href={href}
-  class={`${navLinkClasses} ${Astro.url.pathname === href ? 'text-red-700' : ''}`}
+  class={`
+    ${navLinkClasses}
+    ${Astro.url.pathname === href ? 'text-red-700' : ''}
+  `}
 >
   {label}
 </a>

@@ -13,7 +13,12 @@ const { siteName } = Astro.locals
       How {siteName} Works
     </h2>
 
-    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+    <div
+      class={`
+        grid grid-cols-1 gap-8
+        md:grid-cols-3
+      `}
+    >
       <div class="text-center">
         <div class="rounded-xl bg-white p-6 shadow-sm">
           <ClipboardList className="mb-4 text-3xl text-red-600" />

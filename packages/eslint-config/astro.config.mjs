@@ -23,6 +23,7 @@ export default eslintTS.config(
       '**/.changeset',
       '**/.dmno',
       'eslint.config.mjs',
+      '**/components/ui/**/*.tsx',
     ],
   },
 
@@ -78,6 +79,9 @@ export default eslintTS.config(
   eslintAstro.configs['flat/recommended'],
   // eslintAstro.configs['flat/jsx-a11y-strict'],
 
+  // Prettier
+  eslintPrettier,
+
   // Tailwind
   {
     files: ['**/*.{jsx,tsx,astro}'],
@@ -94,6 +98,10 @@ export default eslintTS.config(
     rules: {
       ...eslintTailwind.configs['recommended-warn'].rules,
       ...eslintTailwind.configs['recommended-error'].rules,
+      'better-tailwindcss/enforce-consistent-line-wrapping': [
+        'warn',
+        { printWidth: 160 },
+      ],
     },
     settings: {
       'better-tailwindcss': {
@@ -101,9 +109,6 @@ export default eslintTS.config(
       },
     },
   },
-
-  // Prettier
-  eslintPrettier,
 
   // Custom rules
   {

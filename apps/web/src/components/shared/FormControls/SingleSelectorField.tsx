@@ -38,7 +38,17 @@ export function SingleSelectorField({
         onValueChange={field.handleChange}
       >
         <SelectTrigger
-          className={`w-full ${error ? 'border-red-500 focus:ring-red-500' : ''}`}
+          className={`
+            w-full
+            ${
+              error
+                ? `
+                  border-red-500
+                  focus:ring-red-500
+                `
+                : ''
+            }
+          `}
         >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>

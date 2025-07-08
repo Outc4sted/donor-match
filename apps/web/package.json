@@ -20,6 +20,7 @@
       "sh -c 'pnpm --filter=web run check-types'",
       "pnpm --filter=web run lint"
     ],
+    "!./src/components/ui/**": [],
     "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
     ]

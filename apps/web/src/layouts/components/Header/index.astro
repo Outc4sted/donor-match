@@ -28,7 +28,12 @@ const { siteName } = Astro.locals
         <span class="text-2xl font-semibold text-gray-800">{siteName}</span>
       </div>
 
-      <nav class="hidden space-x-8 md:flex">
+      <nav
+        class={`
+          hidden space-x-8
+          md:flex
+        `}
+      >
         <NavLink
           href="/"
           label="Home"
@@ -48,7 +53,11 @@ const { siteName } = Astro.locals
 
       <div class="flex items-center space-x-4">
         <Button
-          className="hidden rounded-lg bg-red-600 px-4 py-2 text-white hover:bg-red-700 md:block"
+          className={`
+            hidden rounded-lg bg-red-600 px-4 py-2 text-white
+            hover:bg-red-700
+            md:block
+          `}
         >
           <a href="/donor-registration">Become a Donor</a>
         </Button>

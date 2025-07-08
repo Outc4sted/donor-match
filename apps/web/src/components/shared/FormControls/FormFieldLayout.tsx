@@ -31,7 +31,12 @@ export function FormFieldLayout({
 
       {children}
 
-      <p className={`min-h-4 text-xs ${error ? 'text-red-600' : 'invisible'}`}>
+      <p
+        className={`
+          min-h-4 text-xs
+          ${error ? 'text-red-600' : 'invisible'}
+        `}
+      >
         {error?.message}
       </p>
     </div>

@@ -99,7 +99,11 @@ export function DataTable<TData, TValue>({
                   return (
                     <TableHead
                       key={header.id}
-                      className="cursor-pointer hover:bg-red-100 focus:bg-red-100"
+                      className={`
+                        cursor-pointer
+                        hover:bg-red-100
+                        focus:bg-red-100
+                      `}
                       tabIndex={0}
                       onClick={() => toggleSorting(header)}
                       onKeyDown={({ key }) => {

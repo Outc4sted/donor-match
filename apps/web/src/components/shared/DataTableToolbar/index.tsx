@@ -46,7 +46,7 @@ export function DataTableToolbar({
       ) : null}
 
       {setSearch ? (
-        <div className="min-w-sm flex w-full max-w-sm">
+        <div className="flex w-full max-w-sm min-w-sm">
           <Input
             className="max-w-md rounded-r-none"
             type="text"

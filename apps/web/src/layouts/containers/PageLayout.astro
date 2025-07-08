@@ -16,7 +16,7 @@ const { title, subtitle, image } = Astro.props
 
 <section
   id="dashboard-page-layout"
-  class="mb-8 bg-gradient-to-br from-red-100 to-white pb-10 pt-32"
+  class="mb-8 bg-gradient-to-br from-red-100 to-white pt-32 pb-10"
 >
   <div class="container mx-auto flex items-center justify-between px-4">
     <div class="mb-8">
@@ -29,7 +29,12 @@ const { title, subtitle, image } = Astro.props
 
     {
       image && (
-        <div class="pointer-events-none flex justify-center md:w-1/2">
+        <div
+          class={`
+            pointer-events-none flex justify-center
+            md:w-1/2
+          `}
+        >
           <Image
             class="h-auto w-2/5 rounded-xl opacity-90"
             src={image.src}
