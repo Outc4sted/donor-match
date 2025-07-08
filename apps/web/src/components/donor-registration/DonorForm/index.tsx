@@ -2,12 +2,12 @@ import { useStore } from '@nanostores/react'
 import { selectOptions } from '@/lib/utils'
 import { clientStore } from '@/lib/stores/clientStore'
 import { apiClient } from '@/lib/apiClient'
+import { type BloodType, bloodTypes } from '@repo/ts-rest'
 import { useMutation } from '@tanstack/react-query'
 import { DonorRegistrationSuccess } from './DonorRegistrationSuccess'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
 import { useAppForm } from './useAppForm'
 import { createPatientBody } from '@repo/ts-rest/schemas/patients/createPatientBody'
-import { type BloodType, bloodTypes } from '@repo/ts-rest'
 
 export function BaseDonorForm() {
   const queryClient = useStore(clientStore)
