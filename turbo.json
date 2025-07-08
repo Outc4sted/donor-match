@@ -14,8 +14,12 @@
       "outputs": ["dist/**"],
       "cache": true
     },
-    "lint": {},
+    "lint": {
+      "outputs": [".eslintcache"]
+    },
     "check-types": {},
-    "env:docker": {}
+    "env:docker": {
+      "outputs": [".dmno/.env.docker"]
+    }
   }
 }
