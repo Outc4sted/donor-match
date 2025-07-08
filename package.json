@@ -6,7 +6,7 @@
     "build": "dmno run -- turbo run build",
     "dev": "dmno run -- turbo run dev",
     "lint": "dmno run -- turbo run lint",
-    "format": "prettier --write",
+    "prettier": "prettier --write",
     "dmno": "dmno",
     "check-types": "dmno run -- turbo run check-types",
     "env:docker": "APP_ENV=docker turbo run env:docker",

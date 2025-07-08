@@ -8,7 +8,16 @@
     "start": "dmno run -- astro dev",
     "build": "dmno run -- astro build",
     "preview": "dmno run -- astro preview",
-    "astro": "dmno run -- astro"
+    "astro": "dmno run -- astro",
+    "lint": "eslint --fix --cache --max-warnings 0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm --filter=docs run lint"
+    ],
+    "**/*.{js,ts,tsx,json,md}": [
+      "pnpm -w run prettier"
+    ]
   },
   "dependencies": {
     "@astrojs/starlight": "*",

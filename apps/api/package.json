@@ -9,7 +9,15 @@
     "check-types": "tsc --noEmit",
     "build": "tsc",
     "env:docker": "dmno resolve --service api --format env > .dmno/.env.docker",
-    "lint": "eslint . --fix --cache --max-warnings 0"
+    "lint": "eslint --fix --cache --max-warnings 0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm --filter=api run lint"
+    ],
+    "**/*.{js,ts,tsx,json,md}": [
+      "pnpm -w run prettier"
+    ]
   },
   "dependencies": {
     "@clerk/backend": "*",

@@ -17,12 +17,20 @@
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
     "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
     "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",
-    "lint": "eslint . --fix --cache --max-warnings 0",
+    "lint": "eslint --fix --cache --max-warnings 0",
     "seed": "dmno run -- prisma db seed",
     "build": "tsc"
   },
   "prisma": {
     "seed": "tsx src/seeds/index.ts"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm --filter=@repo/db run lint"
+    ],
+    "**/*.{js,ts,tsx,json,md}": [
+      "pnpm -w run prettier"
+    ]
   },
   "dependencies": {
     "@prisma/client": "*",

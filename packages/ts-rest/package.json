@@ -24,8 +24,16 @@
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",
     "check-types": "tsc --noEmit",
-    "lint": "eslint . --fix --cache --max-warnings 0",
+    "lint": "eslint --fix --cache --max-warnings 0",
     "build": "tsc"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "pnpm --filter=@repo/ts-rest run lint"
+    ],
+    "**/*.{js,ts,tsx,json,md}": [
+      "pnpm -w run prettier"
+    ]
   },
   "dependencies": {
     "@repo/typescript-config": "workspace:*",
