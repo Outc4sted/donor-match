@@ -17,7 +17,10 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
-      "pnpm run lint --"
+      "pnpm run lint"
+    ],
+    "**/*.{js,ts,tsx,json}": [
+      "pnpm -w run format"
     ]
   },
   "dependencies": {
