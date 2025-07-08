@@ -17,6 +17,7 @@
   },
   "lint-staged": {
     "**/*.{js,ts,tsx}": [
+      "sh -c 'pnpm --filter=web run check-types'",
       "pnpm --filter=web run lint"
     ],
     "**/*.{js,ts,tsx,json,md}": [
