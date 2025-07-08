@@ -13,10 +13,11 @@
     "lint": "eslint --fix --cache --max-warnings 0"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
+    "**/*.{ts,tsx}": [
+      "sh -c 'pnpm --filter=docs run check-types'",
       "pnpm --filter=docs run lint"
     ],
-    "**/*.{js,ts,tsx,json,md}": [
+    "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
     ]
   },

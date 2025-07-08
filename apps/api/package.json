@@ -12,10 +12,11 @@
     "lint": "eslint --fix --cache --max-warnings 0"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
+    "**/*.{ts,tsx}": [
+      "sh -c 'pnpm --filter=api run check-types'",
       "pnpm --filter=api run lint"
     ],
-    "**/*.{js,ts,tsx,json,md}": [
+    "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
     ]
   },

@@ -4,16 +4,12 @@
   "type": "module",
   "private": true,
   "exports": {
-    "./organStore": {
-      "types": "./src/stores/organStore/index.ts",
-      "default": "./dist/stores/organStore/index.js"
-    },
-    "./patientStore": {
-      "types": "./src/stores/patientStore/index.ts",
-      "default": "./dist/stores/patientStore/index.js"
+    "./*": {
+      "types": "./dist/stores/*/index.d.ts",
+      "default": "./dist/stores/*/index.js"
     },
     "./types": {
-      "types": "./src/types.ts",
+      "types": "./dist/types.d.ts",
       "default": "./dist/types.js"
     }
   },
@@ -24,10 +20,11 @@
     "build": "tsc"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
+    "**/*.{ts,tsx}": [
+      "sh -c 'pnpm --filter=@repo/store run check-types'",
       "pnpm --filter=@repo/store run lint"
     ],
-    "**/*.{js,ts,tsx,json,md}": [
+    "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
     ]
   },

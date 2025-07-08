@@ -5,19 +5,19 @@
   "private": true,
   "exports": {
     ".": {
-      "types": "./src/index.ts",
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./*": {
-      "types": "./src/lib/*.ts",
+      "types": "./dist/lib/*.d.ts",
       "default": "./dist/lib/*.js"
     },
     "./schemas/organs/*": {
-      "types": "./src/schemas/organs/*.ts",
+      "types": "./dist/schemas/organs/*.d.ts",
       "default": "./dist/schemas/organs/*.js"
     },
     "./schemas/patients/*": {
-      "types": "./src/schemas/patients/*.ts",
+      "types": "./dist/schemas/patients/*.d.ts",
       "default": "./dist/schemas/patients/*.js"
     }
   },
@@ -28,10 +28,11 @@
     "build": "tsc"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": [
+    "**/*.{ts,tsx}": [
+      "sh -c 'pnpm --filter=@repo/ts-rest run check-types'",
       "pnpm --filter=@repo/ts-rest run lint"
     ],
-    "**/*.{js,ts,tsx,json,md}": [
+    "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
     ]
   },
