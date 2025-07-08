@@ -8,7 +8,7 @@
     "build": "dmno run -- astro build",
     "preview": "dmno run -- astro preview",
     "astro": "dmno run -- astro",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit --incremental",
     "test": "dmno run -- playwright test",
     "test:ui": "dmno run -- playwright test --ui",
     "env:docker": "dmno resolve --service web --format env > .dmno/.env.docker",

@@ -15,10 +15,15 @@
       "cache": true
     },
     "lint": {
+      "dependsOn": ["^lint"],
       "outputs": [".eslintcache"]
     },
-    "check-types": {},
+    "check-types": {
+      "dependsOn": ["^check-types"],
+      "outputs": ["dist/tsconfig.tsbuildinfo"]
+    },
     "env:docker": {
+      "dependsOn": ["^env:docker"],
       "outputs": [".dmno/.env.docker"]
     }
   }

@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit --incremental",
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
     "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
     "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",

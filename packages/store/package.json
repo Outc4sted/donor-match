@@ -19,7 +19,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec \"pnpm run build\"",
-    "check-types": "tsc --noEmit",
+    "check-types": "tsc --noEmit --incremental",
     "lint": "eslint --fix --cache --max-warnings 0",
     "build": "tsc"
   },
