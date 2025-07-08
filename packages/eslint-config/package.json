@@ -17,14 +17,14 @@
     "eslint-config-xo": "*",
     "eslint-config-xo-react": "*",
     "eslint-plugin-astro": "*",
+    "eslint-plugin-better-tailwindcss": "*",
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-prettier": "*",
     "eslint-plugin-react": "*",
-    "eslint-plugin-tailwindcss": "*",
     "globals": "*",
     "jiti": "*",
     "prettier": "*",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "*",
     "typescript": "latest",
     "typescript-eslint": "*"
   }

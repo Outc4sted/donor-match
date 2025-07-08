@@ -17,7 +17,6 @@
     "lint-staged": "*",
     "prettier": "*",
     "prettier-plugin-astro": "*",
-    "prettier-plugin-tailwindcss": "*",
     "turbo": "*",
     "typescript": "latest"
   },

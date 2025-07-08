@@ -57,7 +57,7 @@
     "react-dom": "*",
     "react-error-boundary": "*",
     "tailwind-merge": "*",
-    "tailwindcss": "latest",
+    "tailwindcss": "*",
     "tw-animate-css": "*",
     "zod": "*"
   },

@@ -12,12 +12,11 @@ const config = {
   singleQuote: true,
   semi: false,
   plugins: [
-    "prettier-plugin-astro",
-    "prettier-plugin-tailwindcss"
+    "prettier-plugin-astro"
   ],
   overrides: [
     {
-      files: "*.astro",
+      files: ["**/*.astro"],
       options: {
           parser: "astro"
       }

@@ -2,7 +2,7 @@ import globals from 'globals'
 import eslintJS from '@eslint/js'
 import eslintTS from 'typescript-eslint'
 import eslintAstro from 'eslint-plugin-astro'
-import eslintTailwind from 'eslint-plugin-tailwindcss'
+import eslintTailwind from 'eslint-plugin-better-tailwindcss'
 import eslintPrettier from 'eslint-plugin-prettier/recommended'
 import eslintXO from 'eslint-config-xo/space'
 import eslintXOReact from 'eslint-config-xo-react/space'
@@ -80,7 +80,28 @@ export default eslintTS.config(
   // eslintAstro.configs['flat/jsx-a11y-strict'],
 
   // Tailwind
-  eslintTailwind.configs['flat/recommended'],
+  {
+    files: ['**/*.{jsx,tsx,astro}'],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      'better-tailwindcss': eslintTailwind,
+    },
+    rules: {
+      ...eslintTailwind.configs['recommended-warn'].rules,
+      ...eslintTailwind.configs['recommended-error'].rules,
+    },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: 'src/styles/global.css',
+      },
+    },
+  },
 
   // Prettier
   eslintPrettier,
@@ -126,13 +147,6 @@ export default eslintTS.config(
       'no-restricted-exports': [
         'error',
         { restrictDefaultExports: { direct: true } },
-      ],
-      'tailwindcss/no-custom-classname': [
-        'warn',
-        {
-          // Tailwind eslint only supports v3 atm...
-          whitelist: ['min-w-sm'],
-        },
       ],
     },
   },
