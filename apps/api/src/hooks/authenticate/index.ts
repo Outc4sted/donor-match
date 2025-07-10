@@ -2,7 +2,8 @@ import { type FastifyRequest, type FastifyReply } from 'fastify'
 import type { ClerkClient } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
 
-export default (clerk: ClerkClient) =>
+export const authHook =
+  (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     const tokenSameOrigin = request.cookies.__session
     const tokenCrossOrigin = request.headers.authorization

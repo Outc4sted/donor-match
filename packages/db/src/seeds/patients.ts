@@ -1,4 +1,4 @@
-import { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
+import type { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
 import { faker } from '@faker-js/faker'
 import { BloodType } from '../prisma/generated/prisma-client/enums.ts'
 const MAX_PATIENTS = 300
@@ -16,7 +16,7 @@ export const generatePatient = () => ({
   bloodType: faker.helpers.arrayElement(Object.values(BloodType)),
 })
 
-export default async (prisma: PrismaClient) => {
+export async function seedPatients(prisma: PrismaClient) {
   const generatedPatients = Array.from(
     { length: MAX_PATIENTS },
     generatePatient,

@@ -1,4 +1,4 @@
-import {
+import type {
   PrismaClient,
   patients,
   organs,
@@ -21,11 +21,11 @@ export const generateWaitlistEntry = (patientId: string) => {
   }
 }
 
-export default async (
+export async function seedWaitList(
   prisma: PrismaClient,
   patients: patients[],
   organs: organs[],
-) => {
+) {
   const eligiblePatients = patients.filter(
     (p) => !organs.find((o) => o.recipientId === p.patientId),
   )

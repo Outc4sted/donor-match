@@ -1,6 +1,6 @@
 import { buildWhereFilter } from './buildWhereFilter.ts'
 import { buildSortOrder } from './buildSortOrder.ts'
-import { contract } from '@repo/ts-rest'
+import type { contract } from '@repo/ts-rest'
 import type { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
 import type { DbClient } from '@repo/db/types'
 import { paginationSummary } from '@repo/ts-rest/paginationSummary'

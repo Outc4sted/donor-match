@@ -473,11 +473,10 @@ export function toTypedPrismaError(error: unknown): BaseError | null {
     return null
   }
 
-  const code: ErrorCode = error.code as ErrorCode
-  const ErrorClass = errorCodeToClass[code]
-  if (!ErrorClass) {
-    return null
+  if (error.code in errorCodeToClass) {
+    const ErrorClass = errorCodeToClass[error.code as ErrorCode]
+    return new ErrorClass(error)
   }
 
-  return new ErrorClass(error)
+  return null
 }

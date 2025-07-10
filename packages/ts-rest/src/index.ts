@@ -1,7 +1,8 @@
 import { initContract } from '@ts-rest/core'
 import { organRouter } from './contracts/organs.ts'
 import { patientRouter } from './contracts/patients.ts'
-import { OrganType, BloodType } from '@repo/db/prisma/enums'
+import type { BloodType } from '@repo/db/prisma/enums'
+import { OrganType } from '@repo/db/prisma/enums'
 
 const c = initContract()
 

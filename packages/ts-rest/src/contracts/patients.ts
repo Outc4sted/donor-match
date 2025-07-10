@@ -1,10 +1,10 @@
 import type { patientsModel } from '@repo/db/prisma/models'
 import { initContract } from '@ts-rest/core'
-import { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
+import type { authorizationHeader } from '../schemas/shared/authorizationHeader.ts'
 import { getAllPatientsQuery } from '../schemas/patients/getAllPatientsQuery.ts'
 import { createPatientBody } from '../schemas/patients/createPatientBody.ts'
 import type { PaginationSummary } from '../lib/paginationSummary.ts'
-import { z } from 'zod/v4'
+import type { z } from 'zod/v4'
 
 const c = initContract()
 

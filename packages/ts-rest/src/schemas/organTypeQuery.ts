@@ -7,8 +7,6 @@ export const organTypeQuery = z
   .object({
     organType: z
       .union([OrganTypeEnum, z.array(OrganTypeEnum)])
-      .transform((val) =>
-        val === undefined ? [] : Array.isArray(val) ? val : [val],
-      ),
+      .transform((val) => (Array.isArray(val) ? val : [val])),
   })
   .partial()
