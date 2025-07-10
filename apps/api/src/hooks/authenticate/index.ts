@@ -12,7 +12,7 @@ export default (clerk: ClerkClient) =>
         throw new Error('Not signed in')
       }
 
-      const decoded = (await request.jwtVerify()) as JwtPayload
+      const decoded = await request.jwtVerify<JwtPayload>()
       const permittedOrigins = [
         'http://localhost:3000',
         DMNO_CONFIG.FRONTEND_HOST,

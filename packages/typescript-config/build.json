@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Build",
+  "compilerOptions": {
+    "tsBuildInfoFile": "${configDir}/dist/tsconfig.build.tsbuildinfo",
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}/src",
+    "noEmit": false
+  },
+  "include": ["${configDir}/src/**/*.ts", "${configDir}/src/**/*.tsx"]
+}

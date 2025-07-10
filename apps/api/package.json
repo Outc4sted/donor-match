@@ -7,7 +7,7 @@
     "dev": "dmno run -- tsx --watch src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-types": "tsc --noEmit --incremental",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "env:docker": "dmno resolve --service api --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0"
   },

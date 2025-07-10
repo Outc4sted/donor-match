@@ -1,21 +1,55 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Strict",
   "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    "isolatedModules": true,
+
+    "allowJs": true,
+    "checkJs": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "lib": ["ES2023"],
+    "module": "NodeNext",
+    "target": "ES2022",
+    "moduleDetection": "force",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "incremental": true,
+
+    "rewriteRelativeImportExtensions": true,
+    "allowImportingTsExtensions": true,
     "declaration": true,
     "declarationMap": true,
-    "esModuleInterop": true,
-    "incremental": false,
-    "isolatedModules": true,
-    "lib": ["es2022", "DOM", "DOM.Iterable"],
-    "moduleDetection": "force",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "noUncheckedIndexedAccess": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2022",
-    "rewriteRelativeImportExtensions": true,
-    "allowImportingTsExtensions": true
-  }
+    "pretty": true,
+    "preserveWatchOutput": true,
+    "baseUrl": "${configDir}",
+    "tsBuildInfoFile": "${configDir}/dist/tsconfig.tsbuildinfo"
+  },
+  "include": [
+    "${configDir}/.storybook/**/*",
+    "${configDir}/**/*.astro",
+    "${configDir}/**/*.ts",
+    "${configDir}/**/*.tsx"
+  ],
+  "exclude": [
+    "${configDir}/node_modules",
+    "${configDir}/dist",
+    "${configDir}/storybook-static",
+    "${configDir}/playwright-report",
+    "${configDir}/test-results"
+  ]
 }

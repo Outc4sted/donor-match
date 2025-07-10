@@ -6,19 +6,19 @@
   "exports": {
     "./prisma/*": {
       "types": "./dist/prisma/generated/prisma-client/*.d.ts",
-      "default": "./dist/prisma/generated/prisma-client/*.ts"
+      "default": "./dist/prisma/generated/prisma-client/*.js"
     },
     "./prisma/errors": {
       "types": "./dist/errors/index.d.ts",
-      "default": "./dist/errors/index.ts"
+      "default": "./dist/errors/index.js"
     },
     "./zenstack/*": {
       "types": "./dist/prisma/generated/logical-prisma-client/*.d.ts",
-      "default": "./dist/prisma/generated/logical-prisma-client/*.ts"
+      "default": "./dist/prisma/generated/logical-prisma-client/*.js"
     },
     "./zenstack/enhance": {
       "types": "./dist/prisma/generated/enhance.d.ts",
-      "default": "./dist/prisma/generated/enhance.ts"
+      "default": "./dist/prisma/generated/enhance.js"
     },
     "./types": {
       "types": "./dist/types.d.ts",
@@ -26,7 +26,9 @@
     }
   },
   "scripts": {
-    "dev": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
+    "dev": "concurrently -n models,ts -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
+    "watch:ts": "tsc -w -p tsconfig.build.json",
+    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-types": "tsc --noEmit --incremental",
     "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
@@ -34,7 +36,7 @@
     "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0",
     "seed": "dmno run -- prisma db seed",
-    "build": "tsc"
+    "build": "tsc -p tsconfig.build.json"
   },
   "prisma": {
     "seed": "tsx src/seeds/index.ts"
@@ -58,6 +60,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/node": "*",
+    "concurrently": "*",
     "eslint": "*",
     "nodemon": "*",
     "prisma": "*",
