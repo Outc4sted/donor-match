@@ -26,7 +26,7 @@ export const generateOrgan = ({
   organSize: faker.number.int({ min: 50, max: 5000 }),
 })
 
-export default async (prisma: PrismaClient, patients: patients[]) => {
+export async function seedOrgans(prisma: PrismaClient, patients: patients[]) {
   const donors = faker.helpers.shuffle(patients)
   const recipients = faker.helpers.shuffle(patients)
 

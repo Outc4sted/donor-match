@@ -7,8 +7,7 @@ export const authorizationHeader = z
   })
   .refine(
     (headers) =>
-      Boolean(headers.authorization) ||
-      (headers.cookie !== undefined && headers.cookie.includes('__session=')),
+      Boolean(headers.authorization) || headers.cookie?.includes('__session='),
     {
       error:
         'Either an authorization header or a __session cookie must be provided',

@@ -2,7 +2,8 @@ import { type FastifyRequest, type FastifyReply } from 'fastify'
 import type { ClerkClient } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
 
-export default (clerk: ClerkClient) =>
+export const authHook =
+  (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     const tokenSameOrigin = request.cookies.__session
     const tokenCrossOrigin = request.headers.authorization
@@ -12,7 +13,7 @@ export default (clerk: ClerkClient) =>
         throw new Error('Not signed in')
       }
 
-      const decoded = (await request.jwtVerify()) as JwtPayload
+      const decoded = await request.jwtVerify<JwtPayload>()
       const permittedOrigins = [
         'http://localhost:3000',
         DMNO_CONFIG.FRONTEND_HOST,

@@ -4,8 +4,8 @@ import {
   getPatient,
   getPatients,
 } from '@repo/store/patientStore'
-import { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
-import { contract } from '@repo/ts-rest'
+import type { ServerInferRequest, ServerInferResponses } from '@ts-rest/core'
+import type { contract } from '@repo/ts-rest'
 
 export const patientService = {
   async getPatients(

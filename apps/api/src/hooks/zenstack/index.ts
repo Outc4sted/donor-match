@@ -1,23 +1,24 @@
 import { type FastifyRequest, type FastifyReply } from 'fastify'
+import type { ClerkClient } from '@clerk/backend'
 import { PrismaClient } from '@repo/db/prisma/client'
 import { enhance } from '@repo/db/zenstack/enhance'
-import type { ClerkClient } from '@clerk/backend'
 
 const prisma = new PrismaClient()
 
-export default (clerk: ClerkClient) =>
+export const zenstackHook =
+  (clerk: ClerkClient) =>
   async (request: FastifyRequest, reply: FastifyReply) => {
     try {
       const user = request.requestContext.get('user')
       const memberships = await clerk.users.getOrganizationMembershipList({
         userId: user.id,
       })
-      const membership = memberships?.data?.[0] ?? null
+      const membership = memberships.data[0] ?? null
 
       const db = enhance(prisma, {
         user: {
           id: user.id,
-          role: user.publicMetadata?.role ?? membership?.role,
+          role: user.publicMetadata.role ?? membership?.role,
           permissions: membership?.permissions,
         },
       })

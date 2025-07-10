@@ -6,19 +6,19 @@
   "exports": {
     "./prisma/*": {
       "types": "./dist/prisma/generated/prisma-client/*.d.ts",
-      "default": "./dist/prisma/generated/prisma-client/*.ts"
+      "default": "./dist/prisma/generated/prisma-client/*.js"
     },
     "./prisma/errors": {
       "types": "./dist/errors/index.d.ts",
-      "default": "./dist/errors/index.ts"
+      "default": "./dist/errors/index.js"
     },
     "./zenstack/*": {
       "types": "./dist/prisma/generated/logical-prisma-client/*.d.ts",
-      "default": "./dist/prisma/generated/logical-prisma-client/*.ts"
+      "default": "./dist/prisma/generated/logical-prisma-client/*.js"
     },
     "./zenstack/enhance": {
       "types": "./dist/prisma/generated/enhance.d.ts",
-      "default": "./dist/prisma/generated/enhance.ts"
+      "default": "./dist/prisma/generated/enhance.js"
     },
     "./types": {
       "types": "./dist/types.d.ts",

@@ -1,7 +1,7 @@
 import { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
-import seedPatients from './patients.ts'
-import seedOrgans from './organs.ts'
-import seedWaitList from './waitlist.ts'
+import { seedPatients } from './patients.ts'
+import { seedOrgans } from './organs.ts'
+import { seedWaitList } from './waitlist.ts'
 
 const prisma = new PrismaClient()
 
@@ -19,7 +19,7 @@ const prisma = new PrismaClient()
   .then(async () => {
     await prisma.$disconnect()
   })
-  .catch(async (error) => {
+  .catch(async (error: unknown) => {
     console.error(error)
     await prisma.$disconnect()
     process.exit(1)
