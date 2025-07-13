@@ -1,6 +1,6 @@
 import type { ClerkClient, User } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
-import type { PrismaClient } from '@repo/db/zenstack/enhance'
+import type { enhance } from '@repo/db/zenstack/enhance'
 
 declare module 'fastify' {
   interface FastifyInstance {
@@ -24,7 +24,7 @@ declare global {
 declare module '@fastify/request-context' {
   interface RequestContextData {
     user: User
-    db: PrismaClient
+    db: ReturnType<typeof enhance>
   }
 
   interface RequestContext {

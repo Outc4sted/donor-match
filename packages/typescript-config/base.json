@@ -40,10 +40,21 @@
     "tsBuildInfoFile": "${configDir}/dist/tsconfig.tsbuildinfo"
   },
   "include": [
+    "${configDir}/.commitlintrc.ts",
     "${configDir}/.storybook/**/*",
     "${configDir}/**/*.astro",
     "${configDir}/**/*.ts",
-    "${configDir}/**/*.tsx"
+    "${configDir}/**/*.tsx",
+    "${configDir}/**/*.cts",
+    "${configDir}/**/*.ctsx",
+    "${configDir}/**/*.mts",
+    "${configDir}/**/*.mtsx",
+    "${configDir}/**/*.js",
+    "${configDir}/**/*.jsx",
+    "${configDir}/**/*.cjs",
+    "${configDir}/**/*.cjsx",
+    "${configDir}/**/*.mjs",
+    "${configDir}/**/*.mjsx"
   ],
   "exclude": [
     "${configDir}/node_modules",

@@ -1,34 +1,42 @@
 {
   "name": "donor-match",
   "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "build": "dmno run -- turbo run build",
-    "dev": "dmno run -- turbo run dev",
-    "lint": "dmno run -- turbo run lint",
-    "prettier": "prettier --write",
-    "dmno": "dmno",
     "check-types": "dmno run -- turbo run check-types",
+    "dev": "dmno run -- turbo run dev",
+    "dmno": "dmno",
     "env:docker": "APP_ENV=docker turbo run env:docker",
-    "prepare": "node .husky/install.mjs"
-  },
-  "devDependencies": {
-    "husky": "*",
-    "lint-staged": "*",
-    "prettier": "*",
-    "prettier-plugin-astro": "*",
-    "turbo": "*",
-    "typescript": "latest"
-  },
-  "packageManager": "pnpm@10.12.4",
-  "engines": {
-    "node": ">=22"
+    "preinstall": "npx only-allow pnpm",
+    "lint": "dmno run -- turbo run lint",
+    "prepare": "node .husky/install.mjs",
+    "prettier": "prettier --write"
   },
   "dependencies": {
     "dmno": "*"
   },
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ]
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "*",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/eslint": "*",
+    "@types/node": "*",
+    "eslint": "*",
+    "husky": "*",
+    "lint-staged": "*",
+    "prettier": "*",
+    "prettier-plugin-astro": "*",
+    "prettier-plugin-packagejson": "*",
+    "turbo": "*",
+    "typescript": "latest"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": ">=22"
+  }
 }

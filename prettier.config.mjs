@@ -11,7 +11,11 @@ const config = {
   trailingComma: 'all',
   singleQuote: true,
   semi: false,
-  plugins: ['prettier-plugin-astro'],
+  plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
+    'prettier-plugin-packagejson',
+    'prettier-plugin-astro',
+  ],
   overrides: [
     {
       files: ['**/*.astro'],
@@ -20,6 +24,28 @@ const config = {
       },
     },
   ],
+  importOrder: [
+    '',
+    '^react$',
+    '^next(/.*)?$',
+    '',
+    '<TYPES>',
+    '<TYPES>^[.]',
+    '',
+    '<BUILTIN_MODULES>',
+    '',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^@orbitkit/(.*)$',
+    '',
+    '^@/(.*)$',
+    '',
+    '^[./]',
+    '',
+    '^(?!.*[.]css$)[./].*$',
+    '.css$',
+  ],
+  importOrderTypeScriptVersion: '5.8.3',
 }
 
 export default config

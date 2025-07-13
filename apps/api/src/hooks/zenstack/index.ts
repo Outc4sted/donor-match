@@ -1,7 +1,8 @@
-import { type FastifyRequest, type FastifyReply } from 'fastify'
 import type { ClerkClient } from '@clerk/backend'
+
 import { PrismaClient } from '@repo/db/prisma/client'
 import { enhance } from '@repo/db/zenstack/enhance'
+import { type FastifyReply, type FastifyRequest } from 'fastify'
 
 const prisma = new PrismaClient()
 
@@ -21,7 +22,7 @@ export const zenstackHook =
           role: user.publicMetadata.role ?? membership?.role,
           permissions: membership?.permissions,
         },
-      })
+      }) as ReturnType<typeof enhance>
 
       request.requestContext.set('db', db)
     } catch (error) {

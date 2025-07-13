@@ -1,23 +1,31 @@
-import astroConfig from '@repo/eslint-config/astro'
+import { configs, defineConfig } from '@repo/eslint-config'
 
-export default [
-  ...astroConfig,
+export default defineConfig(...configs.base)
 
-  {
-    files: ['**/*.{astro,js,jsx,ts,tsx,cjs,mjs}'],
-    languageOptions: {
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
 
-  // Allow children props for TanStack Form
-  {
-    files: ['**/components/**/*Form/**/*.tsx'],
-    rules: {
-      'react/no-children-prop': 'off',
-    },
-  },
-]
+//
+// export default [
+//   ...astroConfig,
+
+//   {
+//     ignores: ['**/components/ui/**/*.tsx'],
+//   },
+
+//   {
+//     files: ['**/*.{astro,js,jsx,ts,tsx,cjs,mjs}'],
+//     languageOptions: {
+//       parserOptions: {
+//         project: true,
+//         tsconfigRootDir: import.meta.dirname,
+//       },
+//     },
+//   },
+
+//   // Allow children props for TanStack Form
+//   {
+//     files: ['**/components/**/*Form/**/*.tsx'],
+//     rules: {
+//       'react/no-children-prop': 'off',
+//     },
+//   },
+// ]

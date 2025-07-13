@@ -1,3 +1,4 @@
+import type { enhance } from './prisma/generated/enhance.ts'
 import type {
   Prisma,
   PrismaClient,
@@ -8,4 +9,4 @@ export type PrismaTransaction = Omit<
   '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'
 >
 
-export type DbClient = PrismaClient | PrismaTransaction
+export type DbClient = ReturnType<typeof enhance> | PrismaTransaction

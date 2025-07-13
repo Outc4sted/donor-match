@@ -1,28 +1,38 @@
 {
   "name": "@repo/eslint-config",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "exports": {
-    "./base": "./eslint.config.mjs",
-    "./main": "./main.config.mjs",
-    "./astro": "./astro.config.mjs"
+    ".": {
+      "default": "./src/index.js",
+      "types": "./src/index.d.ts"
+    }
   },
   "devDependencies": {
+    "@eslint/compat": "*",
+    "@eslint/eslintrc": "*",
     "@eslint/js": "*",
+    "@repo/typescript-config": "workspace:*",
     "@tanstack/eslint-plugin-query": "*",
     "@typescript-eslint/parser": "*",
+    "@typescript-eslint/utils": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
+    "eslint-config-turbo": "*",
     "eslint-config-xo": "*",
     "eslint-config-xo-react": "*",
     "eslint-plugin-astro": "*",
     "eslint-plugin-better-tailwindcss": "*",
+    "eslint-plugin-jsdoc": "*",
     "eslint-plugin-jsx-a11y": "*",
+    "eslint-plugin-playwright": "*",
     "eslint-plugin-prettier": "*",
     "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-regexp": "*",
+    "eslint-plugin-storybook": "*",
     "globals": "*",
-    "jiti": "*",
     "prettier": "*",
     "tailwindcss": "*",
     "typescript": "latest",

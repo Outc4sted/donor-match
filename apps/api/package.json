@@ -1,15 +1,15 @@
 {
   "name": "api",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "dmno run -- tsx --watch src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "check-types": "tsc --noEmit --incremental",
     "build": "tsc -p tsconfig.build.json",
+    "check-types": "tsc --noEmit --incremental",
+    "dev": "dmno run -- tsx --watch src/server.ts",
     "env:docker": "dmno resolve --service api --format env > .dmno/.env.docker",
-    "lint": "eslint --fix --cache --max-warnings 0"
+    "lint": "eslint --fix --cache --max-warnings 0",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -44,7 +44,6 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/qs": "*",
-    "eslint": "*",
     "pino-pretty": "*",
     "tsx": "*",
     "typescript": "latest"
