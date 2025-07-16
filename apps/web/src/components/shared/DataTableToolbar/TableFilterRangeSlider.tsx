@@ -1,11 +1,14 @@
-import { useEffect, useState, type ComponentProps } from 'react'
+import { useEffect, useState } from 'react'
+
+import type { ComponentProps } from 'react'
+
 import { Button } from '@/components/ui/button'
+import { DualRangeSlider } from '@/components/ui/dual-range-slider'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { DualRangeSlider } from '@/components/ui/dual-range-slider'
 
 export interface Props extends ComponentProps<typeof DualRangeSlider> {
   readonly filterName: string
@@ -62,7 +65,13 @@ export function TableFilterRangeSlider({
         </div>
 
         <div className="mt-4 flex gap-2">
-          <Button onClick={() => handleFilter(values)}>Filter</Button>
+          <Button
+            onClick={() => {
+              handleFilter(values)
+            }}
+          >
+            Filter
+          </Button>
           <Button
             variant="outline"
             onClick={() => {

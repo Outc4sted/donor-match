@@ -5,7 +5,7 @@ import { initClient } from '@ts-rest/core'
 const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/api(.*)'])
 
 export const onRequest = clerkMiddleware(
-  (auth, { request, cookies, locals }) => {
+  (auth, { request, cookies, locals }, next) => {
     const { redirectToSignIn, userId } = auth()
     const requestUrl = new URL(request.url)
     const token = cookies.get('__session')
@@ -36,5 +36,7 @@ export const onRequest = clerkMiddleware(
           }),
       )
     }
+
+    return next()
   },
 )

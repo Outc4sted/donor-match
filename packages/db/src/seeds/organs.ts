@@ -1,11 +1,13 @@
 import type {
-  PrismaClient,
   patients,
+  PrismaClient,
 } from '../prisma/generated/prisma-client/client.ts'
+
 import { faker } from '@faker-js/faker'
+
 import {
-  OrganType,
   BloodType,
+  OrganType,
 } from '../prisma/generated/prisma-client/enums.ts'
 
 const MAX_ORGANS = 200

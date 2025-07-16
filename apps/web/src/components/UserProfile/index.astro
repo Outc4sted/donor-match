@@ -1,8 +1,9 @@
 ---
 import { type GetPatientResponse } from '@/lib/apiClient'
+
+import MedicalInformation from './MedicalInformation/index.astro'
 import SideBar from './SideBar/index.astro'
 import StatusBar from './StatusBar/index.astro'
-import MedicalInformation from './MedicalInformation/index.astro'
 
 interface Props {
   patient: GetPatientResponse['patient']

@@ -1,12 +1,16 @@
+import type { GetOrgansResponse } from '@/lib/apiClient'
+import type { organSortableKeys } from '@repo/ts-rest/schemas/organs/getAllOrgansQuery'
+
 import { useStore } from '@nanostores/react'
+
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { apiClient } from '@/lib/apiClient'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import { apiClient, type GetOrgansResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
-import { OrganListTableToolbar } from './OrganListTableToolbar'
+
 import { columns } from './columns'
-import type { organSortableKeys } from '@repo/ts-rest/schemas/organs/getAllOrgansQuery'
+import { OrganListTableToolbar } from './OrganListTableToolbar'
 
 function BaseOrgansTable() {
   const queryClient = useStore(clientStore)

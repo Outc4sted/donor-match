@@ -1,9 +1,9 @@
-import { type FastifyInstance } from 'fastify'
-import fp from 'fastify-plugin'
-import { contract } from '@repo/ts-rest'
-import { generateOpenApi } from '@ts-rest/open-api'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
+import { contract } from '@repo/ts-rest'
+import { generateOpenApi } from '@ts-rest/open-api'
+import { type FastifyInstance } from 'fastify'
+import fp from 'fastify-plugin'
 
 const openApiDocument = generateOpenApi(
   contract,

@@ -1,6 +1,7 @@
-import { type FastifyRequest, type FastifyReply } from 'fastify'
 import type { ClerkClient } from '@clerk/backend'
 import type { JwtPayload } from '@clerk/types'
+
+import { type FastifyReply, type FastifyRequest } from 'fastify'
 
 export const authHook =
   (clerk: ClerkClient) =>

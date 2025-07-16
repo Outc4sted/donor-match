@@ -1,10 +1,10 @@
-import {
-  ErrorBoundary as ReactErrorBoundary,
-  type FallbackProps,
-} from 'react-error-boundary'
 import type { ComponentType, ReactNode } from 'react'
+import type { FallbackProps } from 'react-error-boundary'
+
 import { QueryErrorResetBoundary } from '@tanstack/react-query'
-import { ErrorFallback } from './ErrorFallback'
+import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary'
+
+import { ErrorFallback } from './ErrorFallback.tsx'
 
 export interface Props {
   readonly children: ReactNode

@@ -19,6 +19,9 @@ export function SubmitButton({ label = 'Submit' }: Props) {
             rounded-lg bg-red-600 px-8 py-3 text-white
             hover:bg-red-700
           `}
+          onClick={async () => {
+            await form.handleSubmit()
+          }}
         >
           {label}
         </Button>

@@ -1,9 +1,10 @@
 // Shadcnui-expansions.typeart.cc/docs/multiple-selector
 
-import { Command as CommandPrimitive, useCommandState } from 'cmdk'
-import { X } from 'lucide-react'
 import * as React from 'react'
 import { forwardRef, useEffect } from 'react'
+
+import { Command as CommandPrimitive, useCommandState } from 'cmdk'
+import { X } from 'lucide-react'
 
 import { Badge } from '@/components/ui/badge'
 import {
@@ -93,7 +94,9 @@ export function useDebounce<T>(value: T, delay?: number): T {
   const [debouncedValue, setDebouncedValue] = React.useState<T>(value)
 
   useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay || 500)
+    const timer = setTimeout(() => {
+      setDebouncedValue(value)
+    }, delay || 500)
 
     return () => {
       clearTimeout(timer)
@@ -223,9 +226,11 @@ const MultipleSelector = React.forwardRef<
       ref,
       () => ({
         selectedValue: [...selected],
-        input: inputRef.current as HTMLInputElement,
+        input: inputRef.current!,
         focus: () => inputRef?.current?.focus(),
-        reset: () => setSelected([]),
+        reset: () => {
+          setSelected([])
+        },
       }),
       [selected],
     )
@@ -260,7 +265,7 @@ const MultipleSelector = React.forwardRef<
               const lastSelectOption = selected[selected.length - 1]
               // If last item is fixed, we should not remove it.
               if (!lastSelectOption?.fixed) {
-                handleUnselect(selected[selected.length - 1] as Option)
+                handleUnselect(selected[selected.length - 1]!)
               }
             }
           }
@@ -464,10 +469,8 @@ const MultipleSelector = React.forwardRef<
         <div
           className={cn(
             `
-              min-h-10 rounded-md border border-input text-base
-              ring-offset-background
-              focus-within:ring-2 focus-within:ring-ring
-              focus-within:ring-offset-2
+              border-input ring-offset-background min-h-10 rounded-md border text-base
+              focus-within:ring-ring focus-within:ring-2 focus-within:ring-offset-2
               md:text-sm
             `,
             {
@@ -487,15 +490,8 @@ const MultipleSelector = React.forwardRef<
                 <Badge
                   key={option.value}
                   className={cn(
-                    `
-                      data-[disabled]:bg-muted-foreground
-                      data-[disabled]:text-muted
-                      data-[disabled]:hover:bg-muted-foreground
-                    `,
-                    `
-                      data-[fixed]:bg-muted-foreground data-[fixed]:text-muted
-                      data-[fixed]:hover:bg-muted-foreground
-                    `,
+                    `data-[disabled]:bg-muted-foreground data-[disabled]:text-muted data-[disabled]:hover:bg-muted-foreground`,
+                    `data-[fixed]:bg-muted-foreground data-[fixed]:text-muted data-[fixed]:hover:bg-muted-foreground`,
                     badgeClassName,
                   )}
                   data-fixed={option.fixed}
@@ -506,8 +502,8 @@ const MultipleSelector = React.forwardRef<
                     type="button"
                     className={cn(
                       `
-                        ml-1 rounded-full ring-offset-background outline-none
-                        focus:ring-2 focus:ring-ring focus:ring-offset-2
+                        ring-offset-background ml-1 rounded-full outline-none
+                        focus:ring-ring focus:ring-2 focus:ring-offset-2
                       `,
                       (disabled || option.fixed) && 'hidden',
                     )}
@@ -520,11 +516,13 @@ const MultipleSelector = React.forwardRef<
                       e.preventDefault()
                       e.stopPropagation()
                     }}
-                    onClick={() => handleUnselect(option)}
+                    onClick={() => {
+                      handleUnselect(option)
+                    }}
                   >
                     <X
                       className={`
-                        size-3 text-muted-foreground
+                        text-muted-foreground size-3
                         hover:text-foreground
                       `}
                     />
@@ -545,8 +543,8 @@ const MultipleSelector = React.forwardRef<
               }
               className={cn(
                 `
-                  flex-1 bg-transparent outline-none
                   placeholder:text-muted-foreground
+                  flex-1 bg-transparent outline-none
                 `,
                 {
                   'w-full': hidePlaceholderWhenSelected,
@@ -593,10 +591,7 @@ const MultipleSelector = React.forwardRef<
         <div className="relative">
           {open ? (
             <CommandList
-              className={`
-                absolute top-1 z-10 w-full animate-in rounded-md border
-                bg-popover text-popover-foreground shadow-md outline-none
-              `}
+              className="animate-in bg-popover text-popover-foreground absolute top-1 z-10 w-full rounded-md border shadow-md outline-none"
               onMouseLeave={() => {
                 setOnScrollbar(false)
               }}
@@ -635,7 +630,7 @@ const MultipleSelector = React.forwardRef<
                               className={cn(
                                 'cursor-pointer',
                                 option.disable &&
-                                  'cursor-default text-muted-foreground',
+                                  'text-muted-foreground cursor-default',
                               )}
                               onMouseDown={(e) => {
                                 e.preventDefault()

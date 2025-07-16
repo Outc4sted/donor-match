@@ -1,12 +1,16 @@
+import type { GetPatientsResponse } from '@/lib/apiClient'
+import type { patientSortableKeys } from '@repo/ts-rest/schemas/patients/getAllPatientsQuery'
+
 import { useStore } from '@nanostores/react'
+
 import { DataTable } from '@/components/shared/DataTable'
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { apiClient } from '@/lib/apiClient'
 import { useInitialTableState } from '@/lib/hooks/useInitialTableState'
-import { apiClient, type GetPatientsResponse } from '@/lib/apiClient'
 import { clientStore } from '@/lib/stores/clientStore'
-import { PatientListTableToolbar } from './PatientListTableToolbar'
+
 import { columns } from './columns'
-import type { patientSortableKeys } from '@repo/ts-rest/schemas/patients/getAllPatientsQuery'
+import { PatientListTableToolbar } from './PatientListTableToolbar'
 
 function BasePatientsTable() {
   const queryClient = useStore(clientStore)

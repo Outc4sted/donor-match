@@ -1,54 +1,75 @@
 import { fixupConfigRules } from '@eslint/compat'
+import eslintXOReact from 'eslint-config-xo-react/space'
+import globals from 'globals'
 
 import { compat, defineConfig } from '../utils.js'
 
 import eslintTailwind from 'eslint-plugin-better-tailwindcss'
 
-/**
- * @type {import('typescript-eslint').Config}
- */
 export const react = defineConfig(
-  ...fixupConfigRules(compat.extends('plugin:react/recommended')),
-  ...fixupConfigRules(compat.extends('plugin:react-hooks/recommended')),
   ...fixupConfigRules(compat.extends('plugin:jsx-a11y/strict')),
 
   // Tailwind plugin
-  ...fixupConfigRules({
-    // files: ['**/*.{jsx,tsx,astro}'],
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
+  {
+    files: ['**/*.tsx'],
     plugins: {
       'better-tailwindcss': eslintTailwind,
     },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: `${import.meta.dirname}/src/styles/global.css`,
+      },
+    },
     rules: {
-      ...eslintTailwind.configs['recommended-warn'].rules,
-      ...eslintTailwind.configs['recommended-error'].rules,
+      ...eslintTailwind.configs.recommended.rules,
       'better-tailwindcss/enforce-consistent-line-wrapping': [
         'warn',
         { printWidth: 160 },
       ],
     },
-    settings: {
-      'better-tailwindcss': {
-        entryPoint: 'src/styles/global.css',
-      },
-    },
-  }),
+  },
 
+  // XO
   {
-    settings: {
-      react: {
-        version: 'detect',
+    files: ['**/*.{ts,tsx}'],
+    extends: [eslintXOReact],
+  },
+
+  // Globals
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        DMNO_PUBLIC_CONFIG: 'readonly',
       },
     },
+  },
+
+  // Rule overrides
+  {
+    files: ['**/*.{ts,tsx}'],
     rules: {
       'react/react-in-jsx-scope': 'off',
-      'react/prop-types': 'off',
+      'react/no-children-prop': [
+        'error',
+        {
+          allowFunctions: true,
+        },
+      ],
+      'react/jsx-tag-spacing': [
+        'error',
+        {
+          beforeSelfClosing: 'always',
+        },
+      ],
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        {
+          checksVoidReturn: {
+            attributes: false,
+          },
+        },
+      ],
     },
   },
 )

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 type ParamValue = string | string[] | null | undefined
 
@@ -30,7 +30,9 @@ export function useQueryParams() {
             currentParams.delete(key)
           } else if (Array.isArray(value)) {
             currentParams.delete(key)
-            value.forEach((v) => currentParams.append(key, v))
+            value.forEach((v) => {
+              currentParams.append(key, v)
+            })
           } else {
             currentParams.set(key, value)
           }
@@ -45,9 +47,14 @@ export function useQueryParams() {
   )
 
   useEffect(() => {
-    const handlePopState = () => setParams(getQueryParams())
+    const handlePopState = () => {
+      setParams(getQueryParams())
+    }
+
     window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
   }, [])
 
   return [params, updateQueryParams] as const

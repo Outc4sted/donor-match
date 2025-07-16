@@ -1,6 +1,6 @@
+import { createClerkClient } from '@clerk/backend'
 import { type FastifyInstance } from 'fastify'
 import fp from 'fastify-plugin'
-import { createClerkClient } from '@clerk/backend'
 
 export default fp(async function (fastify: FastifyInstance) {
   const clerk = createClerkClient({

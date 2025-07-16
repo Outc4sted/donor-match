@@ -2,9 +2,6 @@ import { fixupConfigRules } from '@eslint/compat'
 
 import { compat, defineConfig } from '../utils.js'
 
-/**
- * @type {import('typescript-eslint').Config}
- */
 export const storybook = defineConfig(
   {
     ignores: ['!.storybook'],

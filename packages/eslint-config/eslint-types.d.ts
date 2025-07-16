@@ -88,3 +88,51 @@ declare module 'eslint-plugin-turbo' {
   }
   export const rules: Record<string, Rule.RuleModule>
 }
+
+declare module 'eslint-config-xo/space' {
+  import type { Linter } from 'eslint'
+  const config: Linter.Config
+  // eslint-disable-next-line no-restricted-exports
+  export default config
+}
+
+declare module 'eslint-config-xo-react/space' {
+  import type { Linter } from 'eslint'
+  const config: Linter.Config
+  // eslint-disable-next-line no-restricted-exports
+  export default config
+}
+
+declare module 'eslint-plugin-better-tailwindcss' {
+  import type { ESLint, Linter } from 'eslint'
+
+  const plugin: ESLint.Plugin & {
+    configs: {
+      recommended: Linter.Config
+      'recommended-error': Linter.Config
+      'recommended-warn': Linter.Config
+    }
+  }
+
+  // eslint-disable-next-line no-restricted-exports
+  export default plugin
+}
+
+declare module 'eslint-plugin-astro' {
+  import type { ESLint, Linter } from 'eslint'
+  import type { ConfigWithExtends } from 'typescript-eslint'
+
+  const plugin: ESLint.Plugin & {
+    configs: {
+      'jsx-a11y-strict': Linter.Config
+      'flat/recommended': Linter.Config
+      recommended: {
+        [Symbol.iterator]: () => IterableIterator<ConfigWithExtends>
+        rules: Linter.RulesRecord
+      }
+    }
+  }
+
+  // eslint-disable-next-line no-restricted-exports
+  export default plugin
+}

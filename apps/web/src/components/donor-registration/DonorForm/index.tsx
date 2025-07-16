@@ -1,12 +1,16 @@
+import type { BloodType } from '@repo/ts-rest'
+
 import { useStore } from '@nanostores/react'
-import { selectOptions } from '@/lib/utils'
-import { clientStore } from '@/lib/stores/clientStore'
-import { apiClient } from '@/lib/apiClient'
-import { useMutation } from '@tanstack/react-query'
-import { type BloodType, bloodTypes } from '@repo/ts-rest'
+import { bloodTypes } from '@repo/ts-rest'
 import { createPatientBody } from '@repo/ts-rest/schemas/patients/createPatientBody'
-import { DonorRegistrationSuccess } from './DonorRegistrationSuccess'
+import { useMutation } from '@tanstack/react-query'
+
 import { QueryErrorBoundary } from '@/components/shared/ErrorBoundaries/QueryErrorBoundary'
+import { apiClient } from '@/lib/apiClient'
+import { clientStore } from '@/lib/stores/clientStore'
+import { selectOptions } from '@/lib/utils'
+
+import { DonorRegistrationSuccess } from './DonorRegistrationSuccess'
 import { useAppForm } from './useAppForm'
 
 export function BaseDonorForm() {
@@ -45,6 +49,8 @@ export function BaseDonorForm() {
             },
           }
         }
+
+        return null
       },
     },
   })
@@ -55,11 +61,8 @@ export function BaseDonorForm() {
   return (
     <div className="mb-12 text-center">
       <form
-        onSubmit={async (e) => {
+        onSubmit={(e) => {
           e.preventDefault()
-          e.stopPropagation()
-          await form.validate('submit')
-          form.handleSubmit()
         }}
       >
         <form.AppField

@@ -1,10 +1,12 @@
+import type { ReactNode } from 'react'
+
 import { AlertCircle, Info } from 'lucide-react'
+
 import {
-  Alert as ShadcnAlert,
   AlertDescription,
   AlertTitle,
+  Alert as ShadcnAlert,
 } from '@/components/ui/alert'
-import type { ReactNode } from 'react'
 
 export interface Props {
   readonly message: string

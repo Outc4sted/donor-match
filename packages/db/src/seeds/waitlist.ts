@@ -1,10 +1,13 @@
 import type {
-  PrismaClient,
-  patients,
   organs,
+  patients,
+  PrismaClient,
 } from '../prisma/generated/prisma-client/client.ts'
+
 import { faker } from '@faker-js/faker'
+
 import { OrganType } from '../prisma/generated/prisma-client/enums.ts'
+
 const MAX_WAITLIST = 70
 
 export const generateWaitlistEntry = (patientId: string) => {

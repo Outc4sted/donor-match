@@ -17,6 +17,7 @@
     "@tanstack/eslint-plugin-query": "*",
     "@typescript-eslint/parser": "*",
     "@typescript-eslint/utils": "*",
+    "astro-eslint-parser": "*",
     "eslint": "*",
     "eslint-config-prettier": "*",
     "eslint-config-turbo": "*",

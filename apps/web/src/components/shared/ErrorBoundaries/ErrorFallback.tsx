@@ -1,5 +1,5 @@
-import { Button } from '@/components/ui/button'
 import { Alert } from '@/components/shared/Alert'
+import { Button } from '@/components/ui/button'
 
 export interface Props {
   readonly error: Error

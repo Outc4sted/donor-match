@@ -1,13 +1,17 @@
-import { useFieldContext } from '@/lib/hooks/useFormContext'
+import type { Option } from '@/components/ui/multiple-selector'
+
+import { useStore } from '@tanstack/react-form'
+
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui/select'
+import { useFieldContext } from '@/lib/hooks/useFormContext'
+
 import { FormFieldLayout } from './FormFieldLayout'
-import type { Option } from '@/components/ui/multiple-selector'
 
 export interface Props {
   readonly label: string
@@ -23,7 +27,10 @@ export function SingleSelectorField({
   placeholder,
 }: Props) {
   const field = useFieldContext<string>()
-  const [error] = field.state.meta.errors
+  const [error] = useStore(
+    field.store,
+    (state) => state.meta.errors as { message: string }[],
+  )
 
   return (
     <FormFieldLayout

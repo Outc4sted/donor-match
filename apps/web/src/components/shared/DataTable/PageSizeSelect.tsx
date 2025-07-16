@@ -1,3 +1,5 @@
+import type { DataTablePaginationProps } from './Pagination'
+
 import {
   Select,
   SelectContent,
@@ -5,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import type { DataTablePaginationProps } from './Pagination'
 
 const pageSizes = [20, 50, 100]
 

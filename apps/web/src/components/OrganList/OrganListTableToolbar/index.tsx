@@ -1,13 +1,11 @@
+import type { FilterState } from '@/lib/hooks/useInitialTableState'
+import type { BloodType, OrganType } from '@repo/ts-rest'
+
+import { bloodTypes, organTypes } from '@repo/ts-rest'
+
 import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
 import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
-import type { FilterState } from '@/lib/hooks/useInitialTableState'
-import {
-  type BloodType,
-  type OrganType,
-  bloodTypes,
-  organTypes,
-} from '@repo/ts-rest'
 
 export interface Props {
   readonly summary: string | undefined
@@ -26,31 +24,31 @@ export function OrganListTableToolbar({ summary, filterState }: Props) {
         filterName="Blood Type"
         items={bloodTypes}
         currentItems={filterState.bloodTypes}
-        onChange={(option) =>
+        onChange={(option) => {
           filterState.setBloodTypes(
             option.map(({ value }) => value as BloodType),
           )
-        }
+        }}
       />
 
       <TableFilterMultipleSelector
         filterName="Organ Type"
         items={organTypes}
         currentItems={filterState.organs}
-        onChange={(option) =>
+        onChange={(option) => {
           filterState.setOrgans(option.map(({ value }) => value as OrganType))
-        }
+        }}
       />
 
       <TableFilterRangeSlider
         filterName="Organ Size"
         labelSuffix="g"
         currentValues={filterState.organWeight}
-        handleFilter={(values) =>
+        handleFilter={(values) => {
           filterState.setOrganWeight(
             values.map((value) => value?.toString() ?? undefined),
           )
-        }
+        }}
       />
     </DataTableToolbar>
   )

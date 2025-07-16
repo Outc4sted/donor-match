@@ -1,8 +1,11 @@
+import type { FilterState } from '@/lib/hooks/useInitialTableState'
+import type { BloodType } from '@repo/ts-rest'
+
+import { bloodTypes } from '@repo/ts-rest'
+
 import { DataTableToolbar } from '@/components/shared/DataTableToolbar'
 import { TableFilterMultipleSelector } from '@/components/shared/DataTableToolbar/TableFilterMultipleSelector'
 import { TableFilterRangeSlider } from '@/components/shared/DataTableToolbar/TableFilterRangeSlider'
-import type { FilterState } from '@/lib/hooks/useInitialTableState'
-import { type BloodType, bloodTypes } from '@repo/ts-rest'
 
 export interface Props {
   readonly summary: string | undefined
@@ -21,11 +24,11 @@ export function PatientListTableToolbar({ summary, filterState }: Props) {
         filterName="Blood Type"
         items={bloodTypes}
         currentItems={filterState.bloodTypes}
-        onChange={(option) =>
+        onChange={(option) => {
           filterState.setBloodTypes(
             option.map(({ value }) => value as BloodType),
           )
-        }
+        }}
       />
 
       <TableFilterRangeSlider
@@ -34,11 +37,11 @@ export function PatientListTableToolbar({ summary, filterState }: Props) {
         currentValues={filterState.patientAge}
         min={0}
         max={100}
-        handleFilter={(values) =>
+        handleFilter={(values) => {
           filterState.setPatientAge(
             values.map((value) => value?.toString() ?? undefined),
           )
-        }
+        }}
       />
     </DataTableToolbar>
   )

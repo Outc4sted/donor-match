@@ -1,4 +1,4 @@
-import { QueryClient, keepPreviousData } from '@tanstack/react-query'
+import { keepPreviousData, QueryClient } from '@tanstack/react-query'
 import { atom } from 'nanostores'
 
 export const clientStore = atom(

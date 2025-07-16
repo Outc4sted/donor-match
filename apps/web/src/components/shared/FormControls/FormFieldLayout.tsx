@@ -1,13 +1,13 @@
-import { Label } from '@/components/ui/label'
 import type { ReactNode } from 'react'
+
+import { Label } from '@/components/ui/label'
 
 export interface Props {
   readonly label: string
   readonly labelFor: string
-  readonly isOptional?: boolean
+  readonly isOptional?: boolean | undefined
   readonly children: ReactNode
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  readonly error?: any
+  readonly error?: { message: string } | undefined
 }
 
 export function FormFieldLayout({

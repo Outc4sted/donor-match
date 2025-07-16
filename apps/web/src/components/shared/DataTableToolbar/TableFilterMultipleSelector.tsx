@@ -1,4 +1,6 @@
+import type { Option } from '@/components/ui/multiple-selector'
 import type { ComponentProps } from 'react'
+
 import { Button } from '@/components/ui/button'
 import MultipleSelector from '@/components/ui/multiple-selector'
 import {
@@ -12,6 +14,7 @@ export interface Props extends ComponentProps<typeof MultipleSelector> {
   readonly items: Record<string, string>
   readonly currentItems: string[]
   readonly filterName: string
+  readonly onChange: (options: Option[]) => void
 }
 
 export function TableFilterMultipleSelector({

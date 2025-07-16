@@ -1,5 +1,6 @@
-import { patientService } from '../../services/patientService.ts'
 import type { PatientsRouter } from './index.ts'
+
+import { patientService } from '../../services/patientService.ts'
 
 export const createPatient: PatientsRouter['createPatient'] = async ({
   request,

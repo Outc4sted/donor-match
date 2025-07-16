@@ -1,13 +1,14 @@
-import fastify from 'fastify'
-import cookie from '@fastify/cookie'
-import requestContext from '@fastify/request-context'
-import jwt from '@fastify/jwt'
-import qs from 'qs'
-import swaggerPlugin from './plugins/swagger/index.ts'
-import clerkPlugin from './plugins/clerk/index.ts'
-import tsRestPlugin from './plugins/ts-rest/index.ts'
 import { dmnoFastifyPlugin } from '@dmno/fastify-integration'
+import cookie from '@fastify/cookie'
+import jwt from '@fastify/jwt'
+import requestContext from '@fastify/request-context'
+import fastify from 'fastify'
+import qs from 'qs'
+
 import { LoggerConfig } from './config/logger.ts'
+import clerkPlugin from './plugins/clerk/index.ts'
+import swaggerPlugin from './plugins/swagger/index.ts'
+import tsRestPlugin from './plugins/ts-rest/index.ts'
 
 export default async (appName: string) => {
   const app = fastify({

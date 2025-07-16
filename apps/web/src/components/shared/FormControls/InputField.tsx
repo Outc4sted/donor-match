@@ -1,5 +1,8 @@
+import { useStore } from '@tanstack/react-form'
+
 import { Input } from '@/components/ui/input'
 import { useFieldContext } from '@/lib/hooks/useFormContext'
+
 import { FormFieldLayout } from './FormFieldLayout'
 
 export interface Props {
@@ -14,7 +17,10 @@ export function InputField({
   isOptional = false,
 }: Props) {
   const field = useFieldContext<string>()
-  const [error] = field.state.meta.errors
+  const [error] = useStore(
+    field.store,
+    (state) => state.meta.errors as { message: string }[],
+  )
 
   return (
     <FormFieldLayout
@@ -35,7 +41,9 @@ export function InputField({
             `
             : ''
         }
-        onChange={(e) => field.handleChange(e.target.value)}
+        onChange={({ target }) => {
+          field.handleChange(target.value)
+        }}
       />
     </FormFieldLayout>
   )

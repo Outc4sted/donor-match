@@ -1,8 +1,8 @@
-import {
-  ErrorBoundary as ReactErrorBoundary,
-  type FallbackProps,
-} from 'react-error-boundary'
 import type { ComponentType, ReactNode } from 'react'
+import type { FallbackProps } from 'react-error-boundary'
+
+import { ErrorBoundary as ReactErrorBoundary } from 'react-error-boundary'
+
 import { ErrorFallback } from './ErrorFallback'
 
 export interface Props {

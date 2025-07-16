@@ -1,17 +1,14 @@
+import { useEffect, useState } from 'react'
+
+import type { Dispatch, ReactNode, SetStateAction } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {
-  useEffect,
-  useState,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-} from 'react'
 
 export interface Props {
-  readonly summary?: string
-  readonly children?: ReactNode
-  readonly search?: string
+  readonly summary?: string | undefined
+  readonly children?: ReactNode | undefined
+  readonly search?: string | undefined
   readonly setSearch?: Dispatch<SetStateAction<string | undefined>>
   readonly resetFilters?: () => void
 }
@@ -51,7 +48,9 @@ export function DataTableToolbar({
             className="max-w-md rounded-r-none"
             type="text"
             value={inputValue}
-            onChange={({ target }) => setInputValue(target.value)}
+            onChange={({ target }) => {
+              setInputValue(target.value)
+            }}
             onKeyDown={({ key }) => {
               if (key === 'Enter') {
                 handleSearch()

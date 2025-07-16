@@ -1,5 +1,8 @@
+import { useStore } from '@tanstack/react-form'
+
 import { Input } from '@/components/ui/input'
 import { useFieldContext } from '@/lib/hooks/useFormContext'
+
 import { FormFieldLayout } from './FormFieldLayout'
 
 export interface Props {
@@ -9,8 +12,10 @@ export interface Props {
 
 export function SSNField({ label = 'SSN', isOptional = false }: Props) {
   const field = useFieldContext<string>()
-  const [error] = field.state.meta.errors
-
+  const [error] = useStore(
+    field.store,
+    (state) => state.meta.errors as { message: string }[],
+  )
   const formatSSN = (value: string) => {
     const digitsOnly = value.replace(/\D/g, '').slice(0, 9)
     const parts = [
@@ -30,7 +35,7 @@ export function SSNField({ label = 'SSN', isOptional = false }: Props) {
     >
       <Input
         name={field.name}
-        value={field.state.value ?? ''}
+        value={field.state.value}
         type="text"
         className={
           error

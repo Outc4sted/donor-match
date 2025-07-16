@@ -1,8 +1,9 @@
-import type { RouterImplementation } from '@ts-rest/fastify'
 import type { contract } from '@repo/ts-rest'
-import { getPatients } from './getPatients.ts'
-import { getPatient } from './getPatient.ts'
+import type { RouterImplementation } from '@ts-rest/fastify'
+
 import { createPatient } from './createPatient.ts'
+import { getPatient } from './getPatient.ts'
+import { getPatients } from './getPatients.ts'
 
 export type PatientsRouter = RouterImplementation<typeof contract.patients>
 

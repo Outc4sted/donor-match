@@ -8,6 +8,7 @@ export declare const compat: FlatCompat
 
 export declare const configs: {
   base: FlatConfig.ConfigArray
+  astro: FlatConfig.ConfigArray
   playwright: FlatConfig.ConfigArray
   react: FlatConfig.ConfigArray
   next: FlatConfig.ConfigArray

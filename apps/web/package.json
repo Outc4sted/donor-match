@@ -1,19 +1,19 @@
 {
   "name": "web",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "dmno run -- astro dev",
-    "build": "dmno run -- astro build",
-    "preview": "dmno run -- astro preview",
     "astro": "dmno run -- astro",
+    "build": "dmno run -- astro build",
     "check-types": "tsc --noEmit --incremental",
-    "test": "dmno run -- playwright test",
-    "test:ui": "dmno run -- playwright test --ui",
+    "dev": "dmno run -- astro dev",
     "env:docker": "dmno resolve --service web --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0",
-    "test:snapshots": "pnpm run test -- --update-snapshots"
+    "preview": "dmno run -- astro preview",
+    "test": "dmno run -- playwright test",
+    "test:snapshots": "pnpm run test -- --update-snapshots",
+    "test:ui": "dmno run -- playwright test --ui"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -69,7 +69,6 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/react": "*",
-    "@types/react-dom": "*",
-    "eslint": "*"
+    "@types/react-dom": "*"
   }
 }

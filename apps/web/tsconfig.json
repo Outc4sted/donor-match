@@ -1,18 +1,10 @@
 {
-  "extends": ["@repo/typescript-config/base.json", "astro/tsconfigs/strict"],
+  "extends": ["@repo/typescript-config/base.json", "astro/tsconfigs/strictest"],
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "outDir": "dist",
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      }
-    ],
+    "exactOptionalPropertyTypes": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     }
-  },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["node_modules", "dist"]
+  }
 }

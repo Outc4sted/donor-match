@@ -1,6 +1,9 @@
 import type { PrismaClient } from '../prisma/generated/prisma-client/client.ts'
+
 import { faker } from '@faker-js/faker'
+
 import { BloodType } from '../prisma/generated/prisma-client/enums.ts'
+
 const MAX_PATIENTS = 300
 
 export const generatePatient = () => ({

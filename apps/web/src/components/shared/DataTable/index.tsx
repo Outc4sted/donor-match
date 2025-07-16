@@ -1,11 +1,17 @@
+import type {
+  PaginationState,
+  SortState,
+} from '@/lib/hooks/useInitialTableState'
+import type { ColumnDef, Header } from '@tanstack/react-table'
+
 import {
   flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   useReactTable,
-  type ColumnDef,
-  type Header,
 } from '@tanstack/react-table'
+import { ArrowDownWideNarrow, ArrowUpWideNarrow } from 'lucide-react'
+
 import {
   Table,
   TableBody,
@@ -14,22 +20,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+
 import { Pagination } from './Pagination'
-import type {
-  PaginationState,
-  SortState,
-} from '@/lib/hooks/useInitialTableState'
-import { ArrowDownWideNarrow, ArrowUpWideNarrow } from 'lucide-react'
 
 export interface Props<TData, TValue> {
   readonly columns: ColumnDef<TData, TValue>[]
   readonly data: TData[]
   readonly paginationState: PaginationState
-  readonly paginationInfo?: {
-    total: number
-    pages: number
-    summary?: string
-  }
+  readonly paginationInfo?:
+    | {
+        total: number
+        pages: number
+        summary?: string | undefined
+      }
+    | undefined
   readonly sortState: SortState
 }
 
@@ -53,20 +57,22 @@ export function DataTable<TData, TValue>({
     onPaginationChange: paginationState.setPagination,
     manualSorting: true,
     onSortingChange: sortState.setSorting,
-    rowCount: paginationInfo?.total,
-    pageCount: paginationInfo?.pages,
+    rowCount: paginationInfo?.total ?? 0,
+    pageCount: paginationInfo?.pages ?? 0,
   })
 
   const toggleSorting = (header: Header<TData, unknown>) => {
     const currentSort = sortState.sorting.find((s) => s.id === header.id)
     let nextSort: 'asc' | 'desc' | undefined
 
-    if (!currentSort) {
-      nextSort = 'asc'
-    } else if (currentSort.desc === false) {
-      nextSort = 'desc'
+    if (currentSort) {
+      if (currentSort.desc) {
+        nextSort = undefined
+      } else {
+        nextSort = 'desc'
+      }
     } else {
-      nextSort = undefined
+      nextSort = 'asc'
     }
 
     sortState.setSorting(
@@ -105,7 +111,9 @@ export function DataTable<TData, TValue>({
                         focus:bg-red-100
                       `}
                       tabIndex={0}
-                      onClick={() => toggleSorting(header)}
+                      onClick={() => {
+                        toggleSorting(header)
+                      }}
                       onKeyDown={({ key }) => {
                         if (key === 'Enter') {
                           toggleSorting(header)
@@ -147,7 +155,7 @@ export function DataTable<TData, TValue>({
           </TableHeader>
 
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}

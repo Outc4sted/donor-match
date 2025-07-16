@@ -1,13 +1,10 @@
-import {
-  useCallback,
-  useEffect,
-  useState,
-  type Dispatch,
-  type SetStateAction,
-} from 'react'
-import { useQueryParams } from '../useQueryParams'
-import type { SortingState } from '@tanstack/react-table'
+import { useCallback, useEffect, useState } from 'react'
+
 import type { BloodType, OrganType } from '@repo/ts-rest'
+import type { SortingState } from '@tanstack/react-table'
+import type { Dispatch, SetStateAction } from 'react'
+
+import { useQueryParams } from '../useQueryParams'
 
 export interface PaginationState {
   pagination: { pageIndex: number; pageSize: number }
@@ -98,7 +95,7 @@ export function useInitialTableState() {
     setQueryParams({
       page: `${pagination.pageIndex + 1}`,
       limit: `${pagination.pageSize}`,
-      search: search ? search : undefined,
+      search: search ?? undefined,
       bloodType: bloodTypes.length > 0 ? bloodTypes : undefined,
       organ: organs.length > 0 ? organs : undefined,
       organMinWeight: organWeight[0],
