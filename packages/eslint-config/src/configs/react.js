@@ -15,17 +15,17 @@ export const react = defineConfig(
     plugins: {
       'better-tailwindcss': eslintTailwind,
     },
-    settings: {
-      'better-tailwindcss': {
-        entryPoint: `${import.meta.dirname}/src/styles/global.css`,
-      },
-    },
     rules: {
       ...eslintTailwind.configs.recommended.rules,
       'better-tailwindcss/enforce-consistent-line-wrapping': [
         'warn',
         { printWidth: 160 },
       ],
+    },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: 'src/styles/global.css',
+      },
     },
   },
 

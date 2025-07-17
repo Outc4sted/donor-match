@@ -7,6 +7,27 @@
     ".": {
       "default": "./src/index.js",
       "types": "./src/index.d.ts"
+    },
+    "./utils": "./src/utils.js",
+    "./base": {
+      "default": "./src/configs/base.js",
+      "types": "./src/index.d.ts"
+    },
+    "./astro": {
+      "default": "./src/configs/astro.js",
+      "types": "./src/index.d.ts"
+    },
+    "./react": {
+      "default": "./src/configs/react.js",
+      "types": "./src/index.d.ts"
+    },
+    "./playwright": {
+      "default": "./src/configs/playwright.js",
+      "types": "./src/index.d.ts"
+    },
+    "./storybook": {
+      "default": "./src/configs/storybook.js",
+      "types": "./src/index.d.ts"
     }
   },
   "devDependencies": {

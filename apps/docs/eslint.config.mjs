@@ -1,18 +1,6 @@
-// import astroConfig from '@repo/eslint-config/astro'
-import { configs, defineConfig } from '@repo/eslint-config'
+import { defineConfig } from '@repo/eslint-config'
+import { astro } from '@repo/eslint-config/astro'
+import { base } from '@repo/eslint-config/base'
+import { react } from '@repo/eslint-config/react'
 
-export default defineConfig(...configs.base)
-
-// export default [
-//   ...astroConfig,
-
-//   {
-//     files: ['**/*.{astro,js,jsx,ts,tsx,cjs,mjs}'],
-//     languageOptions: {
-//       parserOptions: {
-//         project: true,
-//         tsconfigRootDir: import.meta.dirname,
-//       },
-//     },
-//   },
-// ]
+export default defineConfig(...base, ...react, ...astro)
