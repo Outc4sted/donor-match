@@ -4,30 +4,29 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "default": "./src/index.js",
-      "types": "./src/index.d.ts"
+    "./utils": {
+      "types": "./types.d.ts",
+      "default": "./utils.js"
     },
-    "./utils": "./src/utils.js",
     "./base": {
-      "default": "./src/configs/base.js",
-      "types": "./src/index.d.ts"
+      "types": "./types.d.ts",
+      "default": "./base.js"
     },
     "./astro": {
-      "default": "./src/configs/astro.js",
-      "types": "./src/index.d.ts"
+      "types": "./types.d.ts",
+      "default": "./astro.js"
     },
     "./react": {
-      "default": "./src/configs/react.js",
-      "types": "./src/index.d.ts"
+      "types": "./types.d.ts",
+      "default": "./react.js"
     },
     "./playwright": {
-      "default": "./src/configs/playwright.js",
-      "types": "./src/index.d.ts"
+      "types": "./types.d.ts",
+      "default": "./playwright.js"
     },
     "./storybook": {
-      "default": "./src/configs/storybook.js",
-      "types": "./src/index.d.ts"
+      "types": "./types.d.ts",
+      "default": "./storybook.js"
     }
   },
   "devDependencies": {

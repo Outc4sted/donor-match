@@ -6,9 +6,8 @@ import * as eslintRegex from 'eslint-plugin-regexp'
 import globals from 'globals'
 import eslintTS from 'typescript-eslint'
 
-import { defineConfig } from '../utils.js'
-
-export const base = defineConfig(
+/** @type {import('typescript-eslint').Config} */
+export default eslintTS.config(
   // Ignored files
   {
     ignores: [

@@ -1,12 +1,12 @@
 import eslintParserTypeScript from '@typescript-eslint/parser'
 import eslintParserAstro from 'astro-eslint-parser'
 import eslintAstro from 'eslint-plugin-astro'
-
-import { defineConfig } from '../utils.js'
+import eslintTS from 'typescript-eslint'
 
 import eslintTailwind from 'eslint-plugin-better-tailwindcss'
 
-export const astro = defineConfig(
+/** @type {import('typescript-eslint').Config} */
+export default eslintTS.config(
   // Ignored files
   {
     ignores: ['**/.astro'],

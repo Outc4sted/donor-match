@@ -1,12 +1,14 @@
 import { fixupConfigRules } from '@eslint/compat'
 import eslintXOReact from 'eslint-config-xo-react/space'
 import globals from 'globals'
+import eslintTS from 'typescript-eslint'
 
-import { compat, defineConfig } from '../utils.js'
+import { compat } from './utils.js'
 
 import eslintTailwind from 'eslint-plugin-better-tailwindcss'
 
-export const react = defineConfig(
+/** @type {import('typescript-eslint').Config} */
+export default eslintTS.config(
   ...fixupConfigRules(compat.extends('plugin:jsx-a11y/strict')),
 
   // Tailwind plugin

@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-exports */
+
 /**
  * Since ESLint and many plugins are written in JavaScript, we need to provide
  * or change some types to make them work with TypeScript.
@@ -73,14 +75,14 @@ declare module 'eslint-plugin-turbo' {
 declare module 'eslint-config-xo/space' {
   import type { Linter } from 'eslint'
   const config: Linter.Config
-  // eslint-disable-next-line no-restricted-exports
+
   export default config
 }
 
 declare module 'eslint-config-xo-react/space' {
   import type { Linter } from 'eslint'
   const config: Linter.Config
-  // eslint-disable-next-line no-restricted-exports
+
   export default config
 }
 
@@ -95,7 +97,6 @@ declare module 'eslint-plugin-better-tailwindcss' {
     }
   }
 
-  // eslint-disable-next-line no-restricted-exports
   export default plugin
 }
 
@@ -114,6 +115,23 @@ declare module 'eslint-plugin-astro' {
     }
   }
 
-  // eslint-disable-next-line no-restricted-exports
   export default plugin
+}
+
+declare module '@repo/eslint-config/base' {
+  import type { ConfigWithExtends } from 'typescript-eslint'
+  const base: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
+  export default base
+}
+
+declare module '@repo/eslint-config/astro' {
+  import type { ConfigWithExtends } from 'typescript-eslint'
+  const astro: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
+  export default astro
+}
+
+declare module '@repo/eslint-config/react' {
+  import type { ConfigWithExtends } from 'typescript-eslint'
+  const react: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
+  export default react
 }
