@@ -21,7 +21,7 @@ export function QueryErrorBoundary({
         <ReactErrorBoundary
           fallbackRender={({ error, resetErrorBoundary }) => (
             <Fallback
-              error={error}
+              error={error as Error}
               resetErrorBoundary={resetErrorBoundary}
             />
           )}

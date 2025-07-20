@@ -1,17 +1,15 @@
-import app from './app.ts'
+import { app, appName } from './app.ts'
 
-const appName = '@donor-match/api'
+try {
+  const server = await app()
 
-;(async () => {
-  const server = await app(appName)
+  await server.listen({
+    port: DMNO_CONFIG.NODE_PORT,
+    host: DMNO_CONFIG.NODE_HOST,
+  })
 
-  server.listen(
-    { port: DMNO_CONFIG.NODE_PORT, host: DMNO_CONFIG.NODE_HOST },
-    (error) => {
-      if (error) {
-        server.log.error(`Error starting ${appName}`)
-        throw new Error(error.message)
-      } else server.log.info(`Successfully started ${appName}`)
-    },
-  )
-})()
+  server.log.info(`Successfully started ${appName}`)
+} catch (error) {
+  console.error(`Error starting ${appName}:`, error)
+  process.exit(1)
+}

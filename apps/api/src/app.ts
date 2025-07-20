@@ -6,11 +6,13 @@ import fastify from 'fastify'
 import qs from 'qs'
 
 import { LoggerConfig } from './config/logger.ts'
-import clerkPlugin from './plugins/clerk/index.ts'
-import swaggerPlugin from './plugins/swagger/index.ts'
-import tsRestPlugin from './plugins/ts-rest/index.ts'
+import { clerkPlugin } from './plugins/clerk/index.ts'
+import { swaggerPlugin } from './plugins/swagger/index.ts'
+import { tsRestPlugin } from './plugins/ts-rest/index.ts'
 
-export default async (appName: string) => {
+export const appName = '@donor-match/api'
+
+export async function app() {
   const app = fastify({
     logger: LoggerConfig[DMNO_CONFIG.NODE_ENVIRONMENT],
     querystringParser: (str) => qs.parse(str),

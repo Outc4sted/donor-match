@@ -6,7 +6,8 @@
         "DONOR_MATCH_API",
         "SITE_URL",
         "CLERK_SECRET_KEY",
-        "PUBLIC_CLERK_PUBLISHABLE_KEY"
+        "PUBLIC_CLERK_PUBLISHABLE_KEY",
+        "CI"
       ]
     },
     "dev": {

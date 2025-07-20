@@ -1,4 +1,4 @@
-import { DmnoBaseTypes, defineDmnoService, pick, switchBy } from 'dmno'
+import { defineDmnoService, DmnoBaseTypes, pick, switchBy } from 'dmno'
 
 export default defineDmnoService({
   name: 'api',

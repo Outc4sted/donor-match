@@ -44,6 +44,7 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/qs": "*",
+    "eslint": "*",
     "pino-pretty": "*",
     "tsx": "*",
     "typescript": "latest"

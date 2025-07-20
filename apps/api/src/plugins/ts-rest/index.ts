@@ -8,10 +8,10 @@ import { zenstackHook } from '../../hooks/zenstack/index.ts'
 import { organsRoutes } from '../../routes/organs/index.ts'
 import { patientsRoutes } from '../../routes/patients/index.ts'
 
-export default async (fastify: FastifyInstance) => {
+export const tsRestPlugin = async (fastify: FastifyInstance) => {
   const { router, plugin } = initServer()
 
-  fastify.register(
+  await fastify.register(
     plugin(
       router(contract, {
         organs: organsRoutes,

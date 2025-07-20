@@ -61,6 +61,7 @@
     "${configDir}/dist",
     "${configDir}/storybook-static",
     "${configDir}/playwright-report",
-    "${configDir}/test-results"
+    "${configDir}/test-results",
+    "${configDir}/**/generated"
   ]
 }

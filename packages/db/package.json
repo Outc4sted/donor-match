@@ -1,8 +1,8 @@
 {
   "name": "@repo/db",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "exports": {
     "./prisma/*": {
       "types": "./dist/prisma/generated/prisma-client/*.d.ts",
@@ -11,10 +11,6 @@
     "./prisma/errors": {
       "types": "./dist/errors/index.d.ts",
       "default": "./dist/errors/index.js"
-    },
-    "./zenstack/*": {
-      "types": "./dist/prisma/generated/logical-prisma-client/*.d.ts",
-      "default": "./dist/prisma/generated/logical-prisma-client/*.js"
     },
     "./zenstack/enhance": {
       "types": "./dist/prisma/generated/enhance.d.ts",
@@ -26,20 +22,17 @@
     }
   },
   "scripts": {
-    "dev": "concurrently -n models,ts -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
-    "watch:ts": "tsc -w -p tsconfig.build.json",
-    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.build.json",
     "check-types": "tsc --noEmit --incremental",
-    "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
-    "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
+    "dev": "concurrently -n models,ts -c blue,green \"pnpm run watch:models\" \"pnpm run watch:ts\"",
     "env:docker": "dmno resolve --service @repo/db --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0",
+    "schema:gen": "zenstack generate --schema ./src/schema.zmodel -o ./src/prisma/generated",
+    "schema:push": "dmno run -- prisma db push --schema=./src/prisma/schema.prisma",
     "seed": "dmno run -- prisma db seed",
-    "build": "tsc -p tsconfig.build.json"
-  },
-  "prisma": {
-    "seed": "tsx src/seeds/index.ts"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:models": "nodemon --watch src/models --ext zmodel --exec \"pnpm run schema:gen && pnpm run schema:push\" --on-change-only",
+    "watch:ts": "tsc -w -p tsconfig.build.json"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
@@ -67,5 +60,8 @@
     "tsx": "*",
     "typescript": "latest",
     "zenstack": "*"
+  },
+  "prisma": {
+    "seed": "tsx src/seeds/index.ts"
   }
 }

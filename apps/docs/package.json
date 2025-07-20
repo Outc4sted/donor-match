@@ -1,16 +1,16 @@
 {
   "name": "docs",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "dmno run -- astro dev",
-    "start": "dmno run -- astro dev",
-    "build": "dmno run -- astro build",
-    "preview": "dmno run -- astro preview",
     "astro": "dmno run -- astro",
+    "build": "dmno run -- astro build",
     "check-types": "tsc --noEmit --incremental",
-    "lint": "eslint --fix --cache --max-warnings 0"
+    "dev": "dmno run -- astro dev",
+    "lint": "eslint --fix --cache --max-warnings 0",
+    "preview": "dmno run -- astro preview",
+    "start": "dmno run -- astro dev"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [

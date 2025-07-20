@@ -1,8 +1,9 @@
 // @ts-check
-import dmnoAstroIntegration from '@dmno/astro-integration'
-import { defineConfig } from 'astro/config'
+
 import starlight from '@astrojs/starlight'
+import dmnoAstroIntegration from '@dmno/astro-integration'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({

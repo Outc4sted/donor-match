@@ -33,7 +33,7 @@ const openApiDocument = generateOpenApi(
   },
 )
 
-export default fp(async function (fastify: FastifyInstance) {
+export const swaggerPlugin = fp(async function (fastify: FastifyInstance) {
   await fastify
     .register(fastifySwagger, {
       transformObject: () => openApiDocument,

@@ -1,8 +1,8 @@
 {
   "name": "@repo/ts-rest",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -22,10 +22,10 @@
     }
   },
   "scripts": {
-    "dev": "tsc -w -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "check-types": "tsc --noEmit --incremental",
-    "lint": "eslint --fix --cache --max-warnings 0",
-    "build": "tsc -p tsconfig.build.json"
+    "dev": "tsc -w -p tsconfig.build.json",
+    "lint": "eslint --fix --cache --max-warnings 0"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [

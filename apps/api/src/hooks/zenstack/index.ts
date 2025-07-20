@@ -22,7 +22,7 @@ export const zenstackHook =
           role: user.publicMetadata.role ?? membership?.role,
           permissions: membership?.permissions,
         },
-      }) as ReturnType<typeof enhance>
+      }) as PrismaClient
 
       request.requestContext.set('db', db)
     } catch (error) {
