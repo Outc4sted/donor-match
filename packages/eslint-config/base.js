@@ -82,6 +82,13 @@ export default eslintTS.config(
         },
       ],
       '@typescript-eslint/restrict-template-expressions': 'off',
+      'no-restricted-imports': [
+        'error',
+        {
+          name: 'zod',
+          message: "Use `import { z } from 'zod/v4'` instead to ensure v4.",
+        },
+      ],
     },
   },
 

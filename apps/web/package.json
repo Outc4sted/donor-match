@@ -26,10 +26,10 @@
     ]
   },
   "dependencies": {
-    "@astrojs/node": "*",
-    "@astrojs/react": "*",
+    "@astrojs/node": "catalog:astro",
+    "@astrojs/react": "catalog:astro",
     "@clerk/astro": "*",
-    "@dmno/astro-integration": "*",
+    "@dmno/astro-integration": "catalog:dmno",
     "@nanostores/react": "*",
     "@radix-ui/react-avatar": "*",
     "@radix-ui/react-dialog": "*",
@@ -44,31 +44,32 @@
     "@tanstack/react-form": "*",
     "@tanstack/react-query": "*",
     "@tanstack/react-table": "*",
-    "@ts-rest/core": "3.53.0-rc.1",
-    "@ts-rest/react-query": "3.53.0-rc.1",
-    "astro": "*",
+    "@ts-rest/core": "catalog:tsrest",
+    "@ts-rest/react-query": "catalog:tsrest",
+    "astro": "catalog:astro",
     "class-variance-authority": "*",
     "clsx": "*",
     "cmdk": "*",
     "date-fns": "*",
-    "dmno": "*",
+    "dmno": "catalog:dmno",
     "lucide-react": "*",
     "nanostores": "*",
-    "react": "*",
-    "react-dom": "*",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
     "react-error-boundary": "*",
     "tailwind-merge": "*",
-    "tailwindcss": "*",
+    "tailwindcss": "catalog:",
     "tw-animate-css": "*",
-    "zod": "*"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "*",
+    "@astrojs/ts-plugin": "catalog:astro",
     "@axe-core/playwright": "*",
     "@playwright/test": "*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@types/react": "*",
-    "@types/react-dom": "*"
+    "@types/react": "catalog:react19",
+    "@types/react-dom": "catalog:react19",
+    "eslint": "catalog:"
   }
 }

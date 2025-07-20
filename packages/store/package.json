@@ -33,9 +33,8 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/ts-rest": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "@ts-rest/core": "3.53.0-rc.1",
-    "eslint": "*",
-    "nodemon": "*",
-    "typescript": "latest"
+    "@ts-rest/core": "catalog:tsrest",
+    "eslint": "catalog:",
+    "typescript": "catalog:"
   }
 }

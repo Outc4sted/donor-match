@@ -38,7 +38,7 @@
     "@typescript-eslint/parser": "*",
     "@typescript-eslint/utils": "*",
     "astro-eslint-parser": "*",
-    "eslint": "*",
+    "eslint": "catalog:",
     "eslint-config-prettier": "*",
     "eslint-config-turbo": "*",
     "eslint-config-xo": "*",
@@ -55,8 +55,8 @@
     "eslint-plugin-storybook": "*",
     "globals": "*",
     "prettier": "*",
-    "tailwindcss": "*",
-    "typescript": "latest",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
     "typescript-eslint": "*"
   }
 }

@@ -46,7 +46,7 @@
   "dependencies": {
     "@prisma/client": "*",
     "@zenstackhq/runtime": "*",
-    "dmno": "*"
+    "dmno": "catalog:dmno"
   },
   "devDependencies": {
     "@faker-js/faker": "*",
@@ -54,11 +54,11 @@
     "@repo/typescript-config": "workspace:*",
     "@types/node": "*",
     "concurrently": "*",
-    "eslint": "*",
+    "eslint": "catalog:",
     "nodemon": "*",
     "prisma": "*",
     "tsx": "*",
-    "typescript": "latest",
+    "typescript": "catalog:",
     "zenstack": "*"
   },
   "prisma": {

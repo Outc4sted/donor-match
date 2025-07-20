@@ -22,18 +22,18 @@
     ]
   },
   "dependencies": {
-    "@astrojs/starlight": "*",
-    "@astrojs/starlight-tailwind": "*",
-    "@dmno/astro-integration": "*",
+    "@astrojs/starlight": "catalog:astro",
+    "@astrojs/starlight-tailwind": "catalog:astro",
+    "@dmno/astro-integration": "catalog:dmno",
     "@tailwindcss/vite": "*",
-    "astro": "*",
-    "dmno": "*",
+    "astro": "catalog:astro",
+    "dmno": "catalog:dmno",
     "sharp": "*",
-    "tailwindcss": "*"
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
-    "eslint": "*"
+    "eslint": "catalog:"
   }
 }

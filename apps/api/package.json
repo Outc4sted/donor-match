@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@clerk/backend": "*",
-    "@dmno/fastify-integration": "*",
+    "@dmno/fastify-integration": "catalog:dmno",
     "@fastify/cookie": "*",
     "@fastify/jwt": "*",
     "@fastify/request-context": "*",
@@ -31,10 +31,10 @@
     "@repo/db": "workspace:*",
     "@repo/store": "workspace:*",
     "@repo/ts-rest": "workspace:*",
-    "@ts-rest/core": "3.53.0-rc.1",
-    "@ts-rest/fastify": "3.53.0-rc.1",
-    "@ts-rest/open-api": "3.53.0-rc.1",
-    "dmno": "*",
+    "@ts-rest/core": "catalog:tsrest",
+    "@ts-rest/fastify": "catalog:tsrest",
+    "@ts-rest/open-api": "catalog:tsrest",
+    "dmno": "catalog:dmno",
     "fastify": "*",
     "fastify-plugin": "*",
     "qs": "*"
@@ -44,9 +44,9 @@
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@types/qs": "*",
-    "eslint": "*",
+    "eslint": "catalog:",
     "pino-pretty": "*",
     "tsx": "*",
-    "typescript": "latest"
+    "typescript": "catalog:"
   }
 }
