@@ -1,6 +1,6 @@
-import astroConfig from '@repo/eslint-config/astro'
-import baseConfig from '@repo/eslint-config/base'
-import reactConfig from '@repo/eslint-config/react'
+import astroConfig from '@repo/eslint/astro'
+import baseConfig from '@repo/eslint/base'
+import reactConfig from '@repo/eslint/react'
 
 export default [
   ...baseConfig,

@@ -1,9 +1,9 @@
 packages:
   - apps/*
   - packages/*
+  - tooling/*
 
 catalog:
-  dmno: latest
   eslint: latest
   prettier: latest
   tailwindcss: latest

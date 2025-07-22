@@ -1,5 +1,5 @@
 {
-  "extends": ["@repo/typescript-config/base.json", "astro/tsconfigs/strict"],
+  "extends": ["@repo/tsconfig/base.json", "astro/tsconfigs/strict"],
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",

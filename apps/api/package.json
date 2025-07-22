@@ -20,6 +20,7 @@
       "pnpm -w run prettier"
     ]
   },
+  "prettier": "@repo/prettier",
   "dependencies": {
     "@clerk/backend": "*",
     "@dmno/fastify-integration": "catalog:dmno",
@@ -41,11 +42,13 @@
   },
   "devDependencies": {
     "@clerk/types": "*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint": "workspace:*",
+    "@repo/prettier": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@types/qs": "*",
     "eslint": "catalog:",
     "pino-pretty": "*",
+    "prettier": "catalog:",
     "tsx": "*",
     "typescript": "catalog:"
   }

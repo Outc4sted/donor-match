@@ -1,42 +1,41 @@
 {
-  "name": "@repo/eslint-config",
+  "name": "@repo/eslint",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "exports": {
     "./utils": {
       "types": "./types.d.ts",
-      "default": "./utils.js"
+      "default": "./utils.mjs"
     },
     "./base": {
       "types": "./types.d.ts",
-      "default": "./base.js"
+      "default": "./base.mjs"
     },
     "./astro": {
       "types": "./types.d.ts",
-      "default": "./astro.js"
+      "default": "./astro.mjs"
     },
     "./react": {
       "types": "./types.d.ts",
-      "default": "./react.js"
+      "default": "./react.mjs"
     },
     "./playwright": {
       "types": "./types.d.ts",
-      "default": "./playwright.js"
+      "default": "./playwright.mjs"
     },
     "./storybook": {
       "types": "./types.d.ts",
-      "default": "./storybook.js"
+      "default": "./storybook.mjs"
     }
   },
+  "prettier": "@repo/prettier",
   "devDependencies": {
     "@eslint/compat": "*",
     "@eslint/eslintrc": "*",
     "@eslint/js": "*",
-    "@repo/typescript-config": "workspace:*",
-    "@tanstack/eslint-plugin-query": "*",
-    "@typescript-eslint/parser": "*",
-    "@typescript-eslint/utils": "*",
+    "@repo/prettier": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "astro-eslint-parser": "*",
     "eslint": "catalog:",
     "eslint-config-prettier": "*",
@@ -45,7 +44,6 @@
     "eslint-config-xo-react": "*",
     "eslint-plugin-astro": "*",
     "eslint-plugin-better-tailwindcss": "*",
-    "eslint-plugin-jsdoc": "*",
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-playwright": "*",
     "eslint-plugin-prettier": "*",
@@ -54,7 +52,7 @@
     "eslint-plugin-regexp": "*",
     "eslint-plugin-storybook": "*",
     "globals": "*",
-    "prettier": "*",
+    "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
     "typescript-eslint": "*"

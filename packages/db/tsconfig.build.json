@@ -1,5 +1,5 @@
 {
-  "extends": ["./tsconfig.json", "@repo/typescript-config/build.json"],
+  "extends": ["./tsconfig.json", "@repo/tsconfig/build.json"],
   "compilerOptions": {
     "noUnusedLocals": false,
     "noUnusedParameters": false

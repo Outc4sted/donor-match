@@ -21,6 +21,7 @@
       "pnpm -w run prettier"
     ]
   },
+  "prettier": "@repo/prettier",
   "dependencies": {
     "@astrojs/starlight": "catalog:astro",
     "@astrojs/starlight-tailwind": "catalog:astro",
@@ -32,8 +33,10 @@
     "tailwindcss": "catalog:"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "eslint": "catalog:"
+    "@repo/eslint": "workspace:*",
+    "@repo/prettier": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:"
   }
 }

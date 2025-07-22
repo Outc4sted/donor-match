@@ -5,25 +5,21 @@
   "editor.formatOnSaveMode": "file",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[zmodel]": {
+    "editor.defaultFormatter": "zenstack.zenstack"
   },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
-  "[astro]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[github-actions-workflow]": {
-    "editor.formatOnSave": true
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },
   "eslint.useFlatConfig": true,
+  "eslint.workingDirectories": [
+    { "pattern": "apps/*/" },
+    { "pattern": "packages/*/" },
+    { "pattern": "tooling/*/" }
+  ],
   "files.associations": {
     "*.css": "tailwindcss",
     ".env*": "dotenv",
@@ -35,6 +31,7 @@
     "source.addMissingImports": "explicit",
     "source.fixAll": "explicit"
   },
+  "typescript.suggest.autoImports": true,
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "files.exclude": {
@@ -43,12 +40,7 @@
     "**/.turbo": true,
     "**/.dmno/typegen": true
   },
+  "prettier.documentSelectors": ["**/*.astro"],
   "turboConsoleLog.quote": "'",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[dockerfile]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-  },
-  "[zmodel]": {
-    "editor.defaultFormatter": "zenstack.zenstack"
-  }
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

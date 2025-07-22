@@ -49,8 +49,10 @@ dev-tmux
 **/.turbo
 
 # eslint
-**/eslint-config
 **/eslint.config.mjs
 
 # prettier
 prettier.config.mjs
+
+# tooling packages
+**/tooling

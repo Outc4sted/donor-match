@@ -1,5 +1,3 @@
-// @ts-check
-
 import node from '@astrojs/node'
 import react from '@astrojs/react'
 import clerk from '@clerk/astro'

@@ -28,13 +28,16 @@
       "pnpm -w run prettier"
     ]
   },
+  "prettier": "@repo/prettier",
   "dependencies": {
     "@repo/db": "workspace:*",
-    "@repo/eslint-config": "workspace:*",
+    "@repo/eslint": "workspace:*",
+    "@repo/prettier": "workspace:*",
     "@repo/ts-rest": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@ts-rest/core": "catalog:tsrest",
     "eslint": "catalog:",
+    "prettier": "catalog:",
     "typescript": "catalog:"
   }
 }

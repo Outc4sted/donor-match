@@ -43,6 +43,7 @@
       "pnpm -w run prettier"
     ]
   },
+  "prettier": "@repo/prettier",
   "dependencies": {
     "@prisma/client": "*",
     "@zenstackhq/runtime": "*",
@@ -50,12 +51,14 @@
   },
   "devDependencies": {
     "@faker-js/faker": "*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint": "workspace:*",
+    "@repo/prettier": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@types/node": "*",
     "concurrently": "*",
     "eslint": "catalog:",
     "nodemon": "*",
+    "prettier": "catalog:",
     "prisma": "*",
     "tsx": "*",
     "typescript": "catalog:",

@@ -118,19 +118,19 @@ declare module 'eslint-plugin-astro' {
   export default plugin
 }
 
-declare module '@repo/eslint-config/base' {
+declare module '@repo/eslint/base' {
   import type { ConfigWithExtends } from 'typescript-eslint'
   const base: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
   export default base
 }
 
-declare module '@repo/eslint-config/astro' {
+declare module '@repo/eslint/astro' {
   import type { ConfigWithExtends } from 'typescript-eslint'
   const astro: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
   export default astro
 }
 
-declare module '@repo/eslint-config/react' {
+declare module '@repo/eslint/react' {
   import type { ConfigWithExtends } from 'typescript-eslint'
   const react: { [Symbol.iterator]: () => IterableIterator<ConfigWithExtends> }
   export default react

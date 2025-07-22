@@ -1,4 +1,3 @@
-import eslintParserTypeScript from '@typescript-eslint/parser'
 import eslintParserAstro from 'astro-eslint-parser'
 import eslintAstro from 'eslint-plugin-astro'
 import eslintTS from 'typescript-eslint'
@@ -21,7 +20,7 @@ export default eslintTS.config(
     languageOptions: {
       parser: eslintParserAstro,
       parserOptions: {
-        parser: eslintParserTypeScript,
+        parser: eslintTS.parser,
       },
     },
     plugins: {

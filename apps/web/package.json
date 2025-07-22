@@ -25,6 +25,7 @@
       "pnpm -w run prettier"
     ]
   },
+  "prettier": "@repo/prettier",
   "dependencies": {
     "@astrojs/node": "catalog:astro",
     "@astrojs/react": "catalog:astro",
@@ -66,10 +67,12 @@
     "@astrojs/ts-plugin": "catalog:astro",
     "@axe-core/playwright": "*",
     "@playwright/test": "*",
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
+    "@repo/eslint": "workspace:*",
+    "@repo/prettier": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
-    "eslint": "catalog:"
+    "eslint": "catalog:",
+    "prettier": "catalog:"
   }
 }
