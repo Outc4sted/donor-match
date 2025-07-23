@@ -11,7 +11,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY . .
-RUN turbo prune api --docker
+RUN turbo prune @repo/api --docker
 
 
 FROM base AS installer
@@ -37,4 +37,4 @@ USER fastify
 COPY --from=installer --chown=fastify:nodejs /app ./
 
 EXPOSE 3001
-CMD ["pnpm", "exec", "dmno", "run", "-s", "api", "--", "node", "apps/api/dist/server.js"]
+CMD ["pnpm", "exec", "dmno", "run", "-s", "@repo/api", "--", "node", "apps/api/dist/server.js"]

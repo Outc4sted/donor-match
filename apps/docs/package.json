@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "@repo/docs",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -14,11 +14,14 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "sh -c 'pnpm --filter=docs run check-types'",
-      "pnpm --filter=docs run lint"
+      "sh -c 'pnpm --filter=@repo/docs run check-types'",
+      "pnpm --filter=@repo/docs run lint"
     ],
     "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
     ]
   },
   "prettier": "@repo/prettier",

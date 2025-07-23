@@ -15,8 +15,17 @@
     "env:docker": "APP_ENV=docker turbo run env:docker",
     "preinstall": "npx only-allow pnpm",
     "lint": "dmno run -- turbo run lint",
+    "lint:md": "markdownlint --fix",
     "prepare": "node .husky/install.mjs",
     "prettier": "prettier --write"
+  },
+  "lint-staged": {
+    "**/*.{mjs,json,md,mdx,yaml}": [
+      "pnpm run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm run lint:md"
+    ]
   },
   "prettier": "@repo/prettier",
   "dependencies": {
@@ -28,12 +37,14 @@
     "@repo/tsconfig": "workspace:*",
     "husky": "*",
     "lint-staged": "*",
+    "markdownlint": "*",
+    "markdownlint-cli": "*",
     "prettier": "catalog:",
     "turbo": "*",
     "typescript": "catalog:"
   },
   "packageManager": "pnpm@10.13.1",
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   }
 }

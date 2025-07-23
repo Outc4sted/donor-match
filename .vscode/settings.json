@@ -8,9 +8,6 @@
   "[zmodel]": {
     "editor.defaultFormatter": "zenstack.zenstack"
   },
-  "[dockercompose]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
-  },
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-containers"
   },

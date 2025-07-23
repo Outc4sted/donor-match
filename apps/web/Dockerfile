@@ -13,7 +13,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY . .
-RUN turbo prune web --docker
+RUN turbo prune @repo/web --docker
 
 
 FROM base AS installer
@@ -42,7 +42,7 @@ USER astro
 COPY --from=installer --chown=astro:nodejs /app ./
 
 EXPOSE 3000
-CMD ["pnpm", "exec", "dmno", "run", "-s", "web", "--", "node", "apps/web/dist/server/entry.mjs"]
+CMD ["pnpm", "exec", "dmno", "run", "-s", "@repo/web", "--", "node", "apps/web/dist/server/entry.mjs"]
 
 
 # FROM nginx:alpine AS runtime

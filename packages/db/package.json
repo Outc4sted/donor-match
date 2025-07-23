@@ -41,6 +41,9 @@
     ],
     "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
     ]
   },
   "prettier": "@repo/prettier",

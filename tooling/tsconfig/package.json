@@ -4,5 +4,13 @@
   "private": true,
   "files": [
     "*.json"
-  ]
+  ],
+  "lint-staged": {
+    "**/*.{json,md,mdx}": [
+      "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
+    ]
+  }
 }

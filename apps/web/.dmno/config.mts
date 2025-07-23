@@ -1,7 +1,7 @@
 import { defineDmnoService, DmnoBaseTypes, pick, switchBy } from 'dmno'
 
 export default defineDmnoService({
-  name: 'web',
+  name: '@repo/web',
   schema: {
     APP_ENV: pick(),
     DONOR_MATCH_API: {
@@ -52,8 +52,8 @@ export default defineDmnoService({
         icon: 'vscode-icons:file-type-astro',
       },
     },
-    CLERK_SECRET_KEY: pick('api'),
-    PUBLIC_CLERK_PUBLISHABLE_KEY: pick('api', 'CLERK_PUBLISHABLE_KEY'),
+    CLERK_SECRET_KEY: pick('@repo/api'),
+    PUBLIC_CLERK_PUBLISHABLE_KEY: pick('@repo/api', 'CLERK_PUBLISHABLE_KEY'),
     CI: {
       summary: 'CI flag',
       description: 'Used to alter the behavior of Playwright workers',

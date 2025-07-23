@@ -1,5 +1,5 @@
 {
-  "name": "api",
+  "name": "@repo/api",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -7,17 +7,21 @@
     "build": "tsc -p tsconfig.build.json",
     "check-types": "tsc --noEmit --incremental",
     "dev": "dmno run -- tsx --watch src/server.ts",
-    "env:docker": "dmno resolve --service api --format env > .dmno/.env.docker",
+    "env:docker": "dmno resolve --service @repo/api --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0",
+    "lint:md": "markdownlint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
       "sh -c 'pnpm --filter=api run check-types'",
-      "pnpm --filter=api run lint"
+      "pnpm --filter=@repo/api run lint"
     ],
     "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
     ]
   },
   "prettier": "@repo/prettier",

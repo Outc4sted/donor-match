@@ -4,6 +4,14 @@
   "exports": {
     ".": "./index.js"
   },
+  "lint-staged": {
+    "**/*.{js,json,md,mdx}": [
+      "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
+    ]
+  },
   "prettier": "@repo/prettier",
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "*",

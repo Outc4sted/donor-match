@@ -1,7 +1,7 @@
 import { defineDmnoService, DmnoBaseTypes, pick, switchBy } from 'dmno'
 
 export default defineDmnoService({
-  name: 'api',
+  name: '@repo/api',
   schema: {
     APP_ENV: pick(),
     NODE_ENVIRONMENT: {
@@ -37,7 +37,7 @@ export default defineDmnoService({
         icon: 'simple-icons:fastify',
       },
     },
-    FRONTEND_HOST: pick('web', 'SITE_URL'),
+    FRONTEND_HOST: pick('@repo/web', 'SITE_URL'),
     CLERK_PUBLISHABLE_KEY: {
       required: true,
       summary: 'Clerk public API Key',

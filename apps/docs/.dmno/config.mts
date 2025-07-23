@@ -1,6 +1,7 @@
 import { defineDmnoService, DmnoBaseTypes, pick, switchBy } from 'dmno'
 
 export default defineDmnoService({
+  name: '@repo/docs',
   schema: {
     APP_ENV: pick(),
     NODE_PORT: {
@@ -12,7 +13,7 @@ export default defineDmnoService({
         icon: 'vscode-icons:file-type-astro',
       },
     },
-    NODE_HOST: pick('web'),
+    NODE_HOST: pick('@repo/web'),
     SITE_URL: {
       required: true,
       summary: 'Astro Starlight public site URL',

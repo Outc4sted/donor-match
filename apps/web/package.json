@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "@repo/web",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -8,7 +8,7 @@
     "build": "dmno run -- astro build",
     "check-types": "tsc --noEmit --incremental",
     "dev": "dmno run -- astro dev",
-    "env:docker": "dmno resolve --service web --format env > .dmno/.env.docker",
+    "env:docker": "dmno resolve --service @repo/web --format env > .dmno/.env.docker",
     "lint": "eslint --fix --cache --max-warnings 0",
     "preview": "dmno run -- astro preview",
     "test": "dmno run -- playwright test",
@@ -17,12 +17,15 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx}": [
-      "sh -c 'pnpm --filter=web run check-types'",
-      "pnpm --filter=web run lint"
+      "sh -c 'pnpm --filter=@repo/web run check-types'",
+      "pnpm --filter=@repo/web run lint"
     ],
     "!./src/components/ui/**": [],
     "**/*.{mjs,ts,tsx,json,md,mdx}": [
       "pnpm -w run prettier"
+    ],
+    "**/*.{md,mdx}": [
+      "pnpm -w run lint:md"
     ]
   },
   "prettier": "@repo/prettier",
