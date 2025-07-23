@@ -6,7 +6,7 @@
   "exports": {
     "./utils": {
       "types": "./types.d.ts",
-      "default": "./utils.mjs"
+      "default": "./utils.js"
     },
     "./base": {
       "types": "./types.d.ts",
@@ -44,6 +44,8 @@
     "@eslint/js": "*",
     "@repo/prettier": "workspace:*",
     "@repo/tsconfig": "workspace:*",
+    "@types/node": "*",
+    "@typescript-eslint/parser": "^8.38.0",
     "astro-eslint-parser": "*",
     "eslint": "catalog:",
     "eslint-config-prettier": "*",

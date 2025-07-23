@@ -17,6 +17,13 @@
     { "pattern": "packages/*/" },
     { "pattern": "tooling/*/" }
   ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "typescript",
+    "typescriptreact"
+  ],
   "files.associations": {
     "*.css": "tailwindcss",
     ".env*": "dotenv",
